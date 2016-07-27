@@ -1,0 +1,117 @@
+<?php
+$this->_var['tra'][] = $this->_var['TMPL_REAL']."/js/utils/jscharts_cr.js";
+?>
+<script type="text/javascript">
+function closeWeeboxs(){
+	$.weeboxs.close();
+}
+</script>
+<script type="text/javascript" src="{function name="parse_script" v="$tra" c="$tra"}"></script>
+<div class="uc_box trader">        
+        <div class="tabbox f14 pl20">
+			股票配资详情
+		</div>        
+		<div class="clearfix tra_box p10">
+        	<div class="pl10 pt10 f_l">基本信息</div>
+            <a class='f_r back_btn' href="{url x="index" r="uc_trader#wait_investment"}">返回列表</a>
+			<div class='blank'></div>
+            <div class='trader_info_middle'>
+            	<ul>
+                	<li class='t_l'>订单类型</li><li class='t_r'>{$vo.conf_type_name}</li>
+                    <li class='t_l'>实盘单号</li><li class='t_r'>{$vo.order_sn}</li>
+                    <li class='t_l'>借款人</li><li class='t_r'>{$vo.user_name}</li>
+                    <li class='t_l'>股票市值</li><li class='t_r'>{$vo.stock_money_format}</li>
+                    <li class='t_l'>借款金额</li><li class='t_r'>{$vo.borrow_money_format}</li>
+                    <li class='t_l'>风险保证金</li><li class='t_r'>{$vo.cost_money_format}</li>
+                    <li class='t_l'>警戒线</li><li class='t_r'>{$vo.warning_line_format}</li>
+                    <li class='t_l'>平仓线</li><li class='t_r'>{$vo.open_line_format}</li>
+                    <li class='t_l'>日(月)管理费</li><li class='t_r'>{$vo.site_money_format}</li> 
+                    <li class='t_l'>日(月)利息费</li><li class='t_r'>{$vo.rate_money_format}</li> 
+                    <li class='t_l'>期限</li><li class='t_r'>{$vo.time_limit_num}</li>
+                    <li class='t_l'>开始时间</li><li class='t_r'>{$vo.begin_date}</li>
+                    <li class='t_l'>结束时间</li><li class='t_r'>{$vo.end_date}</li>
+                    <li class='t_l'>订单状态</li><li class='t_r'>{$vo.status_format}</li>
+                </ul>
+                <div class='clearfix'></div>
+            </div>
+            <div class="blank10"></div>
+<div class="pay_btn" style="text-align:center">
+  	<input type="submit" id="tz_link" value="投资" class="sub_btn">
+</div>
+</div>
+<script>
+var is_submit_lock =false;
+var bid_paypassword = "";
+var bid_calculate = null;
+
+$("#tz_link").click(function(){			
+	var html='<div class="tc p15">';
+		html +='支付密码：<input type="password" class="f-input ui-textbox" id="J_bid_password" />';
+		html +='<div class="blank5"></div>';
+		html +='{if $user_info.paypassword eq ''}还未设置！{else}忘记了？{/if}<a href="{url x="index" r="uc_account#security"}" target="_blank" class="f_blue">点这里</a>';
+		html +='<div class="blank5"></div>';
+		html +='<input type="button" class="sub_btn" id="J_bindpassword_btn" value="确定">&nbsp;&nbsp;';
+		html +='<input type="button" class="reset_btn"  id="J_bindpassword_rbtn" value="取消">';
+		html +="</div>";
+	$.weeboxs.open(html,{boxid:"paypass-box",contentType:'text',showButton:false,title:"支付密码",width:380,height:140,type:'wee'});
+	init_ui_textbox();
+	
+});
+$("#J_bindpassword_rbtn").live("click",function(){
+	$.weeboxs.close("paypass-box");
+});
+$("#J_bindpassword_btn").live("click",function(){
+	if($.trim($("#J_bid_password").val())!=""){
+		bid_paypassword =$.trim($("#J_bid_password").val());
+		to_load();
+	}
+	else{
+		$.showErr("请输入支付密码",function(){
+			$("#J_bid_password").focus();
+		});
+	}
+});
+function to_load(){
+		if(is_submit_lock)
+		{
+			return false;
+		}
+		is_submit_lock = true;
+		var query = new Object();
+		query.id="{$vo.id}";
+		query.bid_paypassword = FW_Password(bid_paypassword);
+		query.ajax=1;
+		
+		$.ajax({
+			url:'{url x="index" r="uc_trader#do_investment"}',
+			data:query,
+			type:"POST",
+			dataType:"json",
+			success:function(result){
+				if(result.status==1){
+					is_submit_lock = false;
+					$.showSuccess(result.info,function(){
+						if(result.jump)
+						{
+							window.location.href=result.jump;
+						}
+						else
+						{
+							window.location.reload();
+						}
+					});
+				}
+				else if(result.status==2){
+					window.location.href=result.jump;
+				}
+				else{
+					is_submit_lock = false;
+					$.showErr(result.info);
+				}
+			},
+			error:function(ajaxobj)
+			{
+			}
+		});
+	}
+</script>

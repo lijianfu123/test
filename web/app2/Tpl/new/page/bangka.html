@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>绑定银行卡</title>
+</head>
+<link href="chongzhicss.css" rel="stylesheet" />
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+<script src="js/jil.js" type="text/javascript"></script>
+<link href="{$TMPL}/css/xinlanty.css" rel="stylesheet" type="text/css" />
+<style>
+.paid{ float:none; margin-top:20px !important;}
+.button_zc{margin: 20px 0px 0px 110px;    width: 300px;}
+.yinn{font-size: 15px !important;width:143px;}
+</style>
+<body>
+<div class="main_bars">
+		<div class="main_bar wrap">	
+			<div class="logo mr15">
+				
+<a href="/"><span style="display:inline-block; width:400px; height:78px; background:url({$TMPL}/images/logoz.png) no-repeat;"></span>	</a>	
+			</div>     
+			<!---->
+			 <div class="no-nav-text">开通快捷方式进行绑卡</div>
+			<!---->
+		</div>
+<div>
+<div style="width:1100px; margin:auto;">
+<div class="paid" style=" height:1100px;">
+<h2 class="paid_zfxxs">请选择需要绑定的银行</h2>
+<div class="paid_main w1000 float">
+<div class="paid_ma float">
+<div class="paid_xm1 float">
+                        	<h5>账户余额<span class="account_balance">0.00</span>元 &nbsp;&nbsp;&nbsp;&nbsp;<span style=" color:#999999;font-size:14px;font-weight: 400;">(第三方新浪资金存钱罐全程保障资金安全)</span></h5>
+                        </div>
+</div>
+</div>
+<form name="form1" id="form1" method="post"  target="_self">
+<div class="paid_zfxq" id="stf_10" style="width:1200px;">
+
+<input id="version" name="version" type="hidden" value="{$request.version}">
+<input id="request_time" name="request_time" type="hidden" value="{$request.request_time}">
+<input id="partner_id" name="partner_id" type="hidden" value="{$request.partner_id}">
+<input id="_input_charset" name="_input_charset" type="hidden" value="{$request._input_charset}">
+<input id="sign" name="sign" type="hidden" value="{$request.sign}">
+<input id="sign_type" name="sign_type" type="hidden" value="{$request.sign_type}">
+<input id="service" type="hidden" name="service" value="{$request.service}">
+<input id="request_no" type="hidden" name="request_no" value="{$request.request_no}">
+<input id="identity_id" type="hidden" name="identity_id" value="{$request.identity_id}">
+<input id="identity_type" type="hidden" name="identity_type" value="{$request.identity_type}">
+<input id="card_type" type="hidden" name="card_type" value="{$request.card_type}">
+<input id="card_attribute" type="hidden" name="card_attribute" value="{$request.card_attribute}">
+<input id="verify_mode" type="hidden" name="verify_mode" value="{$request.verify_mode}">                                    	
+<b style="display: block;">
+                                        <!--网银充值-->
+<div class="paid_wy w1000 float">
+
+<div class="long-logo">
+    <div id="container" class="xbox ui-form">
+            
+  <ul class="ui-list-icons ui-four-icons fn-clear cashier-bank" id="J-chooseBankList" style="padding-top:10px;">
+       {foreach from="$BankList" item="item" key=key}                                                                      
+      <li class="cashier-bank "><!--{if $key eq 'ABC'}checked="checked"{/if}-->
+            <input  name="bank_code" id="{$key}" value="{$key}" type="radio">
+            <label class="icon-box limited-coupon " for="{$key}">
+             
+                <span class="false icon {$key}" title="{$item}"></span>
+                            <span class="bank-name">{$item}</span>
+        </label>
+      </li>
+      {/foreach}
+                                                                    
+	</ul>
+    </div>
+<div style="width:900px; border-top:1px solid #CCC; margin:auto; clear:both;">
+<div style="width:600px; margin:auto;">
+<ul>
+
+<li><span style="font-size: 17px;"></span> <select name="card_attribute" style="height:20px; margin-left:10px; width:80px; font-size:16px;">
+					  <option value="C">对私</option>
+					  <option value="B">对公</option>
+					</select></li>
+
+<li style="line-height: 50px;">*<span style="font-size: 17px;">银&nbsp;&nbsp;行&nbsp;&nbsp卡&nbsp号&nbsp;&nbsp;：</span> <input placeholder="请输入银行卡号" style=" font-size:18px !important;margin-left:15px;width:300px;color:#ff7001;letter-spacing:5px;" class="yinn" id="bank_account_no" type="text" name="bank_account_no"></li>
+
+
+
+
+<li style="line-height: 50px;">*<span style="font-size: 17px;">银行预留手机</span> ： <input placeholder="请输入预留在银行的手机号码" style="margin-left: 15px;width:300px;color:#ff7001" class="yinn" id="phone_no" type="text" name="phone_no"></li>
+
+<li style="line-height: 50px;">	<div class="yinn1">*<span style="font-size: 17px;">开&nbsp户&nbsp所&nbsp在省：  &nbsp;</span> <select  style="margin-left:7px;color:#000;" class="yinn yinn1"  name="province" id="province" onchange="selectMoreCity(this)">
+ </select>
+ 市：<select name="city" id="city" class="yinn" style="color:#000;" >
+  <option selected value="">城市</option>
+ </select>
+ </li>
+<li style="line-height: 50px;"><span style="font-size: 17px;">支&nbsp;&nbsp;行&nbsp;&nbsp名&nbsp称&nbsp;&nbsp;：</span> <input placeholder="不知道可不填" style="margin-left:20px;width:305px;color:#ff7001" class="yinn" id="bank_branch" type="text" name="bank_branch"></li>
+<input type="submit" class="button_zc" name="submit" value="提交"><br />
+ <a href="/member.php?ctl=uc_ips&act=recharge" style="line-height:80px; margin-left:50px;    margin: 20px 0px 0px 110px;" class="u-sinapay-verify1 u-circle-15">返  回</a>
+ <script type="text/javascript" language ="javascript"><!-- 
+    //BindProvince();//只初始化省份
+         BindCity("洛阳");//初始化，并选中洛阳市和洛阳市所在的省
+// --></script>
+ </li>
+</ul>
+</div>
+</div>
+</form>
+</div>
+
+</div></div></div></div>
+
+<script type="text/javascript">
+	$(function(){
+		checkIpsBalance(0,{$data.id},function(result){
+			$(".account_balance").html(formatNum(result.pBalance));
+				//$(".Statistics").eq(0).children("span").eq(0).html(formatNum(result.pBalance) +"[绑]");
+				//$(".Statistics").eq(1).children("span").eq(0).html(formatNum(result.pBalance + result.pLock + result.pNeedstl) +"[绑]");
+				//$(".Statistics").eq(2).children("span").eq(0).html(formatNum(result.pLock) +"[绑]");
+		});
+
+	});
+    function checkIpsBalance(type,user_id,func){
+		var query = new Object();
+		query.ctl="collocation";
+		query.act="QueryForAccBalance";
+		query.user_type = type;
+		query.user_id = user_id;
+		query.is_ajax = 1;
+		$.ajax({
+			url:"/index.php",
+			data:query,
+			type:"post",
+			dataType:"json",
+			success:function(result){
+				if(func!=null)
+					func.call(this,result);
+			}
+		});
+	}
+	 /**
+ * 格式化数字
+ * @param {Object} num
+ */
+function formatNum(num) {
+	num = String(num.toFixed(2));
+	var re = /(\d+)(\d{3})/;
+	while (re.test(num)) {
+		num = num.replace(re, "$1,$2");
+	}
+	return num;
+}
+</script>
+</body>
+
+</html>

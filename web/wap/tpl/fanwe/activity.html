@@ -1,0 +1,69 @@
+{if $smarty.request.is_ajax neq 1}
+{include file="./inc/header.html"}	
+<div class="page" id='{$data.act}'>
+<?php
+	$this->_var['back_url'] = wap_url("index","init#index");
+	$this->_var['back_page'] = "#init";
+    $this->_var['back_epage'] = $_REQUEST['epage']=="" ? "#init" : "#".$_REQUEST['epage'];
+?>
+{include file="./inc/title.html"}
+<div class="content infinite-scroll" now_page="1" data-distance="{$data.rs_count}"  all_page="{$data.page.page_total}" ajaxurl="{wap_url x="index" r="about#index"}">
+<!-- 这里是页面内容区 -->
+<link rel="stylesheet" type="text/css" href="./css/activity_turn.css" />
+<SCRIPT   LANGUAGE="JavaScript">       
+function   fresh()  
+{  
+if(location.href.indexOf("&reload=true")<0)
+   {
+    location.href+="&reload=true";  
+   }  
+}  
+setTimeout("fresh()",50);
+</SCRIPT>
+<!-- <br> -->
+<div id="activity_turn" style="background:#e62d2d;width:100%;">
+	<img src="./images/activity_turn/1.png" id="shan-img" style="display:none;" />
+	<img src="./images/activity_turn/2.png" id="sorry-img" style="display:none;" />
+	<div class="banner">
+		<div class="turnplate" style="background-image:url(./images/activity_turn/turnplate-bg.png);background-size:100% 100%;">
+			<canvas class="item" id="wheelcanvas" width="422px" height="422px"></canvas>
+			<img class="pointer" src="./images/activity_turn/turnplate-pointer.png"/>
+		</div>
+	</div>
+	<input type="phone" placeholder="请输入抽奖手机号码">
+	<input id="phone" type="button" value="提交">
+	<div style="height:200px;color:#FFBE04;">
+		<div id="lottery_show" index="{$data.is_l}" style="width:230px;margin:0 auto;">
+			<div id="lottery_res" style="width:230px;">最新抽奖结果：恭喜你抽到{$data.new_things}红包</div>
+			{if $data.is_l eq 1}
+				<div>您的抽奖结果：</div>
+				<div style="float:left;width:230px;">
+					<div style="float:left;">
+						{foreach from="$data.things" item="thing"}
+							<div>{$thing}</div>
+						{/foreach}
+					</div>
+					<div style="float:left;margin-left:10px;">
+						{foreach from="$data.lottery_time" item="lottery_time"}
+							<div>{$lottery_time}</div>
+						{/foreach}
+					</div>
+				</div>
+			{/if}
+			<div style="float:left;width:230px;">
+				<div>发送方式:</div>
+				<div>1.完成注册及新浪托管并且开通</div>
+				<div>2.填写邀请码</div>
+				<div>3.将注册手机号码通过微信消息发送</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 代码 结束 -->
+<div class="integral_container">
+
+</div>	
+
+{include file="./inc/footer.html"}
+{/if}

@@ -1,0 +1,73 @@
+<?php
+$this->_var['tra'][] = $this->_var['TMPL_REAL']."/js/utils/jscharts_cr.js";
+?>
+<script type="text/javascript">
+function closeWeeboxs(){
+	$.weeboxs.close();
+}
+</script>
+<script type="text/javascript" src="{function name="parse_script" v="$tra" c="$tra"}"></script>
+<div class="uc_box trader">        
+        <div class="tabbox f14 pl20">
+			操盘列表
+		</div>        
+		<div class="clearfix tra_box p10">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="uc-table">
+                <tbody>
+                    <tr border="0">
+                    	<th style="width:12%">实盘单号</th>
+                        <th style="width:15%">申请时间</th>
+                        <th style="width:10%">申请类型</th>
+                        <th style="width:12%">申请描述</th>
+                        <th style="width:10%">审核状态</th>
+                        <th style="width:20%">变动描述</th>
+                        <th style="width:21%">操作</th>
+                    </tr>
+                    {foreach from="$op_list" item="item" key=key}
+              <tr class="item {if $key mod 2 eq 1}item_1{/if}" {if $smarty.foreach.deal.last}style="border-bottom:0"{/if}>
+                        <td ><a href="{url x="index" r="uc_trader#peizi_invest_detail" p="id=$item.peizi_order_id"}" target="_blank">{$item.order_sn}</a></td>
+                        <td>{$item.create_date}</td>
+                        <td >{$item.op_type_format}</td>
+                        <td>{$item.memo}</td>
+                        <td >{$item.op_status_format}</td>
+                        <td>{$item.change_memo} </td>
+                        <td><a href="javascript:void(0);" onclick ="trader_back({$item.id},1)">同意</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onclick ="trader_back({$item.id},2)">不同意</a></td>
+                    </tr>
+                    {/foreach}
+                </tbody>
+            </table>
+</div>
+<script type="text/javascript">
+	function trader_back(id,type)
+	{
+		if(confirm("确定要执行此操作吗？"))
+		{
+			$.ajax({
+				url:'{url x="index" r="uc_trader#update_invest_op"}',
+				data:{id:id,type:type},
+				type:"Post",
+				dataType:"json",
+				success:function(data)
+				{
+					if(data.status == 1){
+						  $.showSuccess(data.info,function(){
+							  window.location.reload();
+						 });
+					}
+					else
+					{
+						 $.showErr(data.info,function(){
+							  window.location.reload();
+						 });
+					}
+				}
+				,error:function()
+				{
+					 $.showErr("操作失败，请稍后重试",function(){
+							window.location.reload();
+					 });
+				}
+			});
+		}
+	}
+</script>

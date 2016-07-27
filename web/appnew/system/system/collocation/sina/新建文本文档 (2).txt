@@ -1,0 +1,4 @@
+$_POST["sign"]=$weibopay->getSignMsg($_POST,$_POST["sign_type"]);
+ 
+
+$_POST["sign"]=UrlEncode($weibopay->getSignMsg($_POST,$_POST["sign_type"]));

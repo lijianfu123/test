@@ -1,0 +1,60 @@
+<div class="uc_box trader">        
+        <div class="tabbox f14 pl20">
+			投资单列表
+		</div>        
+		{if $trader_list}
+        <form id="form1" action='{url x="index" r="uc_trader#makedeals" }' method="post">
+		<div class="clearfix tra_box p10">
+        	<div class="pl10 pt10 f_l"><a class='f_r lcb_btn' href="javascript:void(0);" onclick="return makedeals();">生成理财包</a></div>
+			<div class='blank'></div>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="uc-table">
+				<tbody>
+					<tr border="0">
+                    	<th style="width:6%">选择</th>
+						<th style="width:12%">实盘单号</th>
+						<th style="width:12%">开始时间</th>
+						<th style="width:12%">结束时间</th>
+						<th style="width:10%">实盘金额</th>
+						<th style="width:10%">盈亏金额</th>
+						<th style="width:12%">返还保证金</th>
+                        <th style="width:10%">订单状态</th>
+                        <th style="width:10%">借款人</th>
+                        <th style="width:6%">操作</th>
+					</tr>
+					{foreach from="$trader_list" item="item" key=key}
+			  <tr class="item {if $key mod 2 eq 1}item_1{/if}" {if $smarty.foreach.deal.last}style="border-bottom:0"{/if}>
+						<td >{if $item.deal_id ==0}<input type="checkbox" value='{$item.id}' name='ids[]'/>{/if}</td>
+                        <td >{$item.order_sn}</td>
+						<td>{$item.begin_date}</td>
+						<td>{$item.end_date}</td>
+						<td>{$item.trader_money}</td>
+						<td>{$item.loss_money_format} </td>
+                        <td>{$item.re_cost_money}</td>
+						<td style="color:#39A1EA">{$item.status} </td>
+                        <td>{$item.user_name}</td>
+                        <td><a href="{url x="index" r="uc_trader#peizi_invest_detail" p="id=$item.id"}">详情</a></td>
+					</tr>
+					{/foreach}
+				</tbody>
+			</table>
+		</div>
+		{else}	
+		<div align="center" class='tra_box' style="padding:20px 0">暂无记录</div>
+		{/if}
+		</form>
+		
+</div>
+<div class="pages">{$pages}</div>
+<style type="text/css">
+	.joke{font-size: 16px;}
+	.long_uc .tabbox{ border-left:1px solid #ddd}
+</style>
+<script type="text/javascript">
+	function makedeals(){
+		if($("#form1 input[type='checkbox']:checked").length == 0){
+			alert("请选择要生成理财包的配资");
+			return false;
+		}
+		$("#form1").submit();
+	}
+</script>

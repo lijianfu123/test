@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<title>持卡人确认</title>
+<style type="text/css">
+	#yumen{ 
+	 width:600px;
+	 height:250px;
+	/*  background-color:#12ADFF; */
+	 background-image:url(./app/Tpl/new/images/zftg.png);
+	
+	 /* margin:0 auto; */
+	 text-align:center;
+	 position:absolute;left:50%;top:50%;margin-top:-150px;margin-left:-315px;
+	 }
+</style>
+</head>
+<body>
+<div id="yumen"> 
+	<form name="form1" id="form1" method="post" target="_self" style="margin-top:210px;font-size:20px;">
+	 
+		 {foreach from=$bind_bank_card item="vo"}
+		
+		 <label class="icon-box limited-coupon" for="{$vo.card_id}" style="margin-right:20px;">
+		
+		<input name="card_id" id="{$vo.card_id}" type="radio" value="{$vo.card_id}" checked="checked" />
+		
+		<!-- 持卡人姓名&nbsp;:{$vo.account_name},{$vo.bank_code},{$vo.bank_account_no} -->
+		持卡人确认
+		
+		<a class="Unbundling" href='javascript:;' onclick="return querenshanchu('{$vo.card_id}')"></a>
+		
+		  
+		</label>
+		 
+		{/foreach} 
+		
+		                   
+                   	<input id="version" name="version" type="hidden" value="{$request.version}">
+
+					<input id="request_time" name="request_time" type="hidden" value="{$request.request_time}">
+
+					<input id="partner_id" name="partner_id" type="hidden" value="{$request.partner_id}">
+
+					<input id="_input_charset" name="_input_charset" type="hidden" value="{$request._input_charset}">
+
+					<input id="sign" name="sign" type="hidden" value="{$request.sign}">
+
+					<input id="sign_type" name="sign_type" type="hidden" value="{$request.sign_type}">
+
+					<input id="return_url" name="return_url" type="hidden" value="{$request.return_url}">
+
+
+					<input id="notify_url" name="notify_url" type="hidden" value="{$request.notify_url}">
+
+					<input id="withdraw_mode" type="hidden" name="withdraw_mode" value="{$request.withdraw_mode}">
+
+					<input id="service" type="hidden" name="service" value="{$request.service}">
+
+					<input id="out_trade_no" name="out_trade_no" type="hidden" value="{$request.out_trade_no}">
+
+		  			<input id="identity_id" name="identity_id" type="hidden" value="{$request.identity_id}">
+ 
+					<input id="identity_type" name="identity_type" type="hidden" value="{$request.identity_type}">
+
+					<input id="account_type" name="account_type" type="hidden" value="{$request.account_type}">
+
+					<input id="amount" name="amount" type="hidden" value="{$request.amount}">
+
+					<!--<input id="user_fee" name="user_fee" type="hidden" value="{$request.user_fee}">  -->
+
+					<input type="hidden" name="memo" value="{$request.memo}"/>
+
+					<input type="hidden" name="summary" value="{$request.summary}"/>
+				
+		<input type="submit" value="提交" name="submit" style="width:100px;height:30px;"/>
+	</form> 
+</div>
+<script type="text/javascript">  
+
+	function querenshanchu(id){
+
+		if (confirm("确认要解绑吗？")) {
+
+			//window.location='/index.php?ctl=collocation&act=UnbindingBankCard&user_id={$data.id}&card_id='+id;
+
+			
+
+		}
+
+	}
+
+</script>
+
+</body>
+
+</html>
+

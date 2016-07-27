@@ -1,0 +1,300 @@
+{include file="inc/header.html"} 
+<!--我要理财详情-->
+<?php
+    $this->_var['pagecss'][] = $this->_var['TMPL_REAL']."/css/peizi/peizi_deal.css";
+	 $this->_var['pagecss'][] = $this->_var['TMPL_REAL']."/css/peizi/peizi_detail.css";
+?>
+<link rel="stylesheet" type="text/css" href="{function name="parse_css" v="$pagecss"}" />
+<div class="blank20"></div>
+
+<div class="clearfix bddf bor b_f9f9f9">
+	<div class="f_l w_250 ">
+		<div class="padd">
+			<img src="{function name="get_spec_image" v="$peizi.view_info" w="180" h="110"}">
+			<p class="name active"><i {if $peizi.user.idcardpassed eq 0}class="gray"{/if}></i>{$peizi.user.real_name}</p>
+			<p>手机号：{function name="hideMobile" v="$peizi.user.mobile"}</p>
+			<p>注册时间：{function name="to_date" v="$peizi.user.create_time" f="Y.m.d"}</p>
+			<span class="arrow"></span>
+		</div>
+	</div>
+	<div class="f_r w_950 bddf h265">
+		<div class="padd">
+			 	<h1 class="pr">
+			 		{$peizi.peizi_name}
+					{if  $peizi.invest_user_id gt 0}
+					<div class="peizi-succ ps"></div>
+					{/if}
+				</h1>
+				<div class="hd-info">
+					<ul class="info-left f_l">
+						<li>
+							<span class="name">{if $peizi.type eq 2}年化{else}日{/if}利率</span>
+							<span class="bx">
+								<em class="b f_red">{if $peizi.type eq 2}{$peizi.year_rate_format}{else}{$peizi.rate_format}{/if}</em>
+								{if $peizi.type eq e}借{$peizi.time_limit_num}个月{/if}
+							</span>
+						</li>
+						<li>
+							<span class="name">还款方式</span>
+							<span class="bx">
+								按{if $peizi.type eq 0}天{elseif $peizi.type eq 1}周{else}月{/if}还息，到期还本
+							</span>
+						</li>
+						<li>
+							<span class="name">总借款额</span>
+							<span class="bx">
+							{$peizi.borrow_money_format}
+							</span>
+						</li>
+						<li>
+							<span class="name">借款时间</span>
+							<span class="bx">
+							{$peizi.begin_date}~{$peizi.end_date}
+							</span>
+						</li>
+						<li>
+							<span class="name">项目状态</span>
+							<span class="bx">
+							{$peizi.status_format}
+							</span>
+						</li>
+						<li>
+							<span class="name">上线时间</span>
+							<span class="bx">
+							{$peizi.before_time}
+							</span>
+						</li>
+						
+					</ul>
+					<ul class="info-right f_r">
+						<div class="prog">
+							<span class="name">配资进度</span>
+							<div class="progressvar bx w150 f_l ">
+								{if  $peizi.invest_user_id gt 0}
+								<div class="progress w100 mt9">
+									<span class="pr bdr3" style="width:100%;">
+										<img class="ps" title="100%" src="{$TMPL}/images/progressqiu.png" />
+									</span>
+								</div>
+								<div class="progresscon f_gray">100%</div>
+								{else}
+								<div class="progress w100 mt9">
+									<span class="pr bdr3" title="0%" style="width:0%;">
+										<img class="ps" src="{$TMPL}/images/progressqiu.png" />
+									</span>
+								</div>
+								<div class="progresscon f_gray">0%</div>
+								{/if}
+							</div>
+						</div>
+						{if $peizi.invest_user_id gt 0}
+						<li>
+							<span class="name">投资人</span>
+							<span class="bx">
+							{function name="utf_substr" v="$peizi.invest_user_name"}
+							</span>
+						</li>
+						<li>
+							<span class="name">满标用时</span>
+							<span class="bx">
+							{function name="time_length" s="$peizi.invest_begin_time" e="$peizi.invest_end_time"}
+							</span>
+						</li>
+						{else}
+						<li>
+							<span class="name">支付密码</span>
+							<span class="bx">
+								{if !$user_info}
+								<a href="{url x="index" r="user#register"}" class="f_yellow">注册</a>或<a href="javascript:void(0);" onclick="ajax_login();"  class="f_blue">登录</a>，马上投资
+								{else}
+								账户余额：<font class="f_yellow">{function name="format_price" v=$user_info.money}</font>
+								<div class="blank"></div>
+								<div class="pr  f_l mr5" style="padding-top:2px;line-height:28px!important;">
+									<input type="password" id="J_paypassword" type="paypassword" class="f-input ui-textbox" holder="输入支付密码" size="10" value="" />
+								</div>
+								<input type="button" id="J_invest_btn" class="true_btn  w100" value="马上投资" />
+								{/if}
+								</span>
+						</li>
+						{/if}
+					</ul>
+				
+				</div>
+		</div>
+	</div>
+</div>
+<div class="blank20"></div>
+<div class="fixed_nav_box">
+	<div class="fixed_nav" id="floatRight">
+		<ul class="tx">
+			<li><a href="#li_0" rel="0" class="a_0 a_nav">项目信息</a></li>
+			<li><a href="#li_1" rel="1" class="a_1 a_nav">资金安全</a></li>
+			<li><a href="#li_2" rel="2" class="a_2 a_nav">法律保障</a></li>
+	   </ul>
+	</div>
+</div>
+<div class="fixed_content_box">
+	<div class="li_0  li" id="li_0" rel="0">
+			 <div class="box-title">
+				<h4>项目介绍</h4>
+			</div>
+			<div class="pl30 pt10 pb10">
+				<p class="explanation_p pl30">
+					项目总额<span class="f_red">{$peizi.borrow_money_format}</span>元，本项目借款人主要用于短期股票融资，已提供<span class="f_red">{$peizi.cost_money_format}</span>风险保证金和<span class="f_red">{$peizi.total_money_format}</span>市值的股票抵押物。<br>
+					项目{if $peizi.type eq 2}年化利率<span class="f_red">{$peizi.year_rate_format}</span>{else}日利率<span class="f_red">{$peizi.rate_format}</span>{/if}，如投资<span class="f_red">1万</span>元，预计{if $peizi.type eq 2}每月{else}每日{/if}收益：<span class="f_red">{$peizi.rate_money_format}</span>元，到期总收益：<span class="f_red">{$peizi.all_rate_money_format}</span>元。<br>
+					项目借款完成后，本站提供<span class="f_red">{$peizi.total_money_format}</span>元的股票账户给借款人操盘，该账户只能操盘无法提现。<br>
+					平台对股票账户进行实时监管，一旦账户资金低于<span class="f_red">{$peizi.open_line_format}</span>则强制平仓，以保证本金及收益安全，投资无风险。
+					
+				</p>
+			</div>
+			{if $peizi.status eq 6 || $peizi.status eq 8}
+			<div class="box-title">
+				<h4>借款者当前操盘情况</h4>
+			</div>
+			<div class="caopan-base-info">
+				<div class="caopan-base-info">
+	                <p class="pb10">
+	                	<label>收盘股票市值</label>
+	                    <span class="f_red f30">
+	                       {$peizi.stock_money_format}
+						</span>元
+						{if $peizi.total_money neq $peizi.stock_money}
+	                    <i class="iconfont f32 {if $peizi.total_money > $peizi.stock_money}f_green{else}f_red{/if}">
+	                    	{if $peizi.total_money > $peizi.stock_money}&#xe639;{else}&#xe63a;{/if}
+	                    </i>
+						{/if}
+					</p>
+	                <p class="pb10">
+	                	<label>操盘本金</label>
+						<span class="f16">{$peizi.total_money_format}</span>元
+						<span class="f_gray">（其中，借款资金：{$peizi.borrow_money_format}元，保证金：{$peizi.cost_money_format}元）</span></p>
+	            </div>
+			</div>
+			{/if}
+			<div class="box-title">
+				<h4>投资流程</h4>
+			</div>
+			<div class="pro-flow cf">
+	            <p>
+	                <span class="a">选择投资项目</span>
+	                <span class="b"></span>
+	                <span class="a">投入项目资金</span>
+	                <span class="b"></span>
+	                <span class="a">投资成功，开始按月享受利息</span>
+	                <span class="b"></span>
+	                <span class="a">项目到期，归还投资本金和利息收益</span>
+	            </p>
+				<div class="blank0"></div>
+	        </div>
+	</div>
+	<div class="blank20"></div>
+	<div class="li_1  li" id="li_1" rel="1">
+		<div class="box-t">
+			<h4>资金安全</h4>
+		 </div>
+		 <div class="box-content safty-info">
+			{function name="app_conf" v="PEIZI_MONEY_SAFE"}
+		</div>
+	</div>
+	<div class="blank20"></div>
+	<div class="li_2  li" id="li_2" rel="2">
+			 <div class="box-t">
+				<h4>法律保障</h4>
+			 </div>
+			 <div class="box-content law-info">
+					{function name="app_conf" v="PEIZI_LAW"}
+			 </div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+	    var oldSite=new Object();
+        oldSite.top=$("#floatRight").offset().top;
+			
+		$(window).scroll(function () {
+		    var scrolltop = $(document).scrollTop();
+            if(scrolltop==0)
+			{
+				$(".tx a").removeClass("current");
+			}
+			if(oldSite.top-scrolltop<3)
+			{ 				
+				$("#floatRight").addClass("fixed").removeClass("no_fixed");
+				if ($.browser.msie && ($.browser.version == "6.0") && !$.support.style) 
+					{ 
+						$("#floatRight").css({"position":"absolute","top":scrolltop});
+					} 
+            }
+			else
+			{
+			 	$("#floatRight").removeClass("fixed").addClass("no_fixed");
+			}
+							
+			$(".li").each(function(){
+				var classname="."+"li_"+$(this).attr("rel");
+				var indexvalue=$(this).attr("rel");
+				var sh=$(classname).offset();
+				if(sh)
+				{
+					var s=sh.top;
+					if(s-scrolltop<60)
+					{						
+						$("."+"a_"+indexvalue).addClass("current").parent().siblings().find("a").removeClass("current");
+					}						
+                }
+			 });
+        });
+			
+		$(".tx a").click(function(e){
+	        var top_li=$("."+"li_"+$(this).attr("rel")).offset().top;
+		    $("html,body").animate({scrollTop:top_li-50},"1000","swing");
+		    e.preventDefault();
+		});
+				
+		$(".tx a").hover(function(){
+		    if(!$(this).hasClass("current"))
+			{
+			   $(this).addClass("current").addClass("y");
+            }
+		},
+		function()
+		{
+			 if($(this).hasClass("y"))
+				{
+				   $(this).removeClass("current").removeClass("y");
+                }
+			}
+		);
+		
+		$("#J_invest_btn").click(function(){
+			var paypassword = $.trim($("#J_paypassword").val());
+			if(paypassword==""){
+				$.showErr("请输入支付密码！");
+			}
+			
+			var query = new Object();
+			query.paypassword = FW_Password(paypassword);
+			query.id = {$peizi.id};
+			$.ajax({
+				url : '{url x="index" r="peizi#bid"}',
+				data:query,
+				type:"post",
+				dataType:"json",
+				success:function(result){
+					if(result.status==1)
+					{
+						window.location.reload();
+					}
+					else{
+						$.showErr(result.info);
+					}
+				}
+			});
+		});
+	});
+
+</script>
+{include file="inc/footer.html"}
+
+
+

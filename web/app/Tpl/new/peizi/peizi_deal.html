@@ -1,0 +1,251 @@
+{include file="inc/header.html"} 
+<!--我要理财详情-->
+<?php
+    $this->_var['pagecss'][] = $this->_var['TMPL_REAL']."/css/peizi/peizi_deal.css";
+?>
+<link rel="stylesheet" type="text/css" href="{function name="parse_css" v="$pagecss"}" />
+<div class="blank20"></div>
+<div class="clearfix bddf">
+	<div class="f_l w_540" style=" background:#6dc6f0;">
+	<div style=" height:170px;"></div>
+		<ul class=" clearfix deal_list_0">
+			<li>
+				<span>年息收益</span>
+				<p>12%</p>
+			</li>
+			<li>
+				<span>合约期限</span>
+				<p>1个月</p>
+			</li>
+			<li>
+				<span>总份数</span>
+				<p>48万</p>
+			</li>
+		</ul>
+		<div class="blank30"></div>
+		<p class="deal_explanation_0">
+			上线时间：05月04日 09：03&nbsp;&nbsp;&nbsp;
+			还款方式：按月还息，到期还本<br/>
+			起息时间：购买次日起息
+		</p>
+		<div class="blank30"></div>
+	</div>
+	<div class="f_r w_590 deal_detail_0">
+		<div class="blank10"></div>
+		<h2>无忧理财1月期025，年息收益<em>12%</em></h2>
+		<div class="clearfix explanation_p">
+			<span class="name">项目进度</span>
+			<div style="width:175px; float:left;" >
+									<!--这是p2p首页拷贝过来的一部分，有待完善-------------------------------->
+									{if  $item.deal_status gte 4}
+						<div class="progress w130 mt9">
+							<span class="pr bdr3" style="width:100%;">
+								<img class="ps" title="100%" src="{$TMPL}/images/progressqiu.png" />
+							</span>
+						</div>
+						<div class="progresscon f_blue">100%</div>
+						{else}
+						<div class="progress w130 mt9">
+							<span class="pr bdr3" title="{function name="round" v=$deal.progress_point f=3}%" style="width:{function name="round" v=$deal.progress_point f=2}%;">
+								<img class="ps" src="{$TMPL}/images/progressqiu.png" />
+							</span>
+						</div>
+						<div class="progresscon f_blue">{function name="round" v=$deal.progress_point f=2}%</div>
+						{/if}
+									 <!---------------------------------->
+									 </div>
+		</div>
+		<p class="clearfix explanation_p">
+			<span class="name">合约期限</span>
+			05月05日~06月04日（1个月）
+		</p>
+		<p class="clearfix explanation_p">
+			<span class="name">剩余份数</span>
+			<em class="f_red">123456</em>份（每份价格1元）
+		</p>
+		<p class="clearfix explanation_p">
+			<span class="name">我要购买</span>
+			<input type="text"  class="f-input ui-textbox normal" placeholder="1~~10000"/>份
+		</p>
+		<p class="clearfix explanation_p">
+			<span class="name">服务协议</span>
+			    <label class="cursor_pointer">
+                    <input id="agree_prefix" type="checkbox" checked="checked"/>
+				    我同意
+                </label>
+			    <a href="#" style=" color:#28A7E1;"  href="javascript:void(0);">《无忧理财计划服务协议》</a> 
+		</p>
+		<div class="blank20"></div>
+		<input type="submit" class="sub_btn"  name="commit" value="立即购买">
+	</div>
+</div>
+<div class="blank20"></div>
+<div class="fixed_nav_box">
+	<div class="fixed_nav" id="floatRight">
+		<ul class="tx">
+			<li><a href="#li_0" rel="0" class="a_0 a_nav">项目信息</a></li>
+			<li><a href="#li_1" rel="1" class="a_1 a_nav">资金安全</a></li>
+			<li><a href="#li_2" rel="2" class="a_2 a_nav">法律保障</a></li>
+			<li><a href="#li_3" rel="3" class="a_3 a_nav">投资项目</a></li>
+			<li><a href="#li_4" rel="4" class="a_4 a_nav">投资记录<em>(23)</em></a></li>
+	   </ul>
+	</div>
+</div>
+<div class="fixed_content_box">
+	<div class="li_0  li" id="li_0" rel="0">
+			 <div class="box-title">
+				<h4>什么是无忧理财？</h4>
+			</div>
+			<p class="explanation_p">无忧理财是趣炒股网2015年推出的新型投资理财产品，是基于数据挖掘技术的股票型理财投资组合，
+			跟踪平台上千个投资项目进行筛选，为投资人筛选最优质的理财项目进行投资。
+			</p>
+			<div class="box-title">
+				<h4>什么是无忧理财？</h4>
+			</div>
+			<p class="explanation_p">无忧理财是趣炒股网2015年推出的新型投资理财产品，是基于数据挖掘技术的股票型理财投资组合，
+			跟踪平台上千个投资项目进行筛选，为投资人筛选最优质的理财项目进行投资。
+			</p>
+	</div>
+	<div class="blank20"></div>
+	<div class="li_1  li" id="li_1" rel="1">
+		<div class="box-t">
+			<h4>资金安全</h4>
+		 </div>
+		 <div class="box-content safty-info">
+			<h3>资金托管<small>&nbsp;&nbsp;&nbsp;&nbsp;资金托管合作方：新浪支付</small></h3>
+			<p>1、趣炒股网在新浪支付开立了专款专用的第三方资金托管账户，保障资金安全</p>
+			<p>2、<a target="_blank" style="color: #0088cc;" href="https://pay.sina.com.cn/zjtg">新浪支付</a>是纳斯达克上市公司新浪旗下的专业第三方支付企业。新浪支付本身是中国支付清算协会会员。其资金托管方案是针对互联网金融平台提供的全面定制化的第三方资金托管解决方案。具有如下特点：账户分离，资金专款专用；接口独立，多端设备共享；安全护航，银行级别保障；功能丰富，用户体验极致。</p>
+			<p class="safty-img clearfix">
+				<img src="http://qcg-sta.oss-cn-qingdao.aliyuncs.com/img/sinapay-s1.png" class="f_l"/>
+				<img src="http://qcg-sta.oss-cn-qingdao.aliyuncs.com/img/sinapay-s2.jpg" class="f_r"/>
+			</p>
+		</div>
+	</div>
+	<div class="blank20"></div>
+	<div class="li_2  li" id="li_2" rel="2">
+			 <div class="box-t">
+				<h4>法律保障</h4>
+			 </div>
+			 <div class="box-content law-info">
+						<h6>★&nbsp;风险保证金风控保障</h6>
+						<p>无忧理财有别于其他P2P理财项目，无忧理财的标的类型均使用保证金型，相比于P2P的固定资产认证类型理财项目，保证金形式具备更好的流动性。</p>
+			 </div>
+	</div>
+	<div class="blank20"></div>
+	<div class="li_3  li" id="li_3" rel="3">
+		   <div class="box-t">
+				<h4>投资项目</h4>
+			</div>
+			<div class="box-content record-info">
+				<table class="table">
+					<thead>
+							<tr>
+								<th>投资项目</th>
+								<th>借款金额</th>
+								 <th>借款时间</th>
+							 </tr>
+					</thead>
+					<tbody>
+							<tr>
+									<td><a target="_blank" class="f_blue" href="#">马先生借款56万元|市值70万元股票做抵押</a></td>
+									<td>56万元</td>
+									<td>1个月</td>
+							</tr>
+					 </tbody>
+				</table>
+			 </div>
+	</div>
+	<div class="blank20"></div>
+	<div class="li_4  li" id="li_4" rel="4">
+			<div class="box-t">
+				<h4>投标记录</h4>
+			</div>
+			<div class="box-content record-info">
+			<p>投标笔数：<span class="f_red">13</span>&nbsp;笔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投标金额：<span class="f_red">￥256,248</span></p>
+			<table class="table">
+				<thead>
+				<tr>
+					<th class="mb">投标人</th>
+					<th>投标金额(元)</th>
+					<th>收益(元)</th>
+					<th>投标日期</th>
+				</tr>
+				</thead>
+						<tbody>
+								 <tr>
+										<td class="mb"> 159***06 </td>
+										<td>5,050</td>
+										<td>50.50</td>
+										<td>2015-05-05 07:25:01</td>
+							</tr>
+					</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+	    var oldSite=new Object();
+            oldSite.top=$("#floatRight").offset().top;
+			
+			$(window).scroll(function () {
+			    var scrolltop = $(document).scrollTop();
+                if(scrolltop==0)
+				{
+					$(".tx a").removeClass("current");
+				}
+				if(oldSite.top-scrolltop<3)
+				{ 				
+					$("#floatRight").addClass("fixed").removeClass("no_fixed");
+					if ($.browser.msie && ($.browser.version == "6.0") && !$.support.style) 
+						{ 
+							$("#floatRight").css({"position":"absolute","top":scrolltop});
+						} 
+                }
+				else
+				{
+				 	$("#floatRight").removeClass("fixed").addClass("no_fixed");
+				}
+								
+				$(".li").each(function(){
+					var classname="."+"li_"+$(this).attr("rel");
+					var indexvalue=$(this).attr("rel");
+					var sh=$(classname).offset();
+					if(sh)
+					{
+						var s=sh.top;
+						if(s-scrolltop<60)
+						{						
+							$("."+"a_"+indexvalue).addClass("current").parent().siblings().find("a").removeClass("current");
+						}						
+                    }
+				 });
+            });
+			
+			$(".tx a").click(function(e){
+		        var top_li=$("."+"li_"+$(this).attr("rel")).offset().top;
+			    $("html,body").animate({scrollTop:top_li-50},"1000","swing");
+			   e.preventDefault();
+				});
+				
+				$(".tx a").hover(function(){
+				    if(!$(this).hasClass("current"))
+					{
+					   $(this).addClass("current").addClass("y");
+                    }
+				},
+				function()
+				{
+				 if($(this).hasClass("y"))
+					{
+					   $(this).removeClass("current").removeClass("y");
+                    }
+				}
+				);
+	});
+
+</script>
+{include file="inc/footer.html"}
+
+
+
