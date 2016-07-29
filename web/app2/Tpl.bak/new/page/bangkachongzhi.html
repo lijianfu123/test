@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+<link href="{$TMPL}/css/xinlanty.css" rel="stylesheet" type="text/css" />
+<link href="{$TMPL}/css/banka.css" rel="stylesheet" type="text/css" />
+<title>绑卡充值</title>
+</head>
+<script>
+var guys = function (obj)   
+ {	    obj.style['border'] = '1px solid #fd7500';	
+       }
+</script>
+<style>
+.Unbundling {
+position: absolute;
+background: url(img/jiebang.png) 0 0 no-repeat;
+width: 79px;
+height: 81px;
+color: red;
+right: -2px;
+top: -1px;
+cursor: pointer;
+}
+body{ background:url(img/registerBg.jpg) 50% 0px no-repeat rgb(18, 173, 255);font-family: "Microsoft Yahei";box-sizing: border-box;}
+
+</style>
+<body>
+<div class="main_bars">
+		<div class="main_bar wrap">	
+			<div class="logo mr15">
+				
+<a href="/"><span style="display:inline-block; width:400px; height:78px; background:url({$TMPL}/images/logoz.png) no-repeat;"></span>	</a>	
+			</div>     
+			<!---->
+			 <div class="no-nav-text">快捷支付</div>
+			<!---->
+		</div>
+<div>
+<div style="width:1100px; margin:auto;">
+<div class="paid" style="height:800px;">
+<h2 class="paid_zfxxs">充值信息</h2>
+<div class="paid_main w1000 float">
+
+<div class="paid_ma float">
+<div class="paid_xm1 float">
+ <h5>账户余额<span class="account_balance">0.00</span>元 &nbsp;&nbsp;&nbsp;&nbsp;<span style=" color:#999999;font-size:14px;font-weight: 400;">(第三方新浪资金存钱罐全程保障资金安全)</span></h5>
+                        </div>
+</div>
+</div>
+<div class="float w1000 fs14 mt40" style="color:#f18f25; padding-left:72px;">温馨提示：此安全卡将用于您账户的充值和提现，账户资金余额为0元时即可进行解绑。</div>
+<form name="form1" id="form1" method="post" target="_self">
+
+<div class="suspervise float">
+
+<div class="float">
+<h2 class="float" style="font-size:16PX;">请选择已绑定的安全卡&nbsp;:&nbsp;</h2>
+ {foreach from="$bind_bank_card" item="item" key=key}
+ <label class="icon-box limited-coupon" for="{$item.card_id}">
+<div  id="bindbanksUL" style="float:left;"> 
+
+<div class="atm" onclick="guys(this)">
+<input name="card_id" id="{$item.card_id}" type="radio" value="{$item.card_id}" checked="checked" />
+<ul style="width:270px;">
+<li class="mt5"><img class="bind_bank_img" src="img/{$item.bank_code}.png" title="{$item.bank_code}" alt="{$item.card_id}"></li>
+<li class="mt5"></li> 
+<li class="mt25"><span class="mr10">银行卡号&nbsp;:</span><span><i>{$item.bank_account_no|substr_replace:'****':'3':'4'}</i></span></li>
+<li class="mt10"><span class="mr10">持卡人姓名&nbsp;:</span><span><i>{$item.account_name}</i></span></li>
+</ul>
+<a class="Unbundling" href='javascript:;' onclick="return querenshanchu('{$item.card_id}')"></a></div>
+</div>
+</label>
+{/foreach}
+                             
+					</div>	
+                   
+						<input id="version" name="version" type="hidden" value="{$request.version}">
+						<input id="request_time" name="request_time" type="hidden" value="{$request.request_time}">
+						<input id="partner_id" name="partner_id" type="hidden" value="{$request.partner_id}">
+						<input id="_input_charset" name="_input_charset" type="hidden" value="{$request._input_charset}">
+						<input id="sign" name="sign" type="hidden" value="{$request.sign}">
+						<input id="sign_type" name="sign_type" type="hidden" value="{$request.sign_type}">
+						<input id="notify_url" name="notify_url" type="hidden" value="{$request.notify_url}">
+						<input id="service" type="hidden" name="service" value="{$request.service}">
+						<input id="out_trade_no" name="out_trade_no" type="hidden" value="{$request.out_trade_no}">
+						<input id="identity_id" name="identity_id" type="hidden" value="{$request.identity_id}">
+						<input id="identity_type" name="identity_type" type="hidden" value="{$request.identity_type}">
+						<input id="account_type" name="account_type" type="hidden" value="{$request.account_type}">
+						<input id="amount" name="amount" type="hidden" value="{$request.amount}">
+						<input id="user_fee" name="user_fee" type="hidden" value="{$request.user_fee}">
+						<input id="payer_ip" name="payer_ip" type="hidden" value="{$request.payer_ip}">
+						<input id="pay_method" type="hidden" name="pay_method" value="{$request.pay_method}">
+						<input type="hidden" name="memo" value="{$request.memo}"/>	
+      <input style="width:260px; height:50px; margin-top:50px; text-align:center; float:left;" type="image" src="app/Tpl/new/images/ljcz.png" name="submit" value="提交">
+      <a href="/member.php?ctl=uc_ips&act=recharge" style="line-height: 150px; margin-left:50px;" class="u-sinapay-verify u-circle-15">返  回</a>
+      
+                    	</div>
+                    
+
+</div>
+</div>
+</form>
+
+</div>
+
+
+<script type="text/javascript">
+	$(function(){
+		checkIpsBalance(0,{$data.id},function(result){
+			$(".account_balance").html(formatNum(result.pBalance));
+				//$(".Statistics").eq(0).children("span").eq(0).html(formatNum(result.pBalance) +"[绑]");
+				//$(".Statistics").eq(1).children("span").eq(0).html(formatNum(result.pBalance + result.pLock + result.pNeedstl) +"[绑]");
+				//$(".Statistics").eq(2).children("span").eq(0).html(formatNum(result.pLock) +"[绑]");
+		});
+		
+	});
+	function querenshanchu(id){
+		if (confirm("确认要解绑？")) {
+			window.location='/index.php?ctl=collocation&act=UnbindingBankCard&user_id={$data.id}&card_id='+id;
+			
+		}
+	}
+    function checkIpsBalance(type,user_id,func){
+		var query = new Object();
+		query.ctl="collocation";
+		query.act="QueryForAccBalance";
+		query.user_type = type;
+		query.user_id = user_id;
+		query.is_ajax = 1;
+		$.ajax({
+			url:"/index.php",
+			data:query,
+			type:"post",
+			dataType:"json",
+			success:function(result){
+				if(func!=null)
+					func.call(this,result);
+			}
+		});
+	}
+	 /**
+ * 格式化数字
+ * @param {Object} num
+ */
+function formatNum(num) {
+	num = String(num.toFixed(2));
+	var re = /(\d+)(\d{3})/;
+	while (re.test(num)) {
+		num = num.replace(re, "$1,$2");
+	}
+	return num;
+}
+</script>
+
+</body>
+</html>

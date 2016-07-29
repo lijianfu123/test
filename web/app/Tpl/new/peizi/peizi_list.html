@@ -1,0 +1,78 @@
+{include file="inc/header.html"} 
+<!--我要理财列表-->
+<?php
+    $this->_var['pagecss'][] = $this->_var['TMPL_REAL']."/css/peizi/peizi_deals.css";
+	$this->_var['pagecss'][] = $this->_var['TMPL_REAL']."/css/peizi/peizi_list.css";
+?>
+
+<link rel="stylesheet" type="text/css" href="{function name="parse_css" v="$pagecss"}" />
+
+<script type="text/javascript" src="{$TMPL}/js/peizi.js"></script>
+<div class="blank20"></div>
+<div class="clearfix">
+	<div class="f_l peizi_w_l">
+		<!--左边的列表-->
+		<ul>
+				{foreach from=$list item=item key=key}
+			  <li class="peizi_list_li clearfix">
+			  	<a href="{url x="index" r="peizi#detail" p="id=$item.id"}">
+			  		<h3 class="clearfix">
+				  		<span>{$item.before_time}<i></i></span>
+						{$item.peizi_name}
+				  	</h3>
+					<div class="blank10"></div>
+					<ul>
+						<li class="detail_li">
+							<span class="name">借款利率</span>
+							<span class="f_red f18">{$item.year_rate_format}</span>
+						</li>
+						<li class="detail_li">
+							<span class="name">借款时间</span>
+							<span class="f18">{$item.borrow_time}</span>
+						</li>
+						<li class="detail_li">
+							<span class="name">配资杠杆</span>
+							<span class="f18">1:{$item.lever}</span>
+						</li>
+						<li class="detail_li" style="border-right: 0px;">
+							<span class="name">实名认证</span>
+							
+							<span><i class="icon-auth {if $item.user.idcardpassed eq 0}gray{/if}"></i></span>
+							
+						</li>
+					</ul>
+					<div class="blank15"></div>
+				</a>
+			  </li>
+			 {/foreach}
+		</ul>
+	<div class="pages">{$pages}</div>
+	</div>
+	<div class="f_r peizi_w_r sidebar" >
+		<!--右边的相关文章-->
+		<!------------------------------------------------------------------------------------------------------------------------->
+		<div class="common-box step-info">
+                <h4>简单<span class="red-color f18">4</span>步，马上赚钱</h4>
+                <div class="content">
+                    <p>选择项目</p>
+                    <p>投入资金</p>
+                    <p>定期收取利息</p>
+                    <p>到期收回本金</p>
+                </div>
+            </div>
+			<!-------------------------------------------------------------------------------------------------------------------------------------------------->
+			<div class="common-box question-info">
+			     <h4>问题咨询<!--<a class="pull-right f_r" target="_blank" href="/help/qa">查看更多&gt;&gt;</a>--></h4>
+			    <div class="content">
+			        <ul class="list-group">
+			        	{insert name="artile_list" datakey="insert_deals" cate="问题咨询" limit="6" tpl="inc/peizi_insert/insert_deals.html"}
+			          </ul>
+			    </div>
+			    <p class="contact-me"><i class="a"></i>如果您有任何问题，请和我们联系<i class="b"></i></p>
+			    <p class="weixin"><img src="http://sta.quchaogu.com/amd/common/img/wx.png"></p>
+			    <p class="text-center f14">扫描二维码关注微信</p>
+			</div>
+	<!------------------------------------------------------------------------------------------------------------------------------------------------------------------->		
+	</div>
+</div>
+{include file="inc/footer.html"}

@@ -1,0 +1,109 @@
+{include file="inc/header.html"} 
+<!--我要理财列表*/-->
+<?php
+    $this->_var['pagecss'][] = $this->_var['TMPL_REAL']."/css/peizi/peizi_deals.css";
+?>
+
+<link rel="stylesheet" type="text/css" href="{function name="parse_css" v="$pagecss"}" />
+
+<script type="text/javascript" src="{$TMPL}/js/peizi.js"></script>
+<div class="blank20"></div>
+<div class="clearfix">
+	<div class="f_l peizi_w_l">
+		<!--左边的列表-->
+		<ul>
+			{foreach from=$conf_list item="item"}
+			<li class="peizi_li mb20">
+				<a href="{$item.url}">
+					<img src="{$item.icon}" width="172" height="188"/>
+					<div class="bor">
+							<h3 class="clearfix">
+								{$item.name}
+								{if  $item.deal_status gte 4}
+								<button class="btn_gray f_white f_r">已经卖完</button>
+								{else}
+								<button class="btn_blue f_white f_r">立即购买</button>
+								{/if}
+						     </h3>
+							 <ul class="mt17">
+							 	<li class="classification_li">
+							 		<span class="name">项目进度</span>
+									<div style="width:175px; float:left;" >
+									<!--这是p2p首页拷贝过来的一部分，有待完善-------------------------------->
+									{if  $item.deal_status gte 4}
+						<div class="progress w130 mt9">
+							<span class="pr bdr3" style="width:100%;">
+								<img class="ps" title="100%" src="{$TMPL}/images/progressqiu.png" />
+							</span>
+						</div>
+						<div class="progresscon f_blue">100%</div>
+						{else}
+						<div class="progress w130 mt9">
+							<span class="pr bdr3" title="{function name="round" v=$deal.progress_point f=3}%" style="width:{function name="round" v=$deal.progress_point f=2}%;">
+								<img class="ps" src="{$TMPL}/images/progressqiu.png" />
+							</span>
+						</div>
+						<div class="progresscon f_blue">{function name="round" v=$deal.progress_point f=2}%</div>
+						{/if}
+									 <!---------------------------------->
+									 </div>
+								</li>
+								<li class="classification_li">
+							 		<span class="name">总份数</span>
+									<span class="peizi_num">{$item.borrow_amount}</span>&nbsp;份
+								</li>
+								<li class="classification_li">
+							 		<span class="name">项目期限</span>
+									{$item.repay_time}{if $item.repay_time_type eq 0}天{else}个月{/if}
+								</li>
+								<li class="classification_li">
+							 		<span class="name">还款方式</span>
+									<span>{function name="loantypename" v="$item.loantype" type=0}</span>
+								</li>
+							 </ul>
+					</div>
+			</a>
+			</li>
+			{/foreach}
+		</ul>
+		<div class="pages">{$pages}</div>
+	</div>
+	<div class="f_r peizi_w_r sidebar" >
+		<!--右边的相关文章-->
+		<!------------------------------------------------------------------------------------------------------------------------->
+		<div class="common-box step-info">
+                <h4>简单<span class="red-color f18">4</span>步，马上赚钱</h4>
+                <div class="content">
+                    <p>选择项目</p>
+                    <p>投入资金</p>
+                    <p>定期收取利息</p>
+                    <p>到期收回本金</p>
+                </div>
+            </div>
+			<!-------------------------------------------------------------------------------------------------------------------------------------------------->
+			<div class="common-box question-info">
+			     <h4>问题咨询<!--<a class="pull-right f_r" target="_blank" href="/help/qa">查看更多&gt;&gt;</a>--></h4>
+			    <div class="content">
+			        <ul class="list-group">
+			        	{insert name="artile_list" datakey="insert_deals" cate="问题咨询" limit="6" tpl="inc/peizi_insert/insert_deals.html"}
+			          </ul>
+			    </div>
+			    <p class="contact-me"><i class="a"></i>如果您有任何问题，请和我们联系<i class="b"></i></p>
+			    <p class="weixin"><img src="http://sta.quchaogu.com/amd/common/img/wx.png"></p>
+			    <p class="text-center f14">扫描二维码关注微信</p>
+			    <p class="text-center f14">微信：fanwe</p>
+         </div>
+	<!------------------------------------------------------------------------------------------------------------------------------------------------------------------->		
+	</div>
+</div>
+<!--
+{foreach from=$conf_list item="item"}
+{$item.name}<br>
+{$item.icon}<br>
+{$item.rate}<br>
+{$item.borrow_amount}<br>
+{$item.load_money}<br>
+-----------------------------------------------------------------<br/>
+{/foreach}
+-->
+{include file="inc/footer.html"}

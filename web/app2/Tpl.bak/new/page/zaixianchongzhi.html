@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>网银充值</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+
+</head> 
+
+<body>
+
+<form name="form1" id="form1" method="post" target="_self">
+
+
+
+					<!-- <select name="kashuxing" style="height:5px; width:5px;">
+
+					  <option value="C">对私</option>
+
+					  <option value="B">对公</option>
+
+					</select>-->  
+
+					<input name="kashuxing" id="kashuxing" value="C" type="hidden">
+
+				<input name="Bank" id="Bank" value="SINAPAY" type="hidden">
+
+				<input id="version" name="version" type="hidden" value="{$request.version}">
+
+				<input id="request_time" name="request_time" type="hidden" value="{$request.request_time}">
+
+				<input id="partner_id" name="partner_id" type="hidden" value="{$request.partner_id}">
+
+				<input id="_input_charset" name="_input_charset" type="hidden" value="{$request._input_charset}">
+
+				<input id="sign" name="sign" type="hidden" value="{$request.sign}">
+
+				<input id="sign_type" name="sign_type" type="hidden" value="{$request.sign_type}">
+
+				<input id="notify_url" name="notify_url" type="hidden" value="{$request.notify_url}">
+
+				<input id="return_url" name="return_url" type="hidden" value="{$request.return_url}">
+
+				<input id="service" type="hidden" name="service" value="{$request.service}">
+
+				<input id="out_trade_no" name="out_trade_no" type="hidden" value="{$request.out_trade_no}">
+
+				<input id="identity_id" name="identity_id" type="hidden" value="{$request.identity_id}">
+
+				<input id="identity_type" name="identity_type" type="hidden" value="{$request.identity_type}">
+
+				<input id="account_type" name="account_type" type="hidden" value="{$request.account_type}">
+
+				<input id="amount" name="amount" type="hidden" value="{$request.amount}">
+
+				<input id="user_fee" name="user_fee" type="hidden" value="{$request.user_fee}">
+
+				<input id="payer_ip" name="payer_ip" type="hidden" value="{$request.payer_ip}">
+
+				<input id="pay_method" type="hidden" name="pay_method" value="{$request.pay_method}">
+
+				<input type="hidden" name="memo" value="DoDpTrade"/>
+
+				</div>
+
+
+
+
+
+  <input type="submit" id="tijiaochongzhi" class="button_zc" name="submit" value="提交">
+
+
+
+</form>
+
+<script type="text/javascript">
+
+	$(function(){
+
+		$("#tijiaochongzhi").click();
+
+	});
+
+
+
+</script>
+
+</body>
+
+
+
+</html>
+
