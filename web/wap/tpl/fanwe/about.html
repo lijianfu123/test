@@ -1,0 +1,22 @@
+{if $smarty.request.is_ajax neq 1}
+{include file="./inc/header.html"}	
+<div class="page" id='{$data.act}'>
+<?php
+	$this->_var['back_url'] = wap_url("index","init#index");
+	$this->_var['back_page'] = "#init";
+    $this->_var['back_epage'] = $_REQUEST['epage']=="" ? "#init" : "#".$_REQUEST['epage'];
+?>
+{include file="./inc/title.html"}
+<div class="content infinite-scroll" now_page="1" data-distance="{$data.rs_count}"  all_page="{$data.page.page_total}" ajaxurl="{wap_url x="index" r="about#index"}">
+<!-- 这里是页面内容区 -->
+<img src="../about_01.png"  width="100%" />
+<img src="../about_02.png"  width="100%" />
+<img src="../about_03.png"  width="100%" />
+<img src="../about_04.png"  width="100%" />
+<div class="integral_container">
+
+</div>	
+
+ 
+{include file="./inc/footer.html"}
+{/if}
