@@ -1,0 +1,212 @@
+<?php echo $this->fetch('inc/header.html'); ?>
+</div>
+<style>
+	.header_bg_z {
+    height:552px;
+    background: url(app/Tpl/new/images/anquan/anquan_01.jpg) no-repeat center;
+        background-color: transparent;
+        background-image: url("app/Tpl/new/images/anquan/anquan_01.jpg");
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-position: center center;
+        background-clip: border-box;
+        background-origin: padding-box;
+        background-size: auto auto;
+	}
+	.header_bg_f{
+		height:361px;
+		background: url(app/Tpl/new/images/anquan/anquan_07.jpg) no-repeat center;
+        background-color: transparent;
+        background-image: url("app/Tpl/new/images/anquan/anquan_07.jpg");
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-position: center center;
+        background-clip: border-box;
+        background-origin: padding-box;
+        background-size: auto auto;
+	}
+	.header_bg_a{
+		height:558px;
+		background: url(app/Tpl/new/images/anquan/anquan_02.jpg) no-repeat center;
+        background-color: transparent;
+        background-image: url("app/Tpl/new/images/anquan/anquan_02.jpg");
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-position: center center;
+        background-clip: border-box;
+        background-origin: padding-box;
+        background-size: auto auto;
+	}
+	.header_bg_b{
+		height:589px;
+		background: url(app/Tpl/new/images/anquan/anquan_03.jpg) no-repeat center;
+        background-color: transparent;
+        background-image: url("app/Tpl/new/images/anquan/anquan_03.jpg");
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-position: center center;
+        background-clip: border-box;
+        background-origin: padding-box;
+        background-size: auto auto;
+	}
+	.header_bg_c{
+		height:542px;
+		background: url(app/Tpl/new/images/anquan/anquan_04.jpg) no-repeat center;
+        background-color: transparent;
+        background-image: url("app/Tpl/new/images/anquan/anquan_04.jpg");
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-position: center center;
+        background-clip: border-box;
+        background-origin: padding-box;
+        background-size: auto auto;
+	}
+	.header_bg_d{
+		height:817px;
+		background: url(app/Tpl/new/images/anquan/anquan_05.jpg) no-repeat center;
+        background-color: transparent;
+        background-image: url("app/Tpl/new/images/anquan/anquan_05.jpg");
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-position: center center;
+        background-clip: border-box;
+        background-origin: padding-box;
+        background-size: auto auto;
+	}
+	.header_bg_e{
+		height:657px;
+		background: url(app/Tpl/new/images/anquan/anquan_06.jpg) no-repeat center;
+        background-color: transparent;
+        background-image: url("app/Tpl/new/images/anquan/anquan_06.jpg");
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-position: center center;
+        background-clip: border-box;
+        background-origin: padding-box;
+        background-size: auto auto;
+	}
+	.left{float:left;color:#ffffff}
+	.right{float:right;color:#ffffff}
+	.tit{color:#383839;font-weight：900;font-weight:bolder;font-size:30px;}
+	.txt_jg1{margin:10px;}
+	.txt_jg2{margin:6px;}
+	.ysbh{color:#383839;font-weight：900;font-weight:bolder;font-size:30px;}
+	.ys_con{margin:0 auto;width:670px;margin-top:90px;}
+	.db_f{float:left;height:130px;}
+	.center_p4{color:#F8F6F3;text-align:center;}
+	.center_p5{color:#F8F6F3;text-align:center;font-size:18px;}
+	.center_p6{color:#2C91BE;text-align:center;font-size:18px;}
+</style> 
+<div>
+	<div class="header_bg_z"></div>
+	<a name="a" id="a"><div class="header_bg_a">
+		<div style="width:1200px;">
+			<div style="height:220px;font-size:15px;">
+					<br><br>
+					<h1 style="text-align:center;color:#383838">借款交易保障</h1><br>
+					<div style="margin:0 auth;width:750px;">
+						<p class="txt_jg2">平台在项目选取上采取，严格、审慎的态度，对照风控体系中对借款人的各信息的审核采取逐条收集逐条论证</p>
+						<p class="txt_jg2">的过程，避免因信息漏洞造成的潜在风险。为整个借款完成打造良好的前置条件。海鸥金服采取<span style="color:#FF6500">线上基础信息</span></p>
+						<p class="txt_jg2"><span  style="color:#FF6500">审核+线下实地线下核实</span>在降低借款人融资成本的同时加快借款人的项目审核进度，确保借款项目顺利完成后</p>
+						<p class="txt_jg2">对借款人（企业）进行贷中信息补充，促进借款项目到期的正常回款。</p>
+					</div>		
+				</div>
+			</div>
+	</div></a>
+	<a name="b" id="b"><div class="header_bg_b">
+		<div style="width:1200px;">
+			<div style="height:160px;"></div>
+	 		<div style="height:42px;text-align:center;">
+	 			<span style="color:#FFFFFF;font-size:30px;">技术</span>
+	 			<span style="color:#F6FF01;font-size:30px;">安全</span>
+ 			</div>
+ 			<div style="float:left;width:537px;height:245px;">
+ 				<div style="height:150px;">
+ 					<br>
+	 				<p class="right" style="font-size:17px;">数据存储安全</p><br>
+	 				<p class="right" style="">采取分布式服务器，主服务器运行的同时</p><br>
+	 				<p class="right" style="">用备用服务器对数据进行定时备份，保障交易数据流的完整</p>
+ 				</div>
+ 				<div style="height:150px;">
+	 				<p class="right" style="font-size:17px;">资金交易安全</p><br>
+	 				<p class="right" style="">海鸥金服与新浪支付技术团队建立全面合作 </p><br>
+	 				<p class="right" style="">对交易数据进行24H监控，确保用户资金的安全、及时调拨。</p>
+ 				</div>
+			</div>
+ 			<div style="float:left;width:127px;height:245px;"></div>
+ 			<div style="float:left;width:392px;height:245px;">
+ 				<p class="left" style="font-size:17px;margin-top:110px;">数据传输安全</p><br/>
+ 				<p class="left">在用户登录、用户资金信息调取、用户资金交易等关键环节采取 </p><br/>
+ 				<p class="left">SSL128位加密技术，全方位保障交易过程中数据传输的安全。</p>
+ 			</div>
+ 		</div>
+	</div></a>
+	<a name="c" id="c"><div class="header_bg_c">
+		<div style="width:1200px;">
+			<div style="height:160px;"></div>
+	 		<div style="height:42px;text-align:center;">
+	 			<span class="tit">法律保障</span>
+			</div>
+			<div style="margin:0 auto;width:670px;margin-top:90px;">
+				<p class="txt_jg2">中华人名共和国《合同法》确保民间借贷的合法性；《最高人民法院关于如何确认公民与企业之间借贷行</p>
+				<p class="txt_jg2">为效力问题的批复》确定公民与非金融企业借贷的合法性；《最高人民法院关于审理民间借贷案件适用法</p>
+				<p class="txt_jg2">律若干问题的规定》确保民间借贷利息的合法性；根据《合同法》第二十三章关于"居间合同"的规定确保</p>
+				<p class="txt_jg2">海鸥金服及合作机构为民间借贷双方提供信息，撮合借贷关系形成的居间服务有明确法律基础。</p>
+				<br>
+				<p class="txt_jg2">海鸥金服通过CFCA中国金融认证中心，根据中华人民共和国《合同法》第十一条的规定，确定了电子签</p><p style="margin:6px;">章及电子合同的有效性及合法性。</p>
+			</div>
+		</div>
+	</div></a>
+	<a name="d" id="d"><div class="header_bg_d">
+		<div style="width:1200px;">
+			<div style="height:500px;"></div>
+	 		<div style="height:42px;text-align:center;">
+	 			<span class="tit">资金安全</span>
+			</div>
+			<div style="margin:0 auto;width:670px;margin-top:90px;">
+				<p class="txt_jg1">海鸥金服由新浪支付全程提供资金托管及支付服务，每一位平台注册用户都有对应的独立托管账户，确保</p>
+				<p class="txt_jg1">资金安全、透明的流向，为交易完成提供点对点资金调拨的同时提供安全的支付通道，并且秉承同卡进同</p>
+				<p class="txt_jg1">卡出的原则进一步保障交易资金安全。</p>
+			</div>
+		</div>
+	</div></a>
+	<a name="e" id="e"><div class="header_bg_e">
+		<div style="width:1200px;">
+			<div style="height:200px;"></div>
+	 		<div style="height:42px;text-align:center;">
+	 			<span class="ysbh">隐私保护</span>
+			</div>
+			<div class="ys_con">
+				<p>1.平台对接公安实名认证系统，用户个人资料由实名认证系统自动审核；</p><br>
+				<p>2.银行卡信息直接跳转至新浪支付页面，在新浪支付页面由用户独立操作完成并由系统自动审核匹配通过；</p><br>
+				<p>3.用户个人通讯信息相关只有平台在授权的情况下可见，平台工作人员所看到的用户信息均为隐去部分信息</p>
+				<p>&nbsp;&nbsp;的分片词条段，有效防止个人信息的倒卖。</p>
+			</div>
+		</div>
+	</div></a>
+	<div class="header_bg_f">
+		<div style="width:1200px;">
+			<div style="height:220px;"></div>
+			<div class="db_f" style="width:80px;"></div>
+			<div class="db_f" style="width:170px;">
+				<p class="center_p6">资产端可见</p><br>
+				<p class="center_p4">首家资产端互动式平台</p>
+			</div>
+			<div class="db_f" style="width:355px;">
+				<p class="center_p5">新浪支付托管</p><br>
+				<p class="center_p4" >相应监督政策</p>
+				<p class="center_p4" >平台远离资金</p>
+			</div>
+			<div class="db_f" style="width:187px;">
+				<p class="center_p5">交易更安全</p><br>
+				<p class="center_p4">CFCA中国金融认证中心</p>
+				<p class="center_p4">SSL128位数字加密技术</p>
+			</div>
+			<div class="db_f" style="width:314px;">
+				<p class="center_p5">业务更合规</p><br>
+				<p class="center_p4">严格遵守监管条例</p>
+				<p class="center_p4">发展更稳健</p>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,218 @@
+</div>
+<?php if ($this->_var['MODULE_NAME'] != 'deals' && $this->_var['MODULE_NAME'] != 'transfer'): ?>
+<!-- <div class="blank20"></div> -->
+<?php endif; ?>
+
+<div id="ftw">	
+    <div id="ft">
+        <?php if ($this->_var['MODULE_NAME'] <> 'user' && $this->_var['MODULE_NAME'] <> 'manageagency' && $this->_var['MODULE_NAME'] <> 'authorized' && $this->_var['MODULE_NAME'] <> 'agency_money'): ?>
+
+        <div class="wrap">
+            <?php if ($this->_var['f_link_data']): ?>
+            <?php $_from = $this->_var['f_link_data']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'link_group');if (count($_from)):
+    foreach ($_from AS $this->_var['link_group']):
+?>	
+            <?php if ($this->_var['link_group']['name'] == '合作伙伴'): ?>	
+            <div class="link partner">
+                <!---
+                <h3 <?php if ($this->_var['link_group']['name'] == '友情链接'): ?>class="yqlj"<?php endif; ?> <?php if ($this->_var['link_group']['name'] == '合作伙伴'): ?>class="hzhb"<?php endif; ?> ><?php echo $this->_var['link_group']['name']; ?></h3>
+                -->
+                <div class="blank10"></div>
+                <h3 style="font-size:15px;"><?php echo $this->_var['link_group']['name']; ?></h3>
+                <div class="blank10"></div>
+                <ul <?php if ($this->_var['link_group']['name'] == '合作伙伴'): ?>class="td"<?php endif; ?>>
+                    <?php $_from = $this->_var['link_group']['links']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'link');if (count($_from)):
+    foreach ($_from AS $this->_var['link']):
+?>
+                    <li><a href="http://<?php echo $this->_var['link']['url']; ?>" target="_blank" title="<?php if ($this->_var['link']['description']): ?><?php echo $this->_var['link']['description']; ?><?php else: ?><?php echo $this->_var['link']['name']; ?><?php endif; ?>" <?php if ($this->_var['link_group']['name'] == '合作伙伴'): ?>	class="bor_hover"<?php endif; ?>><?php if ($this->_var['link']['img'] != ''): ?><img src='<?php echo $this->_var['link']['img']; ?>' alt="<?php if ($this->_var['link']['description']): ?><?php echo $this->_var['link']['description']; ?><?php else: ?><?php echo $this->_var['link']['name']; ?><?php endif; ?>" /><?php else: ?><?php echo $this->_var['link']['name']; ?><?php endif; ?></a></li>
+                    <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+                </ul>
+            </div>	
+            <div class="blank10"></div>	
+            <?php endif; ?>
+            <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
+        <div class="ftbj">
+            <?php if ($this->_var['MODULE_NAME'] <> 'user' && $this->_var['MODULE_NAME'] <> 'manageagency' && $this->_var['MODULE_NAME'] <> 'authorized' && $this->_var['MODULE_NAME'] <> 'agency_money'): ?>
+            <div class="wrap">
+                <div class="blank10"></div>
+                <?php if ($this->_var['f_link_data']): ?>
+                <?php $_from = $this->_var['f_link_data']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'link_group');if (count($_from)):
+    foreach ($_from AS $this->_var['link_group']):
+?>	
+                <?php if ($this->_var['link_group']['name'] == '友情链接'): ?>
+                <div class="link partner">
+                    <!--
+                    <h3 <?php if ($this->_var['link_group']['name'] == '友情链接'): ?>class="yqlj"<?php endif; ?> <?php if ($this->_var['link_group']['name'] == '合作伙伴'): ?>class="hzhb"<?php endif; ?> ><?php echo $this->_var['link_group']['name']; ?></h3>
+                    -->
+                    <h3 class="f_l"><?php echo $this->_var['link_group']['name']; ?>：</h3>
+                    <ul <?php if ($this->_var['link_group']['name'] == '合作伙伴'): ?>class="td"<?php endif; ?>>
+                        <?php $_from = $this->_var['link_group']['links']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'link');if (count($_from)):
+    foreach ($_from AS $this->_var['link']):
+?>
+                        <li><a href="http://<?php echo $this->_var['link']['url']; ?>" target="_blank" title="<?php if ($this->_var['link']['description']): ?><?php echo $this->_var['link']['description']; ?><?php else: ?><?php echo $this->_var['link']['name']; ?><?php endif; ?>"><?php if ($this->_var['link']['img'] != ''): ?><img src='<?php echo $this->_var['link']['img']; ?>' alt="<?php if ($this->_var['link']['description']): ?><?php echo $this->_var['link']['description']; ?><?php else: ?><?php echo $this->_var['link']['name']; ?><?php endif; ?>" /><?php else: ?><?php echo $this->_var['link']['name']; ?><?php endif; ?></a></li>
+                        <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+                    </ul>
+                </div>	
+                <div class="blank1"></div>	
+                <?php endif; ?>
+                <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+                <?php endif; ?>
+                <div class="blank10"></div>
+                <div class="footer_line3"></div>
+            </div>
+            <?php endif; ?>
+            <?php if ($this->_var['MODULE_NAME'] <> 'user' && $this->_var['MODULE_NAME'] <> 'manageagency' && $this->_var['MODULE_NAME'] <> 'authorized' && $this->_var['MODULE_NAME'] <> 'agency_money'): ?>
+
+            <div class="wrap ">
+                <div class="blank20"></div>
+                <div style="padding-bottom:20px;">
+                    <ul class="cf f_l f_box">
+                        <!-- <?php $_from = $this->_var['deal_help']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'help_cate');$this->_foreach['help_cate'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['help_cate']['total'] > 0):
+    foreach ($_from AS $this->_var['help_cate']):
+        $this->_foreach['help_cate']['iteration']++;
+?> -->
+                        <!-- <?php if ($this->_foreach['help_cate']['iteration'] <= app_conf ( 'HELP_CATE_LIMIT' )): ?> -->
+                        <!-- <li class="col hp<?php echo $this->_foreach['help_cate']['iteration']; ?><?php if (($this->_foreach['help_cate']['iteration'] == $this->_foreach['help_cate']['total'])): ?> end<?php endif; ?>" style="width:160px;">
+                            <h3 class="f_l"><?php echo $this->_var['help_cate']['title']; ?></h3>
+                            <div class="blank0"></div>
+                            <ul class="sub-list">
+                                <?php $_from = $this->_var['help_cate']['help_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'help_item');$this->_foreach['help_item'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['help_item']['total'] > 0):
+    foreach ($_from AS $this->_var['help_item']):
+        $this->_foreach['help_item']['iteration']++;
+?>
+                                <?php if ($this->_foreach['help_item']['iteration'] <= app_conf ( 'HELP_ITEM_LIMIT' )): ?>
+                                <li><a href="<?php echo $this->_var['help_item']['url']; ?>" <?php if ($this->_var['help_item']['new'] == 1): ?>target="_blank"<?php endif; ?>><?php echo $this->_var['help_item']['title']; ?></a></li>
+                                <?php endif; ?>
+                                <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>  
+                                <li class="blank0"></li>           
+                            </ul>
+                            <div class="blank0"></div>
+                        </li>  -->
+                        <!-- <?php endif; ?> -->
+                        <!-- <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?> -->
+
+                        <!-- 底部修改 -->
+                        <li class="col hp1" style="width:160px;">
+                            <h3 class="f_l">帮助中心</h3>
+                            <div class="blank0"></div>
+                            <ul class="sub-list">
+                                <li><a href="/index.php?ctl=helpcenter&a=15">注册及认证</a></li>
+                                <li><a href="/index.php?ctl=helpcenter&a=16">托管流程</a></li>
+                                <li><a href="/index.php?ctl=helpcenter&a=17">实名认证</a></li>
+                                <li><a href="/index.php?ctl=helpcenter&a=18">充值提现</a></li>
+                                <li class="blank0"></li>           
+                            </ul>
+                            <div class="blank0"></div>
+                        </li> 
+                        <li class="col hp2" style="width:160px;">
+                            <h3 class="f_l">关于我们</h3>
+                            <div class="blank0"></div>
+                            <ul class="sub-list">
+                                <li><a href="/index.php?ctl=about#a">公司简介</a></li>
+                                <li><a href="/index.php?ctl=about#b">创业团队</a></li>
+                                <li><a href="/index.php?ctl=about#c">产品构架</a></li>
+                                <li><a href="/index.php?ctl=about#d">合作机构</a></li>
+                                <li class="blank0"></li>           
+                            </ul>
+                            <div class="blank0"></div>
+                        </li> 
+                        <li class="col hp3" style="width:160px;">
+                            <h3 class="f_l">安全保护</h3>
+                            <div class="blank0"></div>
+                            <ul class="sub-list">
+                                <li><a href="/index.php?ctl=anquan#a">交易安全</a></li>
+                                <li><a href="/index.php?ctl=anquan#b">技术保障</a></li>
+                                <li><a href="/index.php?ctl=anquan#d">资金安全</a></li>
+                                <li><a href="/index.php?ctl=anquan#e">隐私安全</a></li>
+                                <li class="blank0"></li>           
+                            </ul>
+                            <div class="blank0"></div>
+                        </li> 
+                        <!-- ----结束------- -->
+
+                        <li class="blank0"></li>  
+                    </ul>
+                    <div style="float:left;"><adv adv_id="脚部微信"/></div>
+                    <div class="f_r customer">
+
+                        <div class="telphone f_r">
+                            <div class="f_r">
+                                <span class="telep b"><?php 
+$k = array (
+  'name' => 'app_conf',
+  'v' => 'SHOP_TEL',
+);
+echo $k['name']($k['v']);
+?></span>
+                                <span class="time f12"><?php 
+$k = array (
+  'name' => 'app_conf',
+  'v' => 'ONLINE_TIME',
+);
+echo $k['name']($k['v']);
+?></span>
+                            </div>
+                            <i class="iconfont f_r mt1" style="font-size:75px;line-height:50px;">&#xe61f;</i>
+                        </div>
+                        <div class="blank30"></div>
+                        <div class="copy_right tr">
+                            <?php 
+$k = array (
+  'name' => 'app_conf',
+  'value' => 'SHOP_FOOTER',
+);
+echo $k['name']($k['value']);
+?> 
+                            <div class="blank1"></div>
+                            <?php 
+$k = array (
+  'name' => 'app_conf',
+  'value' => 'ICP_LICENSE',
+);
+echo $k['name']($k['value']);
+?>&nbsp;&nbsp;
+                            <?php 
+$k = array (
+  'name' => 'app_conf',
+  'value' => 'COUNT_CODE',
+);
+echo $k['name']($k['value']);
+?>
+                        </div>
+                        
+                    </div>
+
+                    <div class="blank25"></div>
+
+                    <div class="blank0"></div>
+                </div>
+				<div style="width:100%;height:60px;">
+					<div style="width:240px;height:60px;margin:0 auth;">
+						<a href="http://www.miibeian.gov.cn/" class="a_mii" target="_blank"></a>
+						<a href="http://t.knet.cn/index_new.jsp" class="a_kne"  target="_blank" rel="nofollow"></a>
+						<a href="http://net.china.com.cn/" class="a_net"  target="_blank" rel="nofollow"></a>
+					</div>
+				</div>
+            </div>
+            <?php endif; ?>
+
+        </div>	
+    </div>
+    <?php if ($this->_var['online_qq']): ?>
+    <?php echo $this->fetch('inc/kefu.html'); ?>
+    <?php endif; ?>
+    <div id="gotop"></div>
+    <?php if ($this->_var['MODULE_NAME'] != 'guide'): ?>
+    <script type="text/javascript" defer="defer">
+        resetWindowBox();
+    </script>
+    <?php endif; ?>
+
+
+</body>
+</html>

@@ -1,0 +1,298 @@
+<?php echo $this->fetch('inc/header.html'); ?>
+</div> 
+<style>
+	.header_bg_a_1 {
+		    height:606px;
+		    background: url(app/Tpl/new/images/about/aboutCC_01_a.jpg) no-repeat center;
+		        background-color: transparent;
+		        background-image: url("app/Tpl/new/images/about/aboutCC_01_a.jpg");
+		        background-repeat: no-repeat;
+		        background-attachment: scroll;
+		        background-position: center center;
+		        background-clip: border-box;
+		        background-origin: padding-box;
+		        background-size: auto auto;
+		}
+	.header_bg_a_2 {
+	    height:378px;
+	    background: url(app/Tpl/new/images/about/aboutCC_01_b.jpg) no-repeat center;
+	        background-color: transparent;
+	        background-image: url("app/Tpl/new/images/about/aboutCC_01_b.jpg");
+	        background-repeat: no-repeat;
+	        background-attachment: scroll;
+	        background-position: center center;
+	        background-clip: border-box;
+	        background-origin: padding-box;
+	        background-size: auto auto;
+	}
+	.header_bg_a {
+	    height:999px;
+	    background: url(app/Tpl/new/images/about/aboutCC_01.jpg) no-repeat center;
+	        background-color: transparent;
+	        background-image: url("app/Tpl/new/images/about/aboutCC_01.jpg");
+	        background-repeat: no-repeat;
+	        background-attachment: scroll;
+	        background-position: center center;
+	        background-clip: border-box;
+	        background-origin: padding-box;
+	        background-size: auto auto;
+	}
+	.header_bg_b {
+		width:1200px;
+	    height:365px;
+	    background: url(app/Tpl/new/images/about/aboutCC_02.jpg) no-repeat center;
+	        background-color: transparent;
+	        background-image: url("app/Tpl/new/images/about/aboutCC_02.jpg");
+	        background-repeat: no-repeat;
+	        background-attachment: scroll;
+	        background-position: center center;
+	        background-clip: border-box;
+	        background-origin: padding-box;
+	        background-size: auto auto;
+	}
+	.header_bg_b11{
+		height:365px;
+		background: url(app/Tpl/new/images/about/about_02_bg.jpg);
+	}
+	.bbb{background:url(app/Tpl/new/images/about/aboutCC_03.jpg) no-repeat 0 center;background-position:center;background-repeat: no-repeat;margin:0 auto;width:100%;min-width:1200px;height:700px;background-color:#FFFFFF;}
+	.c{background:url(app/Tpl/new/images/about/aboutCC_04.jpg) no-repeat 0 center;background-position:center;background-repeat: no-repeat;margin:0 auto;width:100%;min-width:1200px;height:519px;background-color:#25AEE4}
+	
+	.header_bg_c {
+	    height:960px;
+	    background: url(app/Tpl/new/images/about/aboutCC_03.jpg) no-repeat center;
+	        background-color: transparent;
+	        background-image: url("app/Tpl/new/images/about/aboutCC_03.jpg");
+	        background-repeat: no-repeat;
+	        background-attachment: scroll;
+	        background-position: center center;
+	        background-clip: border-box;
+	        background-origin: padding-box;
+	        background-size: auto auto;
+	}
+	.header_bg_d {
+	    height:803px;
+	    background: url(app/Tpl/new/images/about/aboutCC_04.jpg) no-repeat center;
+	        background-color: transparent;
+	        background-image: url("app/Tpl/new/images/about/aboutCC_04.jpg");
+	        background-repeat: no-repeat;
+	        background-attachment: scroll;
+	        background-position: center center;
+	        background-clip: border-box;
+	        background-origin: padding-box;
+	        background-size: auto auto;
+	}
+	.header_bg_e {
+		width:1200px;
+	    height:427px;
+	    background: url(app/Tpl/new/images/about/aboutCC_05.jpg) no-repeat center;
+	        background-color: transparent;
+	        background-image: url("app/Tpl/new/images/about/aboutCC_05.jpg");
+	        background-repeat: no-repeat;
+	        background-attachment: scroll;
+	        background-position: center center;
+	        background-clip: border-box;
+	        background-origin: padding-box;
+	        background-size: auto auto;
+	}
+	.header_bg_e11{
+		height:427px;
+		background: url(app/Tpl/new/images/about/about_05_bg.jpg);
+	}
+	.header_bg_f {
+	    height:422px;
+	    background: url(app/Tpl/new/images/about/aboutCC_06.jpg) no-repeat center;
+	        background-color: transparent;
+	        background-image: url("app/Tpl/new/images/about/aboutCC_06.jpg");
+	        background-repeat: no-repeat;
+	        background-attachment: scroll;
+	        background-position: center center;
+	        background-clip: border-box;
+	        background-origin: padding-box;
+	        background-size: auto auto;
+	}
+	.header_bg_g {
+	    height:448px;
+	    margin-top:20px;
+	    background: url(app/Tpl/new/images/about/aboutCC_07.jpg) no-repeat center;
+	        background-color: transparent;
+	        background-image: url("app/Tpl/new/images/about/aboutCC_07.jpg");
+	        background-repeat: no-repeat;
+	        background-attachment: scroll;
+	        background-position: center center;
+	        background-clip: border-box;
+	        background-origin: padding-box;
+	        background-size: auto auto;
+	}
+	.gywm{width:1000px;height:100px;margin:0 auto;color:#48474A;font-size:16px;text-align: center}
+	.center_p{text-align:center;font-size:12px;}
+	.center_p1{text-align:center;font-size:16px;margin:-1px;}
+	.center_p2{text-align:center;font-size:16px;margin:-2px;color:white;}
+	.lxwm{height:30px;line-height:30px;font-size:16px;margin:2px;}
+	.title_size{text-align:center;font-size:33px;}
+	.title_size1{text-align:center;font-size:39px;color:#383838;}
+	.txt_jg{margin:20px;}
+</style>
+ <div >
+<div class="header_bg_a_1">
+	<div style="height:530px;"></div>
+	<a name="a" id="a"><div style="height:35px;padding-top:10px;"><h1 class="title_size1">关于我们</h1></div></a>
+</div>
+<!-- <div class="header_bg_a_2"></div> -->
+<div class="header_bg_a_2">
+	<div style="width:1200px;">
+		<br>
+		<div class="gywm">
+			<p class="txt_jg">海鸥金服是上海佑芊社网络科技有限公司运营的网络借贷中介信息平台，是互联网金融高速发展之后的监</p>
+			<p class="txt_jg">管元年，谨遵监管政策要求开办的新一代借贷平台。我们秉承“尽责调查，详情披露”的原则，市场定位</p>
+			<p class="txt_jg">于小微借款群体，甄选优质的借款项目，为民间投融资双方打造一个透明、点对点、安全、稳固的信息交</p>
+			<p class="txt_jg">互平台。平台充分利用互联网信息矩阵的手段提取有效信息，对融资方进行快速的信息审核的同时结合银</p>
+			<p class="txt_jg">行级系统风险评估标准，在降低融资方融资成本的同时确保出借方能顺利收回借款。以互联网+传统的方</p>
+			<p class="txt_jg">式促进民间小微金融的合规化，开启民间小微金融的新篇章。</p>
+		</div>
+	</div>
+</div>
+<div class="header_bg_b11" >
+	<div class="header_bg_b">
+		<div style="height:200px;width:100%;"></div>
+		<div style="float:left;width:270px;height:130px;"></div>
+		<div style="float:left;width:158px;height:130px;">
+			<p style="color:#2C91BE;text-align:center;font-size:18px;">资产端可见</p><br>
+			<p style="color:#797472;text-align:center;">首家资产端互动式平台</p>
+		</div>
+		<div style="float:left;width:176px;height:130px;">
+			<p style="color:#3F383D;text-align:center;font-size:18px;">新浪支付托管</p><br>
+			<p style="color:#797472;text-align:center;">相应监督政策</p>
+			<p style="color:#797472;text-align:center;">平台远离资金</p>
+		</div>
+		<div style="float:left;width:166px;height:130px;">
+			<p style="color:#3F383D;text-align:center;font-size:18px;">交易更安全</p><br>
+			<p style="color:#797472;text-align:center;">CFCA中国金融认证中心</p>
+			<p style="color:#797472;text-align:center;">SSL128位数字加密技术</p>
+		</div>
+		<div style="float:left;width:150px;height:130px;">
+			<p style="color:#3F383D;text-align:center;font-size:18px;">业务更合规</p><br>
+			<p style="color:#797472;text-align:center;">严格遵守监管条例</p>
+			<p style="color:#797472;text-align:center;">发展更稳健</p>
+		</div>
+	</div>	
+</div>
+<a name="b" id="b"><div class="bbb">
+	<div style="width:1200px;">
+		<div style="height:200px"></div>
+		<h1 class="title_size" style="color:#383838;">创始团队</h1>
+		<div style="height:200px;"></div>
+		<div style="float:left;width:200px;height:330px;"></div>
+		<div style="float:left;width:200px;height:330px;">
+			<p class="title_size" style="color:#FF6B29;text-align:center;font-size:20px;">CEO/张济清</p>
+			<p style="color:#00B4EF;text-align:center;">公司法人</p>
+			<br>
+			<p class="center_p">出生于1978年，以往于新加坡、印</p>
+			<p class="center_p">尼等地从事传统商品贸易，2002年</p>
+			<p class="center_p">与合伙人共同创立浙江省瑞安市第</p>
+			<p class="center_p">一家实体金融借贷公司。现为上海</p>
+			<p class="center_p">佑芊社网络科技有限公司法人兼CEO</p>
+			<p class="center_p">，担任海鸥金服“掌门人”角色，以</p>
+			<p class="center_p">专业、独特的风控思维及十二年的</p>
+			<p class="center_p">金融借贷经验引领平台发展的道路。</p>
+			
+		</div>
+		<div style="float:left;width:210px;height:230px;">
+			<p style="color:#00B4EF;text-align:center;font-size:20px;">CRO/林瑞贤</p>
+			<p style="color:#00B4EF;text-align:center;">首席风控总监</p>
+			<br>
+			<p class="center_p">出生于1970年，毕业于中国地质大</p>
+			<p class="center_p">学工商管理中国人民大学青年学院</p>
+			<p class="center_p">工商管理硕士学位 常年供职于政府</p>
+			<p class="center_p">机关单位及银行，曾任职中国银行</p>
+			<p class="center_p">市支行行长，多年的银行工作经历</p>
+			<p class="center_p">熟知银行及民间金融体系同时积累</p>
+			<p class="center_p">大量民营中小企业的优质资源。现</p>
+			<p class="center_p">担任海鸥金服首席风控官，以银行</p>
+			<p class="center_p">的风险控制要求再结合小微金融的</p>
+			<p class="center_p">灵活便捷，助力中小企业发展。</p>
+		</div>
+		<div style="float:left;width:220px;height:230px;">
+			<p  style="color:#00B4EF;text-align:center;font-size:20px;">COO/曾思佳</p>
+			<p style="color:#00B4EF;text-align:center;">首席运营官</p>
+			<br>
+			<p class="center_p">出生于1985，毕业于西南科技大学</p>
+			<p class="center_p">，毕业后即投身传统金融行业，历</p>
+			<p class="center_p">任：中信银行市级支行客户经理 ，</p>
+			<p class="center_p">小贷公司客户经理，融资性担保公</p>
+			<p class="center_p">司业务主管，现任海鸥金服首席运</p>
+			<p class="center_p">营官，一直处于传统金融的最前沿</p>
+			<p class="center_p">，对于传统金融企业的运作模式有</p>
+			<p class="center_p">着深刻而独到的见解。</p>
+		</div>
+		<div style="float:left;width:210px;height:230px;">
+			<p style="color:#00B4EF;text-align:center;font-size:20px;">资深顾问/陈结朋</p>
+			<p style="color:#00B4EF;text-align:center;">资产投资风险决策委员会</p>
+			<br>
+			<p class="center_p">出生于1978年，毕业于浙江省委党</p>
+			<p class="center_p">校法律系，曾就职于政府部门，后</p>
+			<p class="center_p">投身传统金融行业，现任海鸥金服</p>
+			<p class="center_p">资管部负责人，对细节的把控是民</p>
+			<p class="center_p">间借贷中不可或缺的环节，风险出</p>
+			<p class="center_p">现是流程的漏洞所累加的最终结果</p>
+			<p class="center_p">，严格遵照风控体系完成每一笔借</p>
+			<p class="center_p">款的审查工作是整个体系运作的基</p>
+			<p class="center_p">石。</p>
+		</div>
+	</div>
+</div></a>
+<a name="c" id="c"><div class="c">
+	<div style="width:1200px;">
+		<div style="height:185px"></div>
+		<h1 class="title_size" style="color:#FFFFFF;">产品架构</h1>
+		<div style="height:160px;"></div>
+		<div style="float:left;width:313px;height:170px;"></div>
+		<div style="float:left;width:158px;height:170px;">
+			<br>
+			<div class="jg01"></div>
+			<p class="center_p1">个人信息全掌控</p>
+			<p class="center_p1">信用历史双重审核</p>
+			<p class="center_p1">收入来源稳健清晰</p>
+			<p class="center_p1">稳定职业优质客户</p>
+		</div>
+		<div style="float:left;width:53px;height:170px;"></div>
+		<div style="float:left;width:158px;height:170px;">
+			<br><br>
+			<div class="jg02"></div>
+			<p class="center_p2">房产产权清晰</p>
+			<p class="center_p2">杜绝二次抵押</p>
+			<p class="center_p2">小贷公司担保回购</p>
+		</div>
+		<div style="float:left;width:53px;height:170px;"></div>
+		<div style="float:left;width:158px;height:170px;">
+			<br>
+			<div class="jg01"></div>
+			<p class="center_p1">买卖协议托底</p>
+			<p class="center_p1">委托确认车辆处理权</p>
+			<p class="center_p1">严格控制抵押率</p>
+			<p class="center_p1">车辆质押</p>
+		</div>
+	</div>
+</div></a>
+<a name="d" id="d"><div class="header_bg_e11">
+	<div class="header_bg_e">
+		<div style="height:180px"></div>
+		<h1 class="title_size" style="text-align:center;color:#433F3F;">合作机构</h1>
+	</div>
+</div></a>
+<div class="header_bg_f">
+	<div style="width:1200px;">
+		<div style="height:210px"></div>
+		<h1 class="title_size" style="color:#212121;">联系我们</h1>
+		<div style="height:38px;"></div>
+		<div style="float:left;width:330px;height:200px;"></div>
+		<div style="float:left;width:700px;height:200px;">
+			<p class="lxwm">官网电话：400-0091-791</p>
+			<p class="lxwm">QQ客服：800189891</p>
+			<p class="lxwm">客服邮箱：kf@haioujinfu.com</p>
+			<p class="lxwm">地址：上海市静安区共和新路1988号大宁国际城10栋1502</p>
+		</div>
+	</div>
+</div>
+<div class="header_bg_g"></div>
+</div>
+<?php echo $this->fetch('inc/footer.html'); ?>
