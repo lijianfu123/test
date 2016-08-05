@@ -53,7 +53,7 @@
 			else
 			{
 				if(!$y_sign_data)
-				$GLOBALS['db']->query("delete from ".DB_PREFIX."user_sign_log where user_id = ".$user_id);
+// 				$GLOBALS['db']->query("delete from ".DB_PREFIX."user_sign_log where user_id = ".$user_id);
 				$tip = "";
 				if(doubleval(app_conf("USER_LOGIN_MONEY"))>0)
 				$tip .= "资金+".format_price(app_conf("USER_LOGIN_MONEY"));
