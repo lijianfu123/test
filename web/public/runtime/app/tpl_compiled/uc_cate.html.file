@@ -70,11 +70,13 @@ echo $k['name']($k['v'],$k['f']);
 				<?php if ($this->_var['y_sign_data']): ?>
 					<a href="javascript:void(0);" onclick="user_sign();" title="<?php echo $this->_var['sign_tip']; ?>" class="btn_red bdr3" style="display:inline-block; height:30px;line-height:30px; text-decoration:none; color:#fff;width:180px;">立即签到</a>
 					<div class="blank10"></div>
-					您已经连续签到<?php echo $this->_var['sign_day']; ?>天<br />继续努力，已总共签到<?php echo $this->_var['total_signcount']; ?>天。
+					<!-- 您已经连续签到<?php echo $this->_var['sign_day']; ?>天<br />继续努力， -->
+					已总共签到<?php echo $this->_var['total_signcount']; ?>天。
 				<?php else: ?>
 					<a href="javascript:void(0);" onclick="user_sign();"  title="<?php echo $this->_var['sign_tip']; ?>"  class="btn_red bdr3" style="display:inline-block; height:30px;line-height:30px; text-decoration:none; color:#fff;width:180px;">立即签到</a>
 					<div class="blank10"></div>
-					您昨天忘记签到了重头来吧，已总共签到<?php echo $this->_var['total_signcount']; ?>天。
+					<!-- 您昨天忘记签到了重头来吧， -->
+					已总共签到<?php echo $this->_var['total_signcount']; ?>天。
 				<?php endif; ?>
 			<?php endif; ?>
 			
