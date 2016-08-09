@@ -31,6 +31,8 @@
 		$y_end_time = $t_end_time - (24*3600);  //昨天结束
 		
 		$t_sign_data = $GLOBALS['db']->getRow("select * from ".DB_PREFIX."user_sign_log where user_id = ".$user_id." and sign_date between ".$t_begin_time." and ".$t_end_time);
+		$total_signcount = $GLOBALS['db']->getOne("select count(*) from ".DB_PREFIX."user_sign_log where user_id = ".$user_id);
+		$GLOBALS['tmpl']->assign("total_signcount",$total_signcount);
 		if($t_sign_data)
 		{			
 			$GLOBALS['tmpl']->assign("t_sign_data",$t_sign_data);
