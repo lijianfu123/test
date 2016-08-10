@@ -1,0 +1,3 @@
+<?php
+//000000086400a:1:{i:2;a:24:{s:2:"id";s:1:"2";s:6:"vip_id";s:1:"2";s:11:"probability";s:2:"50";s:9:"load_mfee";s:4:"0.00";s:8:"interest";s:1:"0";s:7:"charges";s:1:"0";s:11:"coefficient";s:4:"5.00";s:8:"multiple";s:3:"0.0";s:5:"bgift";s:4:"1000";s:5:"btype";s:1:"1";s:13:"holiday_score";s:4:"1000";s:4:"rate";s:4:"5.00";s:8:"integral";s:4:"4500";s:12:"red_envelope";s:5:"1,2,3";s:4:"gift";s:5:"1,2,3";s:9:"is_delete";s:1:"0";s:9:"is_effect";s:1:"1";s:4:"sort";s:1:"2";s:14:"original_price";s:6:"500.00";s:10:"site_pirce";s:6:"200.00";s:9:"vip_grade";s:15:"白银VIP会员";s:11:"lower_limit";s:4:"3000";s:11:"upper_limit";s:6:"100000";s:7:"content";s:118:"总额度达到3000元，且没有迟还款和逾期还款的用户，系统自动为其升级成为白银VIP会员。";}}
+?>

@@ -1,0 +1,780 @@
+{include file="inc/header.html"} 
+<div class="blank0"></div>
+</div>
+<div class="wrap"> 
+    <div class="index_first">
+        <ul>
+            <li style="height:31px;"></li>
+            <li>
+                成交总金额<span class="f30 index_blue">{$virtual_money_1}</span>
+                会员人数<span class="f30 index_blue">{$stats.user_count}</span>
+                累积为投资人赚取<span class="f30 index_blue">{$virtual_money_2}</span>
+            </li>
+        </ul>
+
+    </div></div>
+<div class="claerfix b_white bor_1">
+    <script>
+
+        $(document).ready(function() {
+
+            $(".tanchu ul li").mouseover(function() {
+                $(this).children("img:eq(0)").hide(0);
+                $(this).children("img:eq(1)").show(0);
+                $(this).children("h3").css("color", "#00ABF0");
+            });
+
+            $(".tanchu ul li").mouseout(
+                    function() {
+                        $(this).children("img:eq(0)").show();
+                        $(this).children("img:eq(1)").hide();
+                        $(this).children("h3").css("color", "");
+                    });
+        });
+
+    </script>
+
+    <div class="wrap">
+
+        <div class="tanchu">
+            <ul>
+                <li >
+                    <img   src="app/Tpl/new/images/index/zichan.png" alt=""/>
+                    <img  style="display:none" src="app/Tpl/new/images/index/x_zichan.png" alt=""/>
+                    <h3>资产端可见</h3>
+                    <div class="tishi1">
+                        <p>首家资产端互动式平台</p>
+                    </div>
+                </li>
+                <li>
+                    <img  src="app/Tpl/new/images/index/sina.png" alt=""/>
+                    <img style="display:none" src="app/Tpl/new/images/index/x_sina.png" alt=""/>
+                    <h3>新浪支付托管</h3>
+                    <div class="tishi1" >
+
+                        <p>响应监管政策</p>
+						<p>平台远离资金</p>
+                    </div>
+                </li>
+                <li>
+                    <img  src="app/Tpl/new/images/index/jiaoyi.png" alt=""/>
+                    <img style="display:none" src="app/Tpl/new/images/index/x_jiaoyi.png" alt=""/>
+                    <h3>交易更安全</h3>
+                    <div class="tishi1" >
+                        <p>CFCA中国金融认证中心</p>
+						<p>SSL128位数字加密技术</p>
+                    </div>
+                </li>
+                <li>
+                    <img  src="app/Tpl/new/images/index/hangye.png" alt=""/>
+                    <img style="display:none" src="app/Tpl/new/images/index/x_hangye.png" alt=""/>
+                    <h3>业务更规范</h3>
+                    <div class="tishi1" >
+                        <p>严格遵守监管条例</p>
+						 <p>发展更稳健</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+		
+        <!--新人独享 即将开始-->
+        <!--<div class="f_l w862">
+                <div class=" f_l spread_block mr20 pr" id="slideTxtBox1">
+                        <div class="new_people ps"></div>
+                        <div class="hd ps">
+                                <span class="arrow ">
+                                        <a class="prev noticentn">&lt;</a>
+                                        <a class="next noticentn">&gt;</a>
+                                </span>
+                        </div>
+                        <div class="bd1">
+                                <ul class="ovhide cf">
+                                        {foreach from="$new_deal_list" item="deal"}
+                                        <li>
+                                                <div class=" top">
+                                                        <p class="name"><a href="{$deal.url}">{$deal.sub_name}</a></p>
+                                                        <p class="con">{$deal.name}</p>
+                                                </div>
+
+                                                <div class="item w104 bor_2">
+                                                        <span class="name">年化收益率</span>
+                                                        <p class="b f_red">
+                                                                <i class="b f18">{$deal.rate}</i><i class="f12">%</i>{if $deal.user_bid_rebate gt 0}<span class="f12" title="投资返利:{$deal.user_bid_rebate}%">+{$deal.user_bid_rebate}%</span>{/if}
+                                                        </p>
+                                                </div>
+                                                <div class="item w90 bor_2">
+                                                        <span class="name">投资期限</span>
+                                                        <p class="b">
+                                                                <i class="b f18">{$deal.repay_time}</i>
+                                                                <i class="f12">{if $deal.repay_time_type eq 0}天{else}月{/if}</i>
+                                                        </p>
+                                                </div>
+                                                <div class="item w93">
+                                                        <span class="name">筹款金额</span>
+                                                        <p class="b f_red">
+                                                                <i class="b f18"><?php echo number_format($this->_var['deal']['borrow_amount']/10000,2); ?></i>
+                                                                <i class="f12">万元</i>
+                                                        </p>
+                                                </div>
+                                                <div class="item">
+                                                        <span class=" f_r  w96  ml11 mt2">
+                                                                <a class="listbtn" href="{$deal.url}">
+                                                                        {if $deal.is_delete eq 2}
+                                                                                <span class="btn_gray f_white">待发布</span>
+                                                                        {elseif $deal.is_wait eq 1}
+                                                                                <span class="btn_gray f_white">未开始</span>
+                                                                        {elseif $deal.deal_status eq 5}
+                                                                                <span class="btn_blue f_white">还款完毕</span>
+                                                                        {elseif $deal.deal_status eq 4}
+                                                                                <span class="btn_green f_white">还款中</span>
+                                                                        {elseif $deal.deal_status eq 0}
+                                                                                <span class="btn_gray f_white">{if $deal.need_credit eq 0}等待审核{else}等待材料{/if}</span>
+                                                                        {elseif $deal.deal_status eq 1 && $deal.remain_time gt 0}
+                                                                                <span class="btn_red f_white">立即投资</span>
+                                                                        {elseif $deal.deal_status eq 2}
+                                                                                <span class="btn_yellow f_white" style=" position:relative;">已满标</span>
+                                                                        {elseif $deal.deal_status eq 3}
+                                                                                <span class="btn_gray f_white">已流标</span>
+                                                                        {elseif $deal.deal_status eq 1 && $deal.remain_time lte 0}
+                                                                                <span class="btn_gray f_white">已过期</span>
+                                                                        {/if}
+                                                                </a>
+                                             </span>
+                                                </div>
+                                        </li>
+                                        {/foreach}
+                                </ul>
+                        </div>
+                </div>
+                <script type="text/javascript">
+                {if count($new_deal_list) gt 1}
+                        $(document).ready(function(){
+                                jQuery("#slideTxtBox1").slide({mainCell:".bd1 ul",autoPage:true,effect:"leftLoop",autoPlay:true});
+                        });
+                {else}
+                        jQuery("#slideTxtBox1 .arrow").hide();
+                {/if}
+                </script>
+                <div class=" f_l spread_block pr" id="slideTxtBox2">
+                        <div class="week_advn ps"></div>
+                        <div class="hd ps">
+                                <span class="arrow ">
+                                        <a class="prev noticentn">&lt;</a>
+                                        <a class="next noticentn">&gt;</a>
+                                </span>
+                        </div>
+                        <div class="bd2">
+                                <ul class="ovhide cf">
+                                        {foreach from="$advance_deal_list" item="deal"}
+                                        <li>
+                                                <div class=" top">
+                                                        <p class="name"><a href="{$deal.url}">{$deal.sub_name}</a></p>
+                                                        <p class="con">{$deal.name}</p>
+                                                </div>
+
+                                                <div class="item w104 bor_2">
+                                                        <span class="name">年化收益率</span>
+                                                        <p class="b f_red">
+                                                                <i class="b f18">{$deal.rate}</i><i class="f12">%</i>{if $deal.user_bid_rebate gt 0}<span class="f12" title="投资返利:{$deal.user_bid_rebate}%">+{$deal.user_bid_rebate}%</span>{/if}
+                                                        </p>
+                                                </div>
+                                                <div class="item w90 bor_2">
+                                                        <span class="name">投资期限</span>
+                                                        <p class="b">
+                                                                <i class="b f18">{$deal.repay_time}</i>
+                                                                <i class="f12">{if $deal.repay_time_type eq 0}天{else}月{/if}</i>
+                                                        </p>
+                                                </div>
+                                                <div class="item w93">
+                                                        <span class="name">筹款金额</span>
+                                                        <p class="b f_red">
+                                                                <i class="b f18"><?php echo number_format($this->_var['deal']['borrow_amount']/10000,2); ?></i>
+                                                                <i class="f12">万元</i>
+                                                        </p>
+                                                </div>
+                                                <div class="item">
+                                                        <span class=" f_r  w96  ml11 mt2">
+                                                                <a class="listbtn" href="{$deal.url}">
+                                                                        <span class="btn_red f_white">去看看</span>
+                                                                </a>
+                                             </span>
+                                                </div>
+                                        </li>
+                                        {/foreach}
+                                </ul>
+                        </div>
+                </div>-->
+        <!--新人独享即将开始 结尾-->
+        <script type="text/javascript">
+            {if count($advance_deal_list) gt 1}
+            $(document).ready(function() {
+                jQuery("#slideTxtBox2").slide({mainCell: ".bd2 ul", autoPage: true, effect: "leftLoop", autoPlay: true});
+            });
+            { else}
+            jQuery("#slideTxtBox2 .arrow").hide();
+            {/if}
+        </script>
+    </div>
+
+</div>
+<div align="center">
+<!-- <img src="app/Tpl/new/images/index/link_2.png" usemap="#map1" /> -->
+<!-- 图片修改成代码 -->
+<div style="height:240px;"></div>
+<div style="background-color:#00AAEE;height:119px;color:#ffffff">
+    <div style="width:1200px;margin:0 auto;"><div style="width:1010px;">
+        <div style="float:left;width:300px;">
+            <div style="float:left;margin-top:28px;width:100%;">
+                <img src="app/Tpl/new/images/xinlang.png" style="float:left;">
+                <div style="float:left;font-size:18px;font-style:italic;font-weight:600;margin-top:5px;line-height:33px;">新浪支付存钱罐</div>
+            </div>
+            <div style="float:left;flont-size:14px;margin-top:2px;width:100%;margin:0 auto;text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;资金专人专户，余额乐享收益</div>
+        </div>
+        <div style="float:left;line-height:100%;width:180px;">
+            <div style="margin-top:28px;height:38px;line-height:38px;"><span style="font-size:30px;">0.01</span>元</div>
+            <div style="flont-size:14px;margin-top:2px;">起存金额</div>
+        </div>
+        <div style="float:left;line-height:100%;width:150px;">
+            <div style="margin-top:28px;height:38px;line-height:38px;text-align:left;"><span style="font-size:30px;">2.552%</span></div>
+            <div style="flont-size:14px;margin-top:2px;text-align:left;">七日年化收益率</div>
+        </div>
+        <div style="float:left;line-height:100%;width:140px;">
+            <div style="margin-top:28px;height:38px;line-height:38px;text-align:left;"><span style="font-size:30px;">T+1</span></div>
+            <div style="flont-size:14px;margin-top:2px;text-align:left;">赎回方式</div>
+        </div>
+        <div style="float:left;line-height:100%;width:240px;">
+            <div style="margin-top:38px;">
+                <a href="/member.php?ctl=uc_money&act=incharge"><button type="button" style="margin-right:10%;background-color:#00AAEE;color:#ffffff;border:1px solid #fff;border-radius:10px;width:250px;height:35px;font-size:14px;">立&nbsp; 即&nbsp;加&nbsp;入
+                </button></a>
+            </div>    
+        </div>
+    </div></div>
+</div>
+<!--  -->
+</div>
+<div class="blank18"></div>
+
+</div>
+<div class="blank18"></div>
+<div class="wrap">
+
+    <div class="blank1"></div>
+    <div class="f_r w316"style="height:302px;">
+        <adv adv_id="首页右侧顶部广告位" />
+        <div class="article_block b_white bor_0 pr15 pl15 pt20 pb10">
+            <div class="clearfix h_block">
+                <h3 class="f_l">标的预告</h3>
+                <a href="{url x="index" r="notice#list_notice"}" title="{$LANG.MORE}" class="f_r see_m">更多 </a>
+            </div>
+            <ul>
+                {foreach from=$compnay_active_list item="notice"}
+                <li class="article_li clearfix ">
+                    <a href="{$notice.url}" title="{$notice.title}">
+                        <span class="f_l content nowrap ">{function name="msubstr" v=$notice.title s=0 e=18}</span>
+                        <span class="f_r time ">{function name="to_date" v=$notice.create_time f="Y-m-d"}</span>
+                    </a>
+                </li>
+                {/foreach}
+            </ul>
+        </div>
+
+
+    </div>
+
+
+    <div class="clearfix">
+        <!--新人独享即将开始  最新设计-->
+        <!--新人独享开始-->
+        <div class="dx_will">
+            <div class="img1"></div>
+            <div class="f_t">
+                {foreach from="$new_deal_list" item="deal"}
+
+
+                <div class="lists">
+                    <div class="items">
+                        <div class="ind-title lh3">
+                            <span class="index-lf-pvd">
+                                <a  class="index_m1 "
+                                    href="{$deal.url}" title="{$deal.color_name}">{$deal.color_name}</a>
+                            </span>
+                            <span class="m2_m">新用户专享</span>
+
+                        </div>
+
+
+                        <ul class="clr">
+                            <li class="w120 f_l">
+                                <p class="lh">预期年化</p>
+                                <h4 class="ma3 index-lf-total"  >{$deal.rate}%</h4>
+
+                            </li>
+                            <li class="w60 f_l">
+                                <p class="lh">期限</p>
+                                <h4 class="index-lf-total"  >{$deal.repay_time}{if $deal.repay_time_type eq 0}天{else}个月{/if}</h4>
+
+                            </li>
+                            <li class="w135 f_l">
+                                <p class="lh">项目金额</p>
+                                <h4 class="index-lf-total"  >{$deal.borrow_amount_format}</h4>
+
+                            </li>
+
+                            <li class="w115 f_l">
+                                <p class="lh">还款方式</p>
+                                <h4 class="index-lf-total ma5"  >{if $deal.loantype  eq 0}等额本息{elseif $deal.loantype  eq 1}付息还本{elseif $deal.loantype  eq 2}到期还本息{else}本金均摊，利息固定{/if}</h4>
+
+                            </li>
+                            <li class="w60 f_l">
+                                <p class="lh2">投资进度</p>
+                                {if $deal.deal_status gte 4}
+                                <strong class="iepng ui-progressbar-mid ma6"  >100%</strong>
+                                {else}
+                                <?php
+                                $rate_img =  round($this->_var['deal']['progress_point'],0)*54;
+                                ?>
+                                <strong class="iepng ui-progressbar-mid " style="background-position: -<?php echo $rate_img;?>px 0;" >{function name="round" v=$deal.progress_point f=0}%</strong>
+
+                                {/if}
+
+                            </li>
+                            <li >
+                                <p>&nbsp;</p>
+
+                                <span class=" f_r  w96  ml11 mt2 ma7"  >
+                                    <a class="listbtn" href="{$deal.url}">
+                                        {if $deal.is_delete eq 2}
+                                        <span class="btn_gray f_white">待发布</span>
+                                        {elseif $deal.is_wait eq 1}
+                                        <span class="btn_gray f_white">未开始</span>
+                                        {elseif $deal.deal_status eq 5}
+                                        <span class="btn_green f_white">还款完毕</span>
+                                        {elseif $deal.deal_status eq 4}
+                                        <span class="btn_green f_white">还款中</span>
+                                        {elseif $deal.deal_status eq 0}
+                                        <span class="btn_gray f_white">{if $deal.need_credit eq 0}等待审核{else}等待材料{/if}</span>
+                                        {elseif $deal.deal_status eq 1 && $deal.remain_time gt 0}
+                                        <span class="btn_red f_white">立即投资</span>
+                                        {elseif $deal.deal_status eq 2}
+                                        <span class="btn_yellow f_white" style=" position:relative;">已满标</span>
+                                        {elseif $deal.deal_status eq 3}
+                                        <span class="btn_gray f_white">已流标</span>
+                                        {elseif $deal.deal_status eq 1 && $deal.remain_time lte 0}
+                                        <span class="btn_gray f_white">已过期</span>
+                                        {/if}
+                                    </a>
+                                </span>
+
+
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                {/foreach}
+                <!--即将开始-->
+                {foreach from="$advance_deal_list" item="deal"}
+
+
+                <div class="lists">
+                    <div class="items">
+                        <div class="ind-title lh3">
+                            <span class="index-lf-pvd">
+                                <a class="index_m1 "
+                                   href="{$deal.url}" title="{$deal.color_name}">{$deal.color_name}</a>
+                            </span>
+                            <span class="m2_m" >即将开始</span>
+                        </div>
+
+                        <ul class="clr">
+                            <li class="w120 f_l ">
+                                <p class="lh">预期年化</p>
+                                <h4 class="ma3 index-lf-total"  >{$deal.rate}%</h4>
+
+                            </li>
+                            <li class="w60 f_l ">
+                                <p class="lh">期限</p>
+                                <h4 class="index-lf-total"  >{$deal.repay_time}{if $deal.repay_time_type eq 0}天{else}个月{/if}</h4>
+
+                            </li>
+                            <li class="w135 f_l ">
+                                <p class="lh">项目金额</p>
+                                <h4 class="index-lf-total"  >{$deal.borrow_amount_format}</h4>
+
+                            </li>
+
+                            <li class="w115 f_l ">
+                                <p class="lh">还款方式</p>
+                                <h4 class="index-lf-total ma5"  >{if $deal.loantype  eq 0}等额本息{elseif $deal.loantype  eq 1}付息还本{elseif $deal.loantype  eq 2}到期还本息{else}本金均摊，利息固定{/if}</h4>
+
+                            </li>
+                            <li class="w60 f_l ">
+                                <p class="lh2">投资进度</p>
+                                {if $deal.deal_status gte 4}
+                                <strong class="iepng ui-progressbar-mid ma6"  >100%</strong>
+                                {else}
+                                <?php
+                                $rate_img =  round($this->_var['deal']['progress_point'],0)*54;
+                                ?>
+                                <strong class="iepng ui-progressbar-mid " style="background-position: -<?php echo $rate_img;?>px 0;" >{function name="round" v=$deal.progress_point f=0}%</strong>
+
+                                {/if}
+
+                            </li>
+                            <li >
+                                <p>&nbsp;</p>
+
+                                <span class=" f_r  w96  ml11 mt2 ma7"  >
+                                    <a class="listbtn " href="{$deal.url}">
+                                        <span class="btn_gray f_white">去看看</span>
+
+                                    </a>
+                                </span>
+
+
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                {/foreach}
+            </div>
+
+        </div>
+        <!--最新设计的结束-->
+        <div class="f_l w862 mt12">
+            <div class="f_l pro_img list_img1 w210" >
+                <!-- <div class="btn_box"><a href="{url x="index" r="deals"}">更多理财</a></div> -->
+            </div>
+            <div class="index-lf ml210 f_l" >
+                {foreach from=$deal_list item="deal" key=key name="deals"}
+                {if $smarty.foreach.deals.index lt 4}
+                <div class="lists">
+                    <div class="items">
+                        <div class="ind-title lh4">
+                            <span class="index-lf-pvd">
+                                <a  class="index_m1 "
+                                    href="{$deal.url}" title="{$deal.color_name}">{$deal.color_name}</a>
+                            </span>
+                        </div>
+
+                        <ul class="clr">
+                            <li class="w120 f_l">
+                                <p class="lh">预期年化</p>
+                                <h4 class="ma3 index-lf-total" >{$deal.rate}%</h4>
+
+                            </li>
+                            <li class="w60 f_l">
+                                <p class="lh">期限</p>
+                                <h4 class="index-lf-total"  >{$deal.repay_time}{if $deal.repay_time_type eq 0}天{else}个月{/if}</h4>
+
+                            </li>
+                            <li class="w135 f_l">
+                                <p class="lh">项目金额</p>
+                                <h4 class="index-lf-total"  >{$deal.borrow_amount_format}</h4>
+
+                            </li>
+
+                            <li class="w115 f_l">
+                                <p class="lh">还款方式</p>
+                                <h4 class="index-lf-total ma5"  >{if $deal.loantype  eq 0}等额本息{elseif $deal.loantype  eq 1}付息还本{elseif $deal.loantype  eq 2}到期还本息{else}本金均摊，利息固定{/if}</h4>
+
+                            </li>
+                            <li class="w60 f_l">
+                                <p class="lh2">投资进度</p>
+                                {if $deal.deal_status gte 4}
+                                <strong class="iepng ui-progressbar-mid ma6"  >100%</strong>
+                                {else}
+                                <?php
+                                $rate_img =  round($this->_var['deal']['progress_point'],0)*54;
+                                ?>
+                                <strong class="iepng ui-progressbar-mid " style="background-position: -<?php echo $rate_img;?>px 0;" >{function name="round" v=$deal.progress_point f=0}%</strong>
+
+                                {/if}
+
+                            </li>
+                            <li >
+                                <p>&nbsp;</p>
+
+                                <span class=" f_r  w96  ml11 mt2 ma7"  >
+                                    <a class="listbtn" href="{$deal.url}">
+                                        {if $deal.is_delete eq 2}
+                                        <span class="btn_gray f_white">待发布</span>
+                                        {elseif $deal.is_wait eq 1}
+                                        <span class="btn_gray f_white">未开始</span>
+                                        {elseif $deal.deal_status eq 5}
+                                        <span class="btn_green f_white">还款完毕</span>
+                                        {elseif $deal.deal_status eq 4}
+                                        <span class="btn_green f_white">还款中</span>
+                                        {elseif $deal.deal_status eq 0}
+                                        <span class="btn_gray f_white">{if $deal.need_credit eq 0}等待审核{else}等待材料{/if}</span>
+                                        {elseif $deal.deal_status eq 1 && $deal.remain_time gt 0}
+                                        <span class="btn_red f_white">立即投资</span>
+                                        {elseif $deal.deal_status eq 2}
+                                        <span class="btn_yellow f_white" style=" position:relative;">已满标</span>
+                                        {elseif $deal.deal_status eq 3}
+                                        <span class="btn_gray f_white">已流标</span>
+                                        {elseif $deal.deal_status eq 1 && $deal.remain_time lte 0}
+                                        <span class="btn_gray f_white">已过期</span>
+                                        {/if}
+                                    </a>
+                                </span>
+
+
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                {/if}
+                {/foreach}
+            </div>
+             
+              <!-- <div>
+                    <img src="app/Tpl/new/images/index/link.png" usemap="#map" />
+                    
+                    <map name="map" id="planetmap">
+  <area shape="rect" coords="40,80,165,135" href ="http://www.51zhengxin.com" target="view_window" />
+  <area shape="rect" coords="180,80,305,135" href ="http://www.hujinch.com/" target="view_window" />
+  <area shape="rect" coords="315,80,440,135" href ="http://www.zhunruncaifu.com/" target="view_window" />
+    <area shape="rect" coords="455,80,580,135" href ="https://www.yunaq.com/" target="view_window" />
+      <area shape="rect" coords="595,80,720,135" href ="http://www.qixin.com/" target="view_window" />
+          <area shape="rect" coords="733,80,859,135" href ="https://pay.sina.com.cn/zjtg" target="view_window" />
+      
+</map>
+            </div>  -->
+        <!-- 合作伙伴 图片转化为代码 ------>
+        
+
+        <!-- -------- -->
+
+            <!--<div class="bg_2 relative">
+                    &lt;!&ndash;<div class="nav clearfix pr18">
+                            <ul class="f_l nav_list_0">
+                                    <li class="f_l ">最新投资&lt;!&ndash;全部&ndash;&gt;</li>
+                                    &lt;!&ndash;
+                                    <li class="f_l  current">已售馨</li>
+                                    <li class="f_l ">已还款</li>
+                                    &ndash;&gt;
+                            </ul>
+                            <a class="f_r more" href="{url x="index" r="deals"}" title="{$LANG.MORE}">更多&gt; </a>
+                    </div>&ndash;&gt;
+    
+    
+                    <ul class="licai_case_list ">
+                            {foreach from=$deal_list item="deal" key=key name="deals"}
+                            {if $smarty.foreach.deals.index lt 5}
+                            <li class="clearfix" style="overflow: hidden">
+                                    <img class=" f_l pt18 pr20" src="{$TMPL}/images/{$deal.user.point_level}.png" align="absmiddle" title="{$deal.user.point_level}" alt="{$deal.user.point_level}" height="30" />
+                                    <span class="f_l name nowrap w140 pr15"><a href="{$deal.url}" title="{$deal.name}">{function name="msubstr" v=$deal.name s=0 e=8}</a></span>
+                                    <span class="f_l rate b f_red w80">{$deal.rate}%{if $deal.user_bid_rebate gt 0}<span class="f12" title="投资返利:{$deal.user_bid_rebate}%">+{$deal.user_bid_rebate}%</span>{/if}</span>
+                                    <span class="f_l  date w60">{$deal.repay_time}{if $deal.repay_time_type eq 0}天{else}个月{/if}</span>
+                                    <span class="f_l money w100">{$deal.borrow_amount_format}</span>
+                                    <span class="f_l  w50">
+                                            
+                                            <div class="info  textaligncenter mt10">
+                                                    {if $deal.deal_status gte 4}
+                                                    <strong class="iepng ui-progressbar-mid " style="background-position: -5400px 0;" >100%</strong>
+                                                    {else}
+                                    <?php
+                                        $rate_img =  round($this->_var['deal']['progress_point'],0)*54;
+                                    ?>
+                                                            <strong class="iepng ui-progressbar-mid " style="background-position: -<?php echo $rate_img;?>px 0;" >{function name="round" v=$deal.progress_point f=2}%</strong>    
+                                    
+                                                    {/if}
+                                            </div>
+                                    </span>
+                                    <span class="f_r  w98 mt16 mr26"  style="line-height:normal;">
+                                                            <a class="listbtn lh30" href="{$deal.url}">
+                                                            {if $deal.is_delete eq 2}
+                                                                    <span class="btn_gray f_white">待发布</span>
+                                                            {elseif $deal.is_wait eq 1}
+                                                                    <span class="btn_gray f_white">未开始</span>
+                                                            {elseif $deal.deal_status eq 5}
+                                                                    <span class="btn_green f_white">还款完毕</span>
+                                                            {elseif $deal.deal_status eq 4}
+                                                                    <span class="btn_green f_white">还款中</span>
+                                                            {elseif $deal.deal_status eq 0}
+                                                                    <span class="btn_gray f_white">{if $deal.need_credit eq 0}等待审核{else}等待材料{/if}</span>
+                                                            {elseif $deal.deal_status eq 1 && $deal.remain_time gt 0}
+                                                                    <span class="btn_red f_white">马上投标</span>
+                                                            {elseif $deal.deal_status eq 2}
+                                                                    <span class="btn_yellow f_white" style=" position:relative;">已满标</span>
+                                                            {elseif $deal.deal_status eq 3}
+                                                                    <span class="btn_gray f_white">已流标</span>
+                                                            {elseif $deal.deal_status eq 1 && $deal.remain_time lte 0}
+                                                                    <span class="btn_gray f_white">已过期</span>
+                                                            {/if}
+                                                    </a>
+                                    </span>
+                            </li>
+                            
+                            {/if}
+                            {/foreach}
+                    </ul>
+                    
+                    <div class="position_bor"></div>
+            </div>-->
+            {if $transfer_list}
+            <div class="blank18"></div>
+            <div class="bg_3">
+                <div class="nav clearfix pr18">
+                    <p class="f_l">转让项目全部来自“{function name="app_conf" v="SITE_TITLE"}投资区”</p>
+                    <a class="f_r more" href="{url x="index" r="transfer"}" title="{$LANG.MORE}">更多 &gt;</a>
+                </div>
+                <ul class="zhaiquan_case_list">
+                    {foreach from=$transfer_list item="transfer" key=key name="transfer"}
+                    {if $smarty.foreach.transfer.index lt 6}
+                    <li class="clearfix">
+                        <span class="f_l name pl13 w160 nowrap"><a href="{$transfer.url}" title="{$transfer.name}">{function name="msubstr" v=$transfer.name s=0 e=8}</a></span>
+                        <span class="f_l rate  w90 b f_orange ">{$transfer.rate} %</span>
+                        <span class="f_l   w145 ">折价率<i class="b f_orange "><?php echo ($this->_var['transfer']['left_benjin']+$this->_var['transfer']['left_lixi']) > 0 ? round((($this->_var['transfer']['left_benjin'] + $this->_var['transfer']['left_lixi'] - $this->_var['transfer']['transfer_amount'])/($this->_var['transfer']['left_benjin']+$this->_var['transfer']['left_lixi']))*100,2) : 0; ?>%</i></span>
+                        <span class="f_l   w115 ">{if $transfer.t_user_id gt 0}履约中{else}未转让{/if}</span>
+                        <span class="f_l   w98  mt10" style="line-height:normal;">
+                            <a class="listbtn lh30" href="{$transfer.url}" >
+                                {if $transfer.t_user_id gt 0}
+                                <span class="btn_gray f_white" style="">已转让</span>
+                                {else}
+                                {if $transfer.status eq 0}
+                                <span class="btn_gray f_white">已撤销</span>
+                                {else}
+                                {if $transfer.remain_time lt 0}
+                                <span class="btn_gray f_white">逾期还款</span>
+                                {else}
+                                <span class="btn_red f_white">我要承接</span>
+                                {/if}
+                                {/if}
+                                {/if}
+                            </a>
+                        </span>
+                    </li>
+                    {/if}
+                    {/foreach}
+                </ul>
+            </div>
+            {/if}
+        </div>
+        <div class="f_r w316">
+            <div class="blank10"></div>
+            <div class="f_r w316" style="height:302px;">
+	            <div class="article_block b_white bor_0 pr15 pl15 pt20 pb10">
+	                <div class="clearfix h_block">
+	                    <h3 class="f_l">网站公告</h3>
+	                    <a href="{url x="index" r="notice#list_notice"}" title="{$LANG.MORE}" class="f_r see_m">更多 </a>
+	                </div>
+	                <ul>
+	                    {foreach from=$notice_list item="notice"}
+	                    <li class="article_li clearfix ">
+	                        <a href="{$notice.url}" title="{$notice.title}">
+	                            <span class="f_l content nowrap ">{function name="msubstr" v=$notice.title s=0 e=18}</span>
+	                            <span class="f_r time ">{function name="to_date" v=$notice.create_time f="Y-m-d"}</span>
+	                        </a>
+	                    </li>
+	                    {/foreach}
+	                </ul>
+	            </div>
+                 <img src="{$TMPL}/images/index/right_2.png"/>
+            </div>
+                   <!--  添加右侧3个（网站公告、媒体报道、） 两个格对齐 -->
+            <div class="f_r w316" style="height:302px;">
+	            <div class="article_block b_white bor_0 pr15 pl15 pt20 pb10">
+	                <div class="clearfix h_block">
+	                    <h3 class="f_l">媒体报道</h3>
+	                    <a href="{url x="index" r="acate&id=25"}" title="{$LANG.MORE}" class="f_r see_m">更多 </a>
+	                </div>
+	                <ul>
+	                    {foreach from=$mtbd_list item="notice"}
+	                    <li class="article_li clearfix ">
+	                        <a href="{$notice.url}" title="{$notice.title}">
+	                            <span class="f_l content nowrap ">{function name="msubstr" v=$notice.title s=0 e=18}</span>
+	                            <span class="f_r time ">{function name="to_date" v=$notice.create_time f="Y-m-d"}</span>
+	                        </a>
+	                    </li>
+	                    {/foreach}
+	                </ul>
+	            </div>
+   				 <img src="{$TMPL}/images/index/right_3.png"/>
+			</div>
+
+
+            <!--            <div class="article_block b_white bor_0 pr list_block" id="txtScroll-top">
+                            <div class="clearfix h_block b_f9f9f9">
+                                <h4 class="f_l  pl20">他们正在投资</h4>
+                            </div>
+                            <div class="hd hide">
+                                <span class="arrow ">
+                                    <a class="prev ">&lt;</a>
+                                    <a class="next ">&gt;</a>
+                                </span>
+                            </div>
+                            <div class="bg_0 pr list_this ovhide bd3">
+                                <ul class="licai_now">
+                                    {foreach from="$near_deal_loads" item="load"}
+                                    <li class="show_li clearfix ">
+                                        <a href="{url x="index" r="deal#index" p="id=$load.deal_id"}">
+                                           <i class="icon f_l"></i>
+                                            <p>投资：<i class="f_red">{$load.money}元</i></p>
+                                            <p>用户：{function name="utf_substr" v="$load.user_name"} &nbsp; 年化收益：<i class="f_red">{$load.rate}%</i></p>
+                                        </a>
+                                    </li>
+                                    {/foreach}
+                                </ul>
+                            </div> 
+                        </div>-->
+            <script type="text/javascript">
+                        $(document).ready(function() {
+                    jQuery("#txtScroll-top").slide({titCell: ".hd ul", mainCell: ".bd3 ul", autoPage: true, effect: "top", autoPlay: true, vis: 4});
+                });
+            </script>
+            <div class="blank18"></div>
+            
+            <div class="clearfix">
+                <adv adv_id="首页广告位_推广1" />
+            </div>
+            <div class="blank18"></div>
+            <div class="clearfix">
+                <adv adv_id="首页广告位_推广2" />
+            </div>
+        </div>
+    </div>
+ </div>
+<!-- 合作伙伴 图片转化为代码 ------>
+            <div style="height:30px;"></div>
+            <div style="width:100%;height:170px;background-color:#EEEEEE">
+                <div style="width:1200px;margin-left:auto;margin:0 auto;text-align:left;position:relative;">
+                   <!--  <div style="float:left;width:20px;height:40px;border-bottom:3px solid #DFDFDF;margin-left:20px;"></div>
+                    <div style="float:left;width:113px;height:40px;border:2px solid #DFDFDF;line-height:40px;text-align:center;border-bottom:3px solid #EEEEEE;">
+                        <span style="color:#81827E;font-size:15px;font-weight:700">合作伙伴</span>
+                    </div>
+                    <div style="float:left;width:980px;height:40px;border-bottom:3px solid #DFDFDF;"></div> -->
+                    <div style="margin-left:40px;width:113px;height:40px;line-height:60px;text-align:center;color:#81827E;font-size:18px;font-weight:700">合作伙伴</div>
+                    <hr style="border:2px solid #DFDFDF;"></hr>
+                </div>
+                
+                <div style="width:1200px;margin:0 auto;">
+                    <a style="margin-left:30px;" href="http://www.51zhengxin.com"><img src="app/Tpl/new/images/hzhb/mfsj.png" /></a>
+                    <a href="http://www.hujinch.com/"><img src="app/Tpl/new/images/hzhb/lqch.png" /></a>
+                    <a href ="http://www.zhunruncaifu.com/"><img src="app/Tpl/new/images/hzhb/zrzc.png" /></a>
+                    <a href ="https://www.yunaq.com/"><img src="app/Tpl/new/images/hzhb/zdcyy.png" /></a>
+                    <a href ="http://www.qixin.com/"><img src="app/Tpl/new/images/hzhb/qxb.png" /></a>
+                    <a href ="https://pay.sina.com.cn/zjtg"><img src="app/Tpl/new/images/hzhb/xlzf.png" /></a>
+                </div>
+            </div>   
+
+        <!-- -------- -->
+    <!---
+    <script>
+            $(document).ready(function(){
+                    $(".nav_list_0 li").click(function(){
+                            var index_rel=$(this).index();
+                            $(this).addClass("current").siblings().removeClass("current");
+                            $(".licai_case_list").siblings(".licai_case_list").hide();
+                            $(".licai_case_list").eq(index_rel).show();
+                    });
+            });
+    </script>
+    -->
+    {include file="inc/footer.html"}

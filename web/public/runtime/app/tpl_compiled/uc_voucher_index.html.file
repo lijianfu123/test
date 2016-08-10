@@ -1,0 +1,63 @@
+<div class="tabbox ">
+	<div class="tab <?php if ($this->_var['ACTION_NAME'] == 'index'): ?>cur<?php endif; ?>"><a href="<?php
+echo parse_url_tag("u:index|uc_voucher#index|"."".""); 
+?>"><?php echo $this->_var['LANG']['UC_VOUCHER']; ?></a></div>
+	<div class="tab <?php if ($this->_var['ACTION_NAME'] == 'exchange'): ?>cur<?php endif; ?>"><a href="<?php
+echo parse_url_tag("u:index|uc_voucher#exchange|"."".""); 
+?>"><?php echo $this->_var['LANG']['UC_VOUCHER_EXCHARGE']; ?></a></div>
+</div>
+<div class="uc_box pl25">
+
+	<?php $_from = $this->_var['list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'voucher');if (count($_from)):
+    foreach ($_from AS $this->_var['key'] => $this->_var['voucher']):
+?>
+	<div class="voucher_item">
+		<div class="voucher_bg pr">
+			
+			<?php if ($this->_var['voucher']['use_limit'] > 0 && ( $this->_var['voucher']['use_limit'] - $this->_var['voucher']['use_count'] == 0 )): ?>
+				<div class="tip_bg ps tc">已使用</div>
+				<?php elseif ($this->_var['voucher']['end_time'] > 0 && ( $this->_var['voucher']['end_time'] + 24 * 3600 - 1 ) < TIME_UTC): ?>
+				<div class="tip_bg ps tc">已过期</div>
+			<?php endif; ?>
+			<table>
+				<tr>
+					<td>
+						<span class="bonus_name"><?php echo $this->_var['voucher']['name']; ?> x<?php if ($this->_var['voucher']['use_limit'] == 0): ?>无限<?php else: ?><?php echo $this->_var['voucher']['use_limit']; ?><?php endif; ?></span>
+						<br />
+						<span>面额：<?php 
+$k = array (
+  'name' => 'format_price',
+  'value' => $this->_var['voucher']['money'],
+);
+echo $k['name']($k['value']);
+?></span>
+						<span>有效期：<?php if ($this->_var['voucher']['begin_time'] == 0): ?>无限<?php else: ?><?php 
+$k = array (
+  'name' => 'to_date',
+  'value' => $this->_var['voucher']['begin_time'],
+  'f' => 'Y-m-d',
+);
+echo $k['name']($k['value'],$k['f']);
+?><?php endif; ?> <?php if ($this->_var['voucher']['end_time'] > 0): ?><?php echo $this->_var['LANG']['TO']; ?> <?php 
+$k = array (
+  'name' => 'to_date',
+  'value' => $this->_var['voucher']['end_time'],
+  'f' => 'Y-m-d',
+);
+echo $k['name']($k['value'],$k['f']);
+?><?php endif; ?></span>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="voucher_info">
+			sn：<?php echo $this->_var['voucher']['sn']; ?>
+			<?php if ($this->_var['voucher']['use_count']): ?><br />
+			已使用：<?php echo $this->_var['voucher']['use_count']; ?>次
+			<?php endif; ?>
+		</div>
+	</div>
+	<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+	<div class="blank0"></div>
+	<div class="pages"><?php echo $this->_var['pages']; ?></div>
+</div>

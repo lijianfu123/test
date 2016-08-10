@@ -17,13 +17,63 @@ var turnplate={
 		
 		bRotate:false				//false:停止;ture:旋转
 };
+//jquery验证手机号码 
+function checkSubmitMobil() { 
+	var inp = jQuery_New('.inp').val();
+	if (inp == "") { 
+		alert("手机号码不能为空！"); 
+		jQuery_New('.inp').focus(); 
+		return false; 
+	} 
+	 var reg = /(1[3-9]\d{9}$)/;
+	if (!inp.match(reg)) { 
+		alert("手机号码格式不正确！");  
+		jQuery_New('.inp').focus(); 
+		return false; 
+	} 
+	//手机格式正确后判定该号码是否有效
+	/* var ajaxurl = APP_ROOT+"/index.php?ctl=ajax&act=get_phone_effect"; */
+	var ajaxurl = WAP_PATH + '/index.php?ctl=get_phone_effect';
+	/* var query = new Object(); */	
+	var query = newObject();			
+	query.post_type = "json";
+	query.phone = $.trim(inp);
+	jQuery_New.ajax({ 
+		url: ajaxurl,
+		data:query,
+		type: "POST",
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			console.log(result.effect);
+			if(result.effect){
+				if(result.effect==1)
+				{//有效
+					 alert('你输入的手机号有效,可以抽奖');
+					//登陆用户绑定手机卡号
+					
+				}
+				else if(result.effect == 0)
+				{//失效	
+					alert('你输入的手机号已失效');
+				}else{//无效
+					alert('你输入的手机号无效');
+				}
+			}
+			 
+		}
+	});	
+	return true; 
+}; 
+
+jQuery_New('.tj').click(function(){
+	checkSubmitMobil();	
+});
 
 jQuery_New(document).ready(function(){
 	//动态添加大转盘的奖品与奖品区域背景颜色
-	turnplate.restaraunts = ["28元", "38元", "6元", "48元", "58元", "68元", "8元 ", "18元"];
-	turnplate.colors = ["#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF","#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF"];
-
-	
+	turnplate.restaraunts = ["28元", "38元", "48元","50元","8元 ", "18元"];
+	turnplate.colors = ["#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF","#FFF4D6", "#FFFFFF"];
 	var rotateTimeOut = function (){
 		jQuery_New('#wheelcanvas').rotate({
 			angle:0,
@@ -87,7 +137,7 @@ jQuery_New(document).ready(function(){
 							}
 						});
 					}else if(data.lottery_status == 2){
-						alert('你输入的手机号无抽奖资格，请检查输入的手机号是否有误');
+						alert('您还未输入手机号码，请输入');
 					}else{
 						alert('你输入的手机号已失效');
 					}

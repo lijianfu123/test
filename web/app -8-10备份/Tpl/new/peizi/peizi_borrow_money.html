@@ -1,0 +1,42 @@
+<div class="tabbox clearfix">
+	<div class="tab cur"><a href="{url x="index" r="uc_trader#invest_money"}">借款金额返利</a></div>
+</div>
+<div class="uc_box bdd bt0 clearfix">
+	<div class="blank"></div>
+      {if $list}
+      <div class="clearfix tra_box p10">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="uc-table">
+              <tbody>
+                  <tr border="0">
+                      <th style="width:14%">实盘单号</th>
+                      <th style="width:8%">订单类型</th>
+                      <th style="width:12%">实盘金额</th>
+                      <th style="width:10%">当前资产</th>
+                      <th style="width:10%">盈亏金额</th>
+                      <th style="width:10%">盈亏比例</th>
+                      <th style="width:10%">开始时间</th>
+                      <th style="width:10%">返利金额</th>
+                  </tr>
+                  {foreach from="$list" item="item" key=key name=list_n}
+            <tr class="item {if $key mod 2 eq 1}item_1{/if}" {if $smarty.foreach.list_n.last}style="border-bottom:0"{/if}>
+                      <td><a href="{url x="index" r="uc_trader#detail" p="id=$item.id"}">{$item.order_sn}</a></td>
+                      <td>{$item.conf_type_name}</td>
+                      <td>{$item.total_money_format} </td>
+                      <td>{$item.stock_money_format}</td>
+                      <td>{$item.loss_money_format} </td>
+                      <td>{$item.loss_rate_format}</td>
+                      <td>{$item.begin_date}</td>
+                      <td>{$item.invite_borrow_money_format}</td>
+                  </tr>
+                  {/foreach}
+              </tbody>
+          </table>
+      </div>
+      {else}	
+      <div align="center" class='tra_box' style="padding:20px 0">暂无记录</div>
+      {/if}
+	
+	<div class="blank"></div>
+	<div class="pages">{$pages}</div>
+	<div class="blank"></div>
+</div>

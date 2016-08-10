@@ -1,0 +1,44 @@
+<div class="tabbox ">
+	<div class="tab cur"><a href="<?php
+echo parse_url_tag("u:index|uc_center#setweibo|"."".""); 
+?>"><?php echo $this->_var['page_title']; ?></a></div>
+</div>
+<div class="uc_box bdd bt0 clearfix">
+	
+		<?php $_from = $this->_var['apis']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'api');if (count($_from)):
+    foreach ($_from AS $this->_var['api']):
+?>
+		<div style="width:170px; margin:0px auto;">
+		<?php if ($this->_var['api']['is_bind'] == 0): ?>
+			立即绑定
+			<div class="blank"></div>
+			<span id="api_<?php echo $this->_var['api']['class_name']; ?>_2"><script type="text/javascript">load_api_url('<?php echo $this->_var['api']['class_name']; ?>',2);</script></span>
+			
+		<?php else: ?>
+			<!--同步发送到微博？ 
+			<?php if ($this->_var['api']['is_syn'] == 1): ?>
+				<input type="checkbox" checked="checked" onclick="set_syn('is_syn_<?php 
+$k = array (
+  'name' => 'strtolower',
+  'v' => $this->_var['api']['class_name'],
+);
+echo $k['name']($k['v']);
+?>');" />
+			<?php else: ?>
+				<input type="checkbox" onclick="set_syn('is_syn_<?php 
+$k = array (
+  'name' => 'strtolower',
+  'v' => $this->_var['api']['class_name'],
+);
+echo $k['name']($k['v']);
+?>');" />
+			<?php endif; ?>-->
+			已绑定
+			<div class="blank"></div>
+			<img src="<?php echo $this->_var['api']['bicon']; ?>" />
+		<?php endif; ?>
+		</div>
+		<div class="blank"></div>
+		<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+	
+</div>

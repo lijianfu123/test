@@ -1,0 +1,120 @@
+<?php
+$this->_var['repaycss'][] = $this->_var['TMPL_REAL']."/css/datepicker.css";
+$this->_var['repayjs'][] = $this->_var['TMPL_REAL']."/js/utils/jquery.ui.core.js";
+$this->_var['repayjs'][] = $this->_var['TMPL_REAL']."/js/utils/jquery.ui.widget.js";
+$this->_var['repayjs'][] = $this->_var['TMPL_REAL']."/js/utils/jquery.ui.datepicker.js";
+
+?>
+<link rel="stylesheet" type="text/css" href="<?php 
+$k = array (
+  'name' => 'parse_css',
+  'v' => $this->_var['repaycss'],
+);
+echo $k['name']($k['v']);
+?>" />
+<script type="text/javascript" src="<?php 
+$k = array (
+  'name' => 'parse_script',
+  'v' => $this->_var['repayjs'],
+  'c' => $this->_var['repayjs'],
+);
+echo $k['name']($k['v'],$k['c']);
+?>"></script>
+
+
+<script type="text/javascript">
+jQuery(function(){
+	$("input#end_time").datepicker({showAnim:'fadeIn'});
+	$("input#start_time").datepicker({showAnim:'fadeIn'});
+	$("form#search-form").submit(function(){
+		var val1 = $("input#end_time").val();
+		$("input[name='end_time']").val(val1);
+		var val2 = $("input#start_time").val();
+		$("input[name='start_time']").val(val2);
+	});
+});
+</script>
+
+<div class="tabbox clearfix">
+	<div class="tab cur"><a href="<?php
+echo parse_url_tag("u:index|uc_ips#transfer|"."".""); 
+?>"><?php echo $this->_var['page_title']; ?></a></div>
+</div>
+
+	
+<div class="uc_box bdd bt0 clearfix">
+	<form name="search" id="search-form" action="<?php
+echo parse_url_tag("u:index|uc_ips#transfer|"."".""); 
+?>" method="get">  	
+    		
+	<div class="sub_nav">
+	        <input type="hidden" name="ctl" value="uc_ips"/>
+	        <input type="hidden" name="act" value="recharge"/>
+			提现日期：<input class="f-input ui-textbox w100" id="start_time" type="text" value="<?php echo $this->_var['start_time']; ?>">
+			<input type="hidden" name="start_time" type="text" value="" />
+	        至
+	        <input class="f-input ui-textbox w100" id="end_time" type="text" value="<?php echo $this->_var['end_time']; ?>">
+			<input type="hidden" name="end_time" type="text" value="" />
+			<button class="true_btn select_btn" type="submit">搜索</button>
+		</div>
+	</form>
+	<div class="blank0"></div>
+	<?php if ($this->_var['list']): ?>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="uc-table">
+		<tbody>
+			<tr border="0">
+            	<th style=" text-align:center;border-radius: 5px 0px 0px 0px; width:17%;">第三方提现编号</th>
+                <th style="width:8%;text-align:center;">姓名</th>
+			
+                <th style="width:10%;text-align:center;"">提现日期</th> 
+                <th style="width:10%;text-align:center;"">交易金额</th>
+                <th style="width:10%;text-align:center;"">手续费</th>
+                <!--<th style="width:10%;text-align:center;"">手续费支付方</th>-->
+                <th style="width:8%;text-align:center;border-radius: 0px 5px 0px 0px;">状态</th>
+			</tr>
+
+			<?php $_from = $this->_var['list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item');if (count($_from)):
+    foreach ($_from AS $this->_var['key'] => $this->_var['item']):
+?>
+			<tr class="item <?php if ($this->_var['key'] % 2 == 1): ?>item_1<?php endif; ?>" <?php if (($this->_foreach['deal']['iteration'] == $this->_foreach['deal']['total'])): ?>style="border-bottom:0"<?php endif; ?>>
+            	<td>
+					<?php echo $this->_var['item']['pIpsBillNo']; ?>
+				</td>
+                <td>
+					<?php echo $this->_var['item']['pRealName']; ?>
+				</td>
+				
+				<td>
+					<?php echo $this->_var['item']['pDwDate']; ?>
+				</td>
+				<td><?php echo $this->_var['item']['pTrdAmt']; ?>    
+				</td>
+                <td>
+					<?php echo $this->_var['item']['pMerFee']; ?>
+				</td>
+					<!--<td>
+                <?php if ($this->_var['item']['pIpsFeeType'] == 1): ?>平台支付<?php else: ?>用户支付<?php endif; ?> 
+				</td>-->
+                <td>
+               
+                	<?php if ($this->_var['item']['status'] == 'SUCCESS'): ?><b style="color:#0C0;">提现成功</b><?php endif; ?><?php if ($this->_var['item']['status'] == 'FAILED'): ?><b style="color:#F00;">提现失败<?php endif; ?><?php if ($this->_var['item']['status'] == 'PROCESSING'): ?><b style="color:#C30;">处理中</b><?php endif; ?><?php if ($this->_var['item']['status'] == 'RETURNT_TICKET'): ?>退票<?php endif; ?> 
+				</td>
+			</tr>
+			<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+		</tbody>
+	</table>
+	<div class="pages"><?php echo $this->_var['pages']; ?></div>
+	<?php else: ?>	
+	<div align="center" style="padding:20px 0">暂无记录</div>
+	<?php endif; ?>
+	<div class="blank"></div>
+</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	

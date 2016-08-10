@@ -1,0 +1,69 @@
+<?php echo $this->fetch('inc/header.html'); ?>
+</div>
+<style>
+	/* 大转盘样式 */
+.banner{display:block;width:95%;margin-left:auto;margin-right:auto;margin-bottom: 20px;}
+.banner .turnplate{display:block;width:100%;position:relative;}
+.banner .turnplate canvas.item{width:100%;}
+.banner .turnplate img.pointer{position:absolute;width:31.5%;height:42.5%;left:34.6%;top:23%;}
+.header_bg_01{
+		height: 2778px;
+    background: url(app/Tpl/new/images/activity/activity_01.jpg) no-repeat center;
+        background-color: transparent;
+        background-image: url("app/Tpl/new/images/activity/activity_01.jpg");
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-position: center center;
+        background-clip: border-box;
+        background-origin: padding-box;
+        background-size: auto auto;
+	}
+	.act_wid{width:1200px;height:100%;margin-left:auto;margin-right:auto;}
+	.act_turn1{width:422px;height:422px;margin-left:-0px;margin-top:300px;}
+	.act_turn2{width:422px;height:110px;margin-left:-0px;color:#FFBE04;}
+	.tj{width:100px;height:30px;margin-left:40px;background-color:#F1F1F1;
+		border-radius:10px 10px 10px 10px;
+			cursor:pointer; 
+		}
+	.inp{
+		width:180px;height:30px;
+		border: 1px solid #CDC28D;
+		background-color: #F2F9FD; 
+		padding-top: 4px; 
+		font-family: Arial, Helvetica, sans-serif; 
+		font-size: 15px;
+		padding-left: 10px;
+	}
+</style>
+<div>
+	<div class="header_bg_01">
+		<div class="act_wid">
+			<div style="height:230px;"></div>
+			<div style="width:900px;height:600px;">
+				<div id="activity_turn" class="act_turn1">
+					<img src="app/Tpl/new/images/activity/1.png" id="shan-img" style="display:none;" />
+					<img src="app/Tpl/new/images/activity/2.png" id="sorry-img" style="display:none;" />
+					<div class="banner">
+						<div class="turnplate" style="background-image:url(app/Tpl/new/images/activity/turnplate-bg.png);background-size:100% 100%;">
+							<canvas class="item" id="wheelcanvas" width="422px" height="422px"></canvas>
+							<img class="pointer" src="app/Tpl/new/images/activity/turnplate-pointer.png"/>
+						</div>
+					</div>
+				</div>
+				<div class="act_turn2">
+					<input type="phone" placeholder="请输入抽奖手机号码" class="inp">
+					<button type="button" class="tj" >提交</button>
+					<div id="lottery_show" index="<?php echo $this->_var['is_l']; ?>" style="width:230px;margin:0 auto;">
+						<div id="lottery_res" style="width:230px;">最新抽奖结果：恭喜你抽到<?php echo $this->_var['new_things']; ?>红包</div>
+					</div>
+			</div>	
+			</div>
+			
+		</div>
+	</div>
+</div>
+<script type='text/javascript' src='app/Tpl/new/js/activity/jquery-1.8.3.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='app/Tpl/new/js/activity/awardRotate.js' charset='utf-8'></script>
+<?php echo $this->fetch('./activity_turn_js.html'); ?>
+ <div>
+<?php echo $this->fetch('inc/footer.html'); ?>

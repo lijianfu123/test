@@ -17,7 +17,7 @@ function BindBankCard($user_id,$member_url){
 	$data['verify_mode'] = "SIGN";
 	$data['request_time'] = date("YmdHis");
 	$data['create_time'] = time();
-	
+
 	if (isset($_POST['submit'])){
 		$data['card_attribute'] = $_POST["card_attribute"];
 		$data['bank_code'] = $_POST["bank_code"];
@@ -31,7 +31,8 @@ function BindBankCard($user_id,$member_url){
 		$_POST["account_name"]= $weibopay->Rsa_encrypt($_POST['account_name'],sinapay_rsa_public__key);
 		$_POST["phone_no"]= $weibopay->Rsa_encrypt($_POST['phone_no'],sinapay_rsa_public__key);
 		$_POST["bank_account_no"]= $weibopay->Rsa_encrypt($_POST['bank_account_no'],sinapay_rsa_public__key);
-		unset($_POST["submit"]); 
+		unset($_POST["submit"]);
+		unset($_POST['user_id']);
 		ksort($_POST);
 		$_POST["sign"]=$weibopay->getSignMsg($_POST,$_POST["sign_type"]);
 
@@ -39,9 +40,10 @@ function BindBankCard($user_id,$member_url){
 		
 		$result = $weibopay->curlPost($member_url,$tijiao); // 使用模拟表单提交进行数据提交
 		$result = urldecode ($result);
-		//echo $result;
+
 		$splitdata = array ();
 		$splitdata = json_decode($result,true);
+
 		$sign_type = $splitdata ['sign_type'];
 		ksort($splitdata); 
 
@@ -49,11 +51,17 @@ function BindBankCard($user_id,$member_url){
 				if ($splitdata["response_code"] == 'APPLY_SUCCESS') { // 成功
 				$splitdata["is_callback"]=1;
 				$GLOBALS['db']->autoExecute(DB_PREFIX."sina_bind_bank_card",$splitdata,'UPDATE',"id=".$splitdata["memo"]."");
-				
-				showIpsInfo("短信您的手机,请输入验证码！",SITE_DOMAIN.APP_ROOT."/index.php?ctl=collocation&act=BindBankCardAdvance&id=".$splitdata["memo"]."&user_id=".$data['user_id']."&ticket=".$splitdata["ticket"]."");
+					$echo = array();
+					$echo['response_code'] = $splitdata["response_code"];
+					$echo['url'] = SITE_DOMAIN.APP_ROOT."/index.php?ctl=collocation&act=BindBankCardAdvance&id=".$splitdata["memo"]."&user_id=".$data['user_id']."&ticket=".$splitdata["ticket"]."";
+					echo json_encode($echo);//json形式ajax返回DH20160810修改
+					//showIpsInfo("已发送短信至您的手机,请输入验证码！",SITE_DOMAIN.APP_ROOT."/index.php?ctl=collocation&act=BindBankCardAdvance&id=".$splitdata["memo"]."&user_id=".$data['user_id']."&ticket=".$splitdata["ticket"]."");
 				}else{
-				
-					showErr($splitdata["response_message"],0);
+					$echo = array();
+					$echo['response_code'] = $splitdata["response_code"];
+					$echo['response_message'] = $splitdata["response_message"];
+					echo json_encode($echo);//json形式ajax返回DH20160810修改
+					//showErr($splitdata["response_message"],0);
 				}
 	
 		

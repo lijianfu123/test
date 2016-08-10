@@ -1,5 +1,5 @@
 <?php 
-define("IS_DEBUG",1);
+define("IS_DEBUG",0);
 define("SHOW_DEBUG",0);
 define("SHOW_LOG",0);
 define("LAI_LAI",0); 

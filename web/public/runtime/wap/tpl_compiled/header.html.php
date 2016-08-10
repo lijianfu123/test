@@ -62,8 +62,8 @@ echo $k['name']($k['v']);
     <script type='text/javascript' src='./js/suimobile/zepto.min.js' charset='utf-8'></script>
     <script type='text/javascript' src='./js/fastclick.js' charset='utf-8'></script>
 
-	<link rel="stylesheet" type="text/css" href="./css/font-awesome-4.2.0/css/font-awesome.min.css" />	
-	
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome-4.2.0/css/font-awesome.min.css" />
+			 
     <script type="text/javascript">
 		var APP_ROOT = '<?php echo $this->_var['APP_ROOT']; ?>';
 		var WAP_PATH = '<?php echo $this->_var['WAP_ROOT']; ?>';

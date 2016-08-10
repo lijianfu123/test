@@ -1,0 +1,71 @@
+<div class="tabbox ">
+	<div class="tab <?php if ($this->_var['ACTION_NAME'] == 'index'): ?>cur<?php endif; ?>"><a href="<?php
+echo parse_url_tag("u:index|uc_voucher#index|"."".""); 
+?>"><?php echo $this->_var['LANG']['UC_VOUCHER']; ?></a></div>
+	<div class="tab <?php if ($this->_var['ACTION_NAME'] == 'exchange'): ?>cur<?php endif; ?>"><a href="<?php
+echo parse_url_tag("u:index|uc_voucher#exchange|"."".""); 
+?>"><?php echo $this->_var['LANG']['UC_VOUCHER_EXCHARGE']; ?></a></div>
+</div>
+<div class="uc_box">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="uc-table">
+			<tbody>
+			<tr >
+				<th class="tl pl10"><?php echo $this->_var['LANG']['VOUCHER_NAME']; ?></th>
+				<th style="width:20%"><?php echo $this->_var['LANG']['VOUCHER_MONEY']; ?></th>
+				<th style="width:20%"><?php echo $this->_var['LANG']['EXCHANGE_SCORE_VOUCHER']; ?></th>
+				<th style="width:20%"><?php echo $this->_var['LANG']['DO_EXCHANGE']; ?></th>
+			</tr>
+			<?php $_from = $this->_var['list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'voucher');if (count($_from)):
+    foreach ($_from AS $this->_var['key'] => $this->_var['voucher']):
+?>
+			<tr class="item <?php if ($this->_var['key'] % 2 == 0): ?>item_1<?php endif; ?>">
+				<td class="tl pl10">
+					<?php echo $this->_var['voucher']['name']; ?>
+				</td>
+				<td><?php 
+$k = array (
+  'name' => 'format_price',
+  'value' => $this->_var['voucher']['money'],
+);
+echo $k['name']($k['value']);
+?> </td>
+				<td><?php 
+$k = array (
+  'name' => 'format_score',
+  'value' => $this->_var['voucher']['exchange_score'],
+);
+echo $k['name']($k['value']);
+?></td>
+				<td class="pr10"><a class="exchange" href="javascript:void(0);" url="<?php
+echo parse_url_tag("u:index|uc_voucher#do_exchange|"."id=".$this->_var['voucher']['id']."".""); 
+?>"><?php echo $this->_var['LANG']['DO_EXCHANGE']; ?></a></td>
+			</tr>
+			<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+			</tbody>
+		</table>
+		<div class="pages"><?php echo $this->_var['pages']; ?></div>
+		
+		<!--voucher exchange-->
+		<div class="blank"></div>
+		<div class="bdd">	
+			<div class="f14 bddfa bb1 pl10 lh36 b">序列号兑换红包</div>
+			<div class="clearfix p15">	
+				<form name="sn_exchange" id="sn_exchange"  method="post" action="<?php
+echo parse_url_tag("u:index|uc_voucher#do_snexchange|"."".""); 
+?>">
+					
+					<div class="field pt10 pb10">
+						<label>序列号</label>
+						<input class="f-input ui-textbox bdr3" name="sn" holder="请输入红包兑换的序列号" />
+					</div>			
+					<div class="blank0"></div>
+					<div class="field pt10 pb10">
+						<label>&nbsp;</label>
+						<button class="btn_red f_whilt w100 lh30 b f_l" type="submit">立即兑换</button>
+					</div>
+					
+				</form>
+			</div><!--end content-->
+		</div>
+		<!--end exchange-->
+</div>

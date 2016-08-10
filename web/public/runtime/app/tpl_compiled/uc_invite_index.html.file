@@ -1,0 +1,166 @@
+<div class="tabbox clearfix">
+	<div class="tab cur"><a href="<?php
+echo parse_url_tag("u:index|uc_invite|"."".""); 
+?>">我要推荐</a></div>
+	<div class="tab" ><a href="<?php
+echo parse_url_tag("u:index|uc_invite#invite|"."".""); 
+?>">有效推荐</a></div>
+	<div class="tab"><a href="<?php
+echo parse_url_tag("u:index|uc_invite#invite|"."type=1".""); 
+?>">无效推荐</a></div>
+	<div class="tab"><a href="<?php
+echo parse_url_tag("u:index|uc_invite#reward|"."".""); 
+?>">奖励记录</a></div>
+</div>
+<div class="uc_box bdd bt0">
+	<div class="referer_box">
+		<div class="item referer_number">
+			<span>推荐好友总数</span>
+			<?php echo $this->_var['referral_user']; ?>
+		</div>
+		<div class="item referer_money">
+			<span>已支付推荐奖励</span>
+			<?php 
+$k = array (
+  'name' => 'format_price',
+  'v' => $this->_var['total_referral_money'],
+);
+echo $k['name']($k['v']);
+?>
+		</div>
+	</div>	
+	<div class="blank"></div>
+	<div class="uc-table">
+		<div id="referrals" class="pl30">
+				<div class="im refers">
+					<?php if ($this->_var['user_info']['mobile']): ?>
+						<h4>手机号码推荐：</h4>
+						<textarea type="text"  onclick="this.select()" class="f-text f_l ui-textarea mr5" id="share-copy-text-0" style="width:500px; height:60px">我朋友推荐我一个非常不错的理财方式，年化18.2%，多重安全保障！我试过了，很快就能回款，挺安全的，你也试试吧！<?php echo $this->_var['share_url_mobile']; ?></textarea>
+						<input type="button" class="formbutton f_l" id="share-copy-button-0" value="<?php echo $this->_var['LANG']['COPY']; ?>内容">
+						<div class="blank"></div>
+					<?php endif; ?>
+						<h4>用户名推荐 ：</h4>
+						<textarea type="text"  onclick="this.select()" class="f-input f_l ui-textarea mr5" id="share-copy-text-1" style="width:500px; height:60px">我朋友推荐我一个非常不错的理财方式，年化18.2%，多重安全保障！我试过了，很快就能回款，挺安全的，你也试试吧！<?php echo $this->_var['share_url_username']; ?></textarea>
+						<input type="button" class="formbutton f_l" id="share-copy-button-1" value="<?php echo $this->_var['LANG']['COPY']; ?>内容">
+				
+				</div>
+		</div>
+		<div class="blank"></div>
+		<!--  <div class="pt10 pb10 pr15 pl15">
+			<div class="bddf p10">
+				<h4>奖励规则</h4>
+				<div class="p10">
+					<p>当月推荐奖励 = 有效推荐好友当月<?php if (app_conf ( "INVITE_REFERRALS_TYPE" ) == 0): ?>实收利息<?php else: ?>实投金额<?php endif; ?> * 奖励比例；</p>
+					<p>有效推荐好友要同时满足以下条件：</p>
+					<p>当月<?php if (app_conf ( "INVITE_REFERRALS_TYPE" ) == 0): ?>实收利息<?php else: ?>实投金额<?php endif; ?>大于0；</p>
+					<?php if (app_conf ( "INVITE_REFERRALS_DATE" ) == 0): ?>
+					<p>终身持续奖励</p>
+					<?php else: ?>
+					<p>注册时间<?php 
+$k = array (
+  'name' => 'app_conf',
+  'v' => 'INVITE_REFERRALS_DATE',
+);
+echo $k['name']($k['v']);
+?>个月以内，即一次推荐可享受长达<?php 
+$k = array (
+  'name' => 'app_conf',
+  'v' => 'INVITE_REFERRALS_DATE',
+);
+echo $k['name']($k['v']);
+?>个月的持续奖励。</p>
+					<?php endif; ?>
+				</div>
+				<h4>奖励比例</h4>
+				<div class="p10">
+					<?php if (app_conf ( "INVITE_REFERRALS_RATE" ) > 0): ?>
+					<p>起步<?php 
+$k = array (
+  'name' => 'app_conf',
+  'v' => 'INVITE_REFERRALS_MIN',
+);
+echo $k['name']($k['v']);
+?>%；<p>
+					<p>每多一名有效推荐好友，该名好友的奖励比例增加<?php 
+$k = array (
+  'name' => 'app_conf',
+  'v' => 'INVITE_REFERRALS_RATE',
+);
+echo $k['name']($k['v']);
+?>%，<?php 
+$k = array (
+  'name' => 'app_conf',
+  'v' => 'INVITE_REFERRALS_MAX',
+);
+echo $k['name']($k['v']);
+?>%封顶，以注册时间为顺序，有效推荐超过<?php echo app_conf("INVITE_REFERRALS_RATE") != 0 ?( (app_conf("INVITE_REFERRALS_MAX")-app_conf("INVITE_REFERRALS_MIN")) > 0 ?  ((app_conf("INVITE_REFERRALS_MAX")-app_conf("INVITE_REFERRALS_MIN"))/ app_conf("INVITE_REFERRALS_RATE")) : 0) : 0 ; ?>名后奖励比例均为<?php 
+$k = array (
+  'name' => 'app_conf',
+  'v' => 'INVITE_REFERRALS_MAX',
+);
+echo $k['name']($k['v']);
+?>%。</p>
+					<?php else: ?>
+					推荐有效好友，以注册时间为顺序，有效推荐奖励比例均为<?php 
+$k = array (
+  'name' => 'app_conf',
+  'v' => 'INVITE_REFERRALS_RATE',
+);
+echo $k['name']($k['v']);
+?>%。
+					<?php endif; ?>
+				</div>
+				<h4>奖励发放时间</h4>
+				
+				<div class="p10">
+					<?php if (app_conf ( "INVITE_REFERRALS_AUTO" ) == 1): ?>
+					<p>每笔借款还款日进行结算，结算后自动充入账户可用余额；</p>
+					<?php else: ?>
+					<p>每个月1号对上月推荐奖励进行结算，结算后自动充入账户可用余额；</p>
+					<?php endif; ?>
+				</div>
+				
+		  </div>-->
+		   
+		</div>
+		<div class="blank"></div>
+	</div><!--end uc-table-->
+</div>
+<script type="text/javascript" src="<?php echo $this->_var['TMPL']; ?>/js/utils/ZeroClipboard.js"></script>
+<script type="text/javascript">
+	var client = new ZeroClipboard( $('#share-copy-button-0') );
+
+	  client.on( 'load', function(client) {
+	  
+	    client.on( 'datarequested', function(client) {
+	      client.setText($('#share-copy-text-0').val());
+	    } );
+	
+	    client.on( 'complete', function(client, args) {
+	      alert(LANG.JS_COPY_SUCCESS);
+	    } );
+	  });
+	  
+	  client.on( 'wrongflash noflash', function() {
+	  		ZeroClipboard.destroy();
+	  });
+	
+	var client1 = new ZeroClipboard( $('#share-copy-button-1') );
+
+	  client1.on( 'load', function(client1) {
+	  
+	    client1.on( 'datarequested', function(client1) {
+	      client.setText($('#share-copy-text-1').val());
+	    });
+	
+	    client1.on( 'complete', function(client1, args) {
+	      alert(LANG.JS_COPY_SUCCESS);
+	    });
+	  });
+	
+	  client1.on( 'wrongflash noflash', function() {
+	    ZeroClipboard.destroy();
+	  });
+		
+	
+</script>

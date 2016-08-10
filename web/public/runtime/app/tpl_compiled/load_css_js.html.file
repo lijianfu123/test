@@ -1,5 +1,9 @@
 <?php
+if(MODULE_NAME=="activityone"){
+$this->_var['pagecss'][] = $this->_var['TMPL_REAL']."/css/activity_style.css";
+}else{
 $this->_var['pagecss'][] = $this->_var['TMPL_REAL']."/css/style.css";
+}
 $this->_var['pagecss'][] = $this->_var['TMPL_REAL']."/css/weebox.css";
 $this->_var['pagecss'][] = $this->_var['TMPL_REAL']."/css/btn.css";
 $this->_var['pagejs'][] = $this->_var['TMPL_REAL']."/js/utils/jquery-1.8.3.min.js";

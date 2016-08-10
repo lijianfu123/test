@@ -2216,14 +2216,12 @@ class ajaxModule extends SiteBaseModule
 			$phone = intval($GLOBALS['request']['phone']);
 			// 		"28元", "38元", "谢谢参与", "48元", "58元", "68元", "8元 ", "18元"
 			$prize_arr = array(
-					'0' => array('id'=>1,'min'=>1,'max'=>44,'prize'=>'68元','v'=>1),
-					'1' => array('id'=>2,'min'=>46,'max'=>89,'prize'=>'58元','v'=>2),
-					'2' => array('id'=>3,'min'=>91,'max'=>134,'prize'=>'48元','v'=>3),
-					'3' => array('id'=>4,'min'=>181,'max'=>224,'prize'=>'38元','v'=>4),
-					'4' => array('id'=>5,'min'=>226,'max'=>269,'prize'=>'28元','v'=>90),
-					'5' => array('id'=>6,'min'=>271,'max'=>314,'prize'=>'18元','v'=>400),
-					'6' => array('id'=>7,'min'=>316,'max'=>359,'prize'=>'8元','v'=>1500),
-					'7' => array('id'=>8,'min'=>136,'max'=>179,'prize'=>'6元','v'=>8000),
+					'0' => array('id'=>1,'min'=>212,'max'=>268,'prize'=>'48元','v'=>500),
+					'1' => array('id'=>2,'min'=>152,'max'=>208,'prize'=>'38元','v'=>7500),
+					'2' => array('id'=>3,'min'=>92,'max'=>148,'prize'=>'28元','v'=>1500),
+					'3' => array('id'=>4,'min'=>32,'max'=>88,'prize'=>'18元','v'=>400),
+					'4' => array('id'=>5,'min'=>332,'max'=>28,'prize'=>'8元','v'=>99),
+					'5' => array('id'=>6,'min'=>272,'max'=>328,'prize'=>'50元','v'=>1),
 			);
 			//关于中奖概率算法
 			function getRand($proArr) {
@@ -2246,12 +2244,12 @@ class ajaxModule extends SiteBaseModule
 					
 				return $result;
 			}
-			$phone = 18268252716;
-			//查询activity_phone表中是否手机号，有可以抽奖，无（提示无抽奖资格）
-			$sql = "select * from ".DB_PREFIX."activity_phone where phone = {$phone}";
+			//查询activity_phone表中用户已经绑定手机号，且手机号有效
+			$sql = "select * from ".DB_PREFIX."activity_phone where user_id = {$user_id} and effect=1";
 			$user_phone = $GLOBALS['db']->getAll($sql);
 			foreach ($user_phone as $ph){
 				$effect = $ph['effect'];
+				$phone = $ph['phone'];
 			}
 			$root[user_phone] = count($user_phone);
 			if(count($user_phone)>0){
@@ -2300,12 +2298,12 @@ class ajaxModule extends SiteBaseModule
 						$now_time = date('Y-m-d H:i:s',time());
 						if(count($user_lottery)==0){
 							//将用户抽奖数据加入数据表中
-							$sql = 'insert into '.DB_PREFIX."activity_lottery(user_id,things,things_id,num,lottery_time) values('{$user_id}','{$res['prize']}','{$rid}','0','{$now_time}')";
+							$sql = 'insert into '.DB_PREFIX."activity_lottery(user_id,things,things_id,num,lottery_time,phone) values('{$user_id}','{$res['prize']}','{$rid}','0','{$now_time}','{$phone}')";
 							//将用户抽奖信息数组写入数据库
 							// 					$root['sql'] = $sql;
-							//$GLOBALS['db']->query($sql);
+							$GLOBALS['db']->query($sql);
 							$sql = 'UPDATE '.DB_PREFIX."activity_phone SET effect=0 WHERE phone= {$phone} ";
-							//$GLOBALS['db']->query($sql);
+							$GLOBALS['db']->query($sql);
 							// 						$root['sql'] = $sql;
 						}else{
 							//判断抽奖次数
@@ -2317,7 +2315,7 @@ class ajaxModule extends SiteBaseModule
 							if($num>0){
 								$sql = 'update '.DB_PREFIX."activity_lottery set things ='{$things}',things_id='{$things_id}',num='{$now_num}',lottery_time='{$lottery_time}' where user_id ='{$user_id}'";
 								// 						$root['sql'] = $sql;
-								//$GLOBALS['db']->query($sql);
+								$GLOBALS['db']->query($sql);
 							}
 						}
 					}else{
@@ -2327,7 +2325,7 @@ class ajaxModule extends SiteBaseModule
 					$lottery_status = 3;//手机号已失效
 				}
 			}else{
-				$lottery_status = 2;//手机输错，没有这个手机号
+				$lottery_status = 2;//请输入有效的手机号码
 			}
 		
 			$root['lottery_status'] = $lottery_status;
@@ -2335,5 +2333,26 @@ class ajaxModule extends SiteBaseModule
 		ajax_return($root);
 	}
 	
+	public function get_phone_effect(){
+		$user =  $GLOBALS['user_info'];
+		$user_id  = intval($user['id']);
+		$phone = trim($_REQUEST['phone']);
+		$sql = "select * from ".DB_PREFIX."activity_phone where phone = {$phone}";
+		$user_phone = $GLOBALS['db']->getAll($sql);
+		if(count($user_phone)>0){
+			foreach ($user_phone as $ph){
+				$effect = $ph['effect'];
+				if($effect ==1){
+					$sql = 'UPDATE '.DB_PREFIX."activity_phone SET user_id={$user_id} WHERE phone= {$phone}";
+					$GLOBALS['db']->query($sql);
+				}
+			}
+		}else{
+			$effect = 2;//无效
+		}
+		
+		$result['effect'] = $effect;
+		ajax_return($result);
+	}
 }
 ?>

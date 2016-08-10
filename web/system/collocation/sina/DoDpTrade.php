@@ -1,5 +1,7 @@
 ﻿<?php
 
+
+
 	/**
 	 * 充值
 	 * @param int $user_id
@@ -42,7 +44,7 @@
 					$data['identity_type'] = "UID";
 					$data['out_trade_no'] = build_order_no();
 					$data['out_advance_no'] = build_order_no();
-					$data['account_type'] = "BASIC";
+					$data['account_type'] = "SAVING_POT";
 					$data['amount'] = sprintf("%.2f",$pTrdAmt);
 					$data['user_fee'] = 0; 
 					$data['fee_taken_on'] = fee_type;
@@ -140,7 +142,7 @@
 						$request["identity_id"]=$data['identity_id'];
 						$request["identity_type"]=$data['identity_type'];
 						$request["account_type"]=$data['account_type'];
-						$request["amount"]=$data['amount'];	
+						$request["amount"]=$data['amount'];
 						$request["user_fee"]=$data['user_fee'];	
 						$request["payer_ip"]=$data['payer_ip'];		
 						$request['pay_method']=$data['pay_method'];
@@ -173,7 +175,7 @@
 			$data['identity_id'] = to_guid_string($user_id);
 			$data['identity_type'] = "UID";
 			$data['out_trade_no'] = build_order_no();
-			$data['account_type'] = "BASIC";
+			$data['account_type'] = "SAVING_POT";
 			$data['amount'] = sprintf("%.2f",$pTrdAmt);
 			$data['user_fee'] = 0; 
 			
@@ -239,7 +241,7 @@
 			$request["identity_id"]=$data['identity_id'];
 			$request["identity_type"]=$data['identity_type'];
 			$request["account_type"]=$data['account_type'];
-			$request["amount"]=$data['amount'];	
+			$request["amount"]=$data['amount'];
 			$request["user_fee"]=$data['user_fee'];	
 			$request["payer_ip"]=$data['payer_ip'];		
 			$request['pay_method']=$data['pay_method'];

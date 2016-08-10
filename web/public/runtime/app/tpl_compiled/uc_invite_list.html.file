@@ -1,0 +1,55 @@
+
+<div class="tabbox clearfix">
+	<div class="tab"><a href="<?php
+echo parse_url_tag("u:index|uc_invite|"."".""); 
+?>">我要推荐</a></div>
+	<div class="tab <?php if ($this->_var['ACTION_NAME'] == 'invite' && $this->_var['type'] == 0): ?>cur<?php endif; ?>"><a href="<?php
+echo parse_url_tag("u:index|uc_invite#invite|"."".""); 
+?>">有效推荐</a></div>
+	<div class="tab <?php if ($this->_var['ACTION_NAME'] == 'invite' && $this->_var['type'] == 1): ?>cur<?php endif; ?>"><a href="<?php
+echo parse_url_tag("u:index|uc_invite#invite|"."type=1".""); 
+?>">无效推荐</a></div>
+	<div class="tab"><a href="<?php
+echo parse_url_tag("u:index|uc_invite#reward|"."".""); 
+?>">奖励记录</a></div>
+</div>
+<div class="uc_box bdd bt0">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="uc-table">
+				<tr >
+					<th>编号</th>
+					<th><?php echo $this->_var['LANG']['USER_TITLE_USER_NAME']; ?></th>
+					<th><?php echo $this->_var['LANG']['REGISTER_TIME']; ?></th>
+					<?php if ($this->_var['ACTION_NAME'] == 'invite' && $this->_var['type'] == 1): ?>
+					<th>无效原因</th>
+					<?php else: ?>
+					<th>返利比率</th>
+					<?php endif; ?>
+				</tr>
+				<?php $_from = $this->_var['list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'invite');$this->_foreach['invites'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['invites']['total'] > 0):
+    foreach ($_from AS $this->_var['key'] => $this->_var['invite']):
+        $this->_foreach['invites']['iteration']++;
+?>
+				<tr class="item <?php if ($this->_var['key'] % 2 == 1): ?>item_1<?php endif; ?>" <?php if (($this->_foreach['invites']['iteration'] == $this->_foreach['invites']['total'])): ?>style="border-bottom:0"<?php endif; ?>>
+					<td><?php echo $this->_var['invite']['id']; ?></td>
+					<td><?php echo $this->_var['invite']['user_name']; ?></td>
+					<td><?php 
+$k = array (
+  'name' => 'to_date',
+  'value' => $this->_var['invite']['create_time'],
+);
+echo $k['name']($k['value']);
+?></td>
+					<?php if ($this->_var['ACTION_NAME'] == 'invite' && $this->_var['type'] == 1): ?>
+					<td><?php echo $this->_var['invite']['result']; ?></td>
+					<?php else: ?>
+					<td><?php echo $this->_var['invite']['referral_rate']; ?>%</td>
+					<?php endif; ?>
+				</tr>
+				<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+		</table>
+		
+		<div class="blank"></div>
+		<div class="pages"><?php echo $this->_var['pages']; ?></div>
+		<div class="blank20"></div>
+</div>

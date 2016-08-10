@@ -148,13 +148,10 @@
 	$this->_var['c_common_js'][] = $this->_var['TMPL_REAL']."/js/uc_invest.js";
 	$this->_var['c_common_js'][] = $this->_var['TMPL_REAL']."/js/uc_incharge.js";
 	$this->_var['c_common_js'][] = $this->_var['TMPL_REAL']."/js/public.js";
-	
 ?>
 <script type="text/javascript" src="{function name="parse_wap_script" v="$common_js" c="$c_common_js"}"></script>
 </body>
 {if $data.activity_turn eq 1}
-<script type='text/javascript' src='./js/activity_turn/jquery-1.8.3.min.js' charset='utf-8'></script>
-<script type='text/javascript' src='./js/activity_turn/awardRotate.js' charset='utf-8'></script>
 {include file="./activity_turn_js.html"}
 {/if}
 </html>

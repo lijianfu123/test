@@ -36,7 +36,7 @@
 		$data['identity_id'] = to_guid_string($user_id);
 		$data['identity_type'] = "UID";
 		$data['out_trade_no'] = build_order_no();
-		$data['account_type'] = "BASIC";
+		$data['account_type'] = "SAVING_POT";
 		$data['amount'] = sprintf("%.2f",$pTrdAmt);
 
 		$data['user_fee'] = sprintf("%.2f",$fee); 
@@ -48,6 +48,7 @@
 		$data['request_time'] = date("YmdHis");
 
 		$data['create_time'] = time();
+
 
 		if (isset($_POST['submit'])){
 			$data['card_id'] = $_POST["card_id"];
@@ -80,7 +81,7 @@
 			echo $html;
 			exit();
 			*/
-			
+
 			$tijiao = $weibopay->createcurl_data($_POST); // 调用createcurl_data创建模拟表单需要的数据
 			$result = $weibopay->curlPost($acquiring_url,$tijiao); // 使用模拟表单提交进行数据提交
 	
@@ -120,6 +121,8 @@
 				$requests["service"]="query_bank_card";
 				$requests["identity_id"]=$data['identity_id'];
 				$requests["identity_type"]=$data['identity_type'];
+
+
 				ksort($requests);
 				$requests["sign"]=$weibopay->getSignMsg($requests,$requests["sign_type"]);
 				$tijiaos = $weibopay->createcurl_data($requests); // 调用createcurl_data创建模拟表单需要的数据

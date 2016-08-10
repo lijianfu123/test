@@ -36,7 +36,7 @@ echo $k['name']($k['uid']);
 				<a class="table_cell ">
 					<div class="f_l show">
 						<p class="icon_block "><i class="icon iconfont ff9785">&#xe615;</i></p>
-						<p class="text ff9785">已经签到过了</p>
+						<p class="text ff9785">已经签到过了11</p>
 						<p class="text ff9785">已签到<span style="color:red"><?php echo $this->_var['data']['total_signcount']; ?></span>天</p>
 					</div>
 				</a>

@@ -1,0 +1,461 @@
+body{font-family: "Microsoft Yahei";box-sizing: border-box;}
+.wrapper{ width:100%;}
+.main{width:1100px; margin:auto;}
+.paid{
+border: 1px solid #e5e5e5;
+margin-top: 10px;
+background: #fff;
+float: left;
+width: 100%;
+}.paid_zfxxs {
+height: 42px;
+line-height: 42px;
+background: #fafafa;
+font-weight: 100;
+float: left;
+width:99%;
+padding-left: 10px;
+font-size: 16px;
+color: #8c8c8c;
+}
+.w1000 {
+width: 100%;
+}.float {
+float: left;
+}.paid_ma {
+width: 800px;
+margin: 24px 0 0 94px;
+}.paid_xm1 {
+height: 70px;
+background: #f0f3f7;
+width: 800px;
+border: 1px dashed #d3dce9;
+border-radius: 4px;
+-moz-border-radius: 4px;
+-khtml-border-radius: 4px;
+-webkit-border-radius: 4px;
+margin-bottom: 10px;
+}.paid_xm1 h5 {
+width: 100%;
+padding-left: 36px;
+height: 70px;
+
+overflow: hidden;
+color: #8c8c8c;
+font-size: 14px;
+}.paid_xm1 h5 span {
+color: #ff9001;
+margin: 0 4px 0 10px;
+font-weight: 600;
+}.paid_ma {
+width: 800px;
+margin: 24px 0 0 94px;
+}
+.atm {
+width: 366px;
+height: 188px;
+border: 1px solid #b4b4b4;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-khtml-border-radius: 10px;
+-webkit-border-radius: 10px;
+float: left;
+margin: 10px 26px 0 0;
+position: relative;
+}.atm ul {
+padding: 6px 0 0 34px;
+margin-top: 7px;
+height: 119px;
+}ol, ul {
+list-style: none;
+}.atm li {
+float: left;
+width: 100%;
+color: #6e6e6e;
+height: 22px;
+line-height: 22px;
+}.mt25 {
+margin-top: 25px;
+}.mt5 {
+margin-top: 5px;
+}.mt10 {
+margin-top: 10px;
+}.Unbundling {
+position: absolute;
+background: url(img/jiebang.png) 0 0 no-repeat;
+width: 79px;
+height: 81px;
+color: red;
+right: -2px;
+top: -1px;
+cursor: pointer;
+}.suspervise {
+width: 535px;
+margin: 20px 0 130px 100px;
+}.suspervise h2 {
+height: 20px;
+width: 100%;
+line-height: 20px;
+color: #929292;
+font-size: 12px;
+font-weight: 100;
+overflow: hidden;
+}i {
+font-style: normal;
+}.suspervise table {
+width: 340px;
+height: 80px;
+float: left;
+border-radius: 4px;
+
+border: 1px solid #c2c2c2;
+}.suspervise table th {
+font-size: 13px;
+color: #212121;
+background: #f5f5f5;
+height: 26px;
+line-height: 26px;
+overflow: hidden;
+}.suspervise table th {
+font-size: 13px;
+color: #212121;
+background: #f5f5f5;
+height: 26px;
+line-height: 26px;
+overflow: hidden;
+}.suspervise table th {
+font-size: 13px;
+color: #212121;
+background: #f5f5f5;
+height: 26px;
+line-height: 26px;
+overflow: hidden;
+}.mt16 {
+margin-top: 16px;
+}table {
+border-collapse: collapse;
+
+}.suspervise table td {
+text-align: center;
+height: 26px;
+line-height: 26px;
+overflow: hidden;
+}
+
+
+
+
+.ABC, .BCCB, .BJRCB, .BOC, .CCB, .CDCB, .CEB, .CIB, .CITIC, .CMB, .CMBC, .COMM, .CSRCB, .FDB, .GDB, .HZCB, .ICBC, .NBBANK, .NJCB, .PSBC, .BOS, .SHRCB, .SZPAB, .SPDB, .WZCB, .ZJNX {
+	text-indent: -9999px;
+	/* background-image:url(img/combo.png); */
+}
+
+ 
+.ABC {
+	background-position: 0px -0px;
+ }
+
+ 
+.BCCB {
+	background-position: 0px -36px;
+ }
+
+ 
+.BJRCB {
+	background-position: 0px -72px;
+ }
+
+ 
+.BOC {
+	background-position: 0px -108px;
+ }
+
+ 
+.CCB {
+	background-position: 0px -144px;
+ }
+
+ 
+.CDCB {
+	background-position: 0px -180px;
+ }
+
+ 
+.CEB {
+	background-position: 0px -216px;
+ }
+
+ 
+.CIB {
+	background-position: 0px -252px;
+ }
+
+ 
+.CITIC {
+	background-position: 0px -288px;
+ }
+
+ 
+.CMB {
+	background-position: 0px -324px;
+ }
+
+ 
+.CMBC {
+	background-position: 0px -360px;
+ }
+
+ 
+.COMM {
+	background-position: 0px -396px;
+ }
+
+ 
+.CSRCB {
+	background-position: 0px -432px;
+ }
+
+ 
+.FDB {
+	background-position: 0px -468px;
+ }
+
+ 
+.GDB {
+	background-position: 0px -504px;
+ }
+
+ 
+.HZCB {
+	background-position: 0px -540px;
+ }
+
+ 
+.ICBC {
+	background-position: 0px -576px;
+ }
+
+ 
+.NBBANK {
+	background-position: 0px -612px;
+ }
+
+ 
+.NJCB {
+	background-position: 0px -648px;
+ }
+
+ 
+.PSBC {
+	background-position: 0px -684px;
+ }
+
+ 
+.BOS {
+	background-position: 0px -720px;
+ }
+
+ 
+.SHRCB {
+	background-position: 0px -756px;
+ }
+
+ 
+.SZPAB {
+	background-position: 0px -792px;
+ }
+
+ 
+.SPDB {
+	background-position: 0px -828px;
+ }
+.ui-btn-ok {
+    background-position: 0px -163px;
+    background-repeat: repeat-x;
+}
+ 
+.WZCB {
+	background-position: 0px -864px;
+ }
+
+ 
+.ZJNX {
+	background-position: 0px -900px;
+ }
+
+
+
+
+
+
+
+#container {
+    width: 950px;
+    margin: 0px auto;
+}
+
+
+
+body,button,input,select,textarea{
+	font:12px/1.5 tahoma,arial,\5b8b\4f53
+}
+
+
+.ui-list-tip {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    display: block;
+    color: #888;
+    text-align: right;
+    border-bottom: 1px dashed #CCC;
+}
+
+.ui-list-icons li{
+	float:left;
+	width:156px;
+	padding-bottom:25px;
+	padding-right:20px
+}
+
+.ui-list-icons input{
+	vertical-align:middle
+}
+
+.ui-list-icons .icon-box{
+	left:3px;
+	cursor:pointer
+}
+
+
+.ui-btn-text{ background:#F30; width:50px; height:30px;}
+
+
+.icon-box:hover .healthy{
+	display:block
+}
+
+.icon-box:hover{
+	border-color:#C60 !important
+}
+
+.icon-box:ctive{border-color:#C60 !important} 
+
+
+
+.long-logo .ui-list-icons li{
+	width:218px;
+	padding-right:5px;
+	display:inline
+}
+
+
+
+.long-logo .icon-box,.long-logo .icon-box-commend,.long-logo .icon-box-kj{
+	width:120px;
+	background-color:#fff!important;
+	line-height:36px
+}
+
+
+.long-logo-reset .ui-four-icons{
+	margin-left:30px;
+	margin-top:-30px;
+	*margin-top:-20px
+}
+
+.long-logo .icon-box .icon,.long-logo .icon-box-commend .icon,.long-logo .icon-box-kj .icon{
+	float:left;
+	width:126px;
+	padding:0
+}
+
+
+
+.long-logo .xbox .ui-list-icons{
+	margin-left:20px;
+	*margin-top:10px
+}
+
+
+
+.icon-box,.icon-box-commend,.icon-box-kj{
+	width:126px;
+	border:1px solid #ddd;
+	vertical-align:middle;
+	position:relative;
+	display:inline-block;
+	background-color:#eee
+}
+
+
+.icon-box .icon,.icon-box-commend .icon,.icon-box-kj .icon{
+	display:block;
+	height:34px;
+	line-height:30px;
+	background-repeat:no-repeat;
+	padding:0 10px;
+	color:#07F;
+	font-weight:700;
+	white-space:nowrap;
+	overflow:hidden;
+	position:relative;
+	z-index:1
+}
+
+.ui-list-icons .current, .ui-list-icons .hover {
+    border-color: #FA3 !important;
+}
+.icon-box .bank-name,.icon-box-commend .bank-name,.icon-box-kj .bank-name{
+	position:absolute;
+	left:5px;
+	z-index:0;
+	height:36px;
+	width:121px;
+	overflow:hidden
+}.button_zc1 {
+color: #FFF;
+font-size: 22px;
+font-family: "微软雅黑";
+width: 380px;
+height: 1px;
+text-align: center;
+background: #fff;
+font-size: 18px;
+line-height: 43px;
+outline: none;
+border: none;
+cursor: pointer;
+border-radius: 5px;
+margin:20px 0px 0px 400px;
+max-height:50px;
+}.button_zc {
+color: #FFF;
+font-size: 22px;
+font-family: "微软雅黑";
+width: 380px;
+height: 45px;
+text-align: center;
+background: #fd8836;
+font-size: 18px;
+line-height: 43px;
+outline: none;
+border: none;
+cursor: pointer;
+border-radius: 5px;
+margin:20px 0px 0px 380px;
+max-height:50px;
+}
+.yinn{padding: 5px 0 8px 7px; width:240px;font-size: 16px;}
+
+.long-logo .xbox .ui-list-icons li{
+	margin-right:10px
+}
+
+
+.paid_wy{ width:1000px; border:1px solid #CCC;margin: 26px 0 0 55px;}
+
+#container.xbox,#J-chooseBankList.xbox{
+	width:1200px;
+	height:auto;
+	margin:0 auto;
+}

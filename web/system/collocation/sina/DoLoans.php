@@ -26,7 +26,7 @@ function DoLoans($deal_id,$repay_start_time,$acquiring_url){
 	$data['sinapay_partner_id'] = sinapay_partner_id;
 	$data['out_trade_no'] = build_order_no();
 	$data['out_trade_code'] = "2001";
-	$data["account_type"]="BASIC";
+	$data["account_type"]="SAVING_POT";
 	$data['goods_id'] = $deal_id;
 	$data['amount'] = $deal['borrow_amount'];
 	$data['goods_name'] = $deal['sub_name'];
@@ -57,8 +57,8 @@ function DoLoans($deal_id,$repay_start_time,$acquiring_url){
 	$request["payee_identity_id"]=$data['payer_id'];
 	$request["payee_identity_type"]=$data['payer_identity_type'];
 	$request["account_type"]=$data["account_type"];
-	$request["amount"]=sprintf("%.2f",$data['amount']-$data['user_fee']);
-	//$request["split_list"]=$request["payee_identity_id"]."^".$request["payee_identity_type"]."^".$request["account_type"]."^".$request["partner_id"]."^UID^SAVING_POT^".$data['user_fee']."^借款手续费";
+	$request["amount"]=sprintf("%.2f",$data['amount']);
+	$request["split_list"]=$request["payee_identity_id"]."^".$request["payee_identity_type"]."^".$request["account_type"]."^".'84925355@qq.com'."^EMAIL^BASIC^".$data['user_fee']."^借款手续费";
     $request["summary"]=$data['summary'];
 	//$request["goods_id"]=$data['goods_id'];
 	$request["notify_method"]="batch_notify";

@@ -106,15 +106,15 @@ echo parse_wap_url_tag("u:index|integral_mall|"."epage=".$this->_var['data']['ac
 				<span>积分商城</span>
 			</a>
 		</dd> -->
-		 <!-- <dd>
+		<!-- <dd>
 			<a href="#" onclick="RouterURL('<?php
 echo parse_wap_url_tag("u:index|about|"."epage=".$this->_var['data']['act']."".""); 
 ?>','#about',2);">
 				<div class="i_father"><i class="icon iconfont">&#xe603;</i></div>
 				<span>关于我们</span>
 			</a>
-		</dd> -->
-		<!--<dd>
+		</dd>
+		<dd>
 			<a href="/index.php?ctl=about">
 				<div class="i_father"><i class="icon iconfont">&#xe602;</i></div>
 				<span>文章列表</span>

@@ -148,7 +148,6 @@
 	$this->_var['c_common_js'][] = $this->_var['TMPL_REAL']."/js/uc_invest.js";
 	$this->_var['c_common_js'][] = $this->_var['TMPL_REAL']."/js/uc_incharge.js";
 	$this->_var['c_common_js'][] = $this->_var['TMPL_REAL']."/js/public.js";
-	
 ?>
 <script type="text/javascript" src="<?php 
 $k = array (
@@ -160,8 +159,6 @@ echo $k['name']($k['v'],$k['c']);
 ?>"></script>
 </body>
 <?php if ($this->_var['data']['activity_turn'] == 1): ?>
-<script type='text/javascript' src='./js/activity_turn/jquery-1.8.3.min.js' charset='utf-8'></script>
-<script type='text/javascript' src='./js/activity_turn/awardRotate.js' charset='utf-8'></script>
 <?php echo $this->fetch('./activity_turn_js.html'); ?>
 <?php endif; ?>
 </html>

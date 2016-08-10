@@ -560,7 +560,16 @@ fanwe_deal_agency.id
 
 		}
 
-		
+	/***
+	 * 查询绑定银行卡信息
+	 */
+	function get_bank_info($user_id){
+
+		require_once(APP_ROOT_PATH.'system/collocation/sina/get_bank_info.php');
+
+		return get_bank_info($user_id,$this->member_url);
+
+	}
 
 		/**
 

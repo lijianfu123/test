@@ -1,0 +1,48 @@
+<div class="tabbox">
+	<div class="tab"><a href="<?php
+echo parse_url_tag("u:index|uc_invite|"."".""); 
+?>">我要推荐</a></div>
+	<div class="tab"><a href="<?php
+echo parse_url_tag("u:index|uc_invite#invite|"."".""); 
+?>">有效推荐</a></div>
+	<div class="tab"><a href="<?php
+echo parse_url_tag("u:index|uc_invite#invite|"."type=1".""); 
+?>">无效推荐</a></div>
+	<div class="tab cur"><a href="<?php
+echo parse_url_tag("u:index|uc_invite#reward|"."".""); 
+?>">奖励记录</a></div>
+</div>
+<div class="uc_box bdd bt0">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="uc-table">
+			<tr>
+				<th>编号</th>
+				<th><?php echo $this->_var['LANG']['USER_TITLE_USER_NAME']; ?></th>
+				<th>奖励比例</th>
+				<th>返利金额</th>
+				<th>返利时间</th>
+			</tr>
+			<?php $_from = $this->_var['list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'invite');$this->_foreach['invites'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['invites']['total'] > 0):
+    foreach ($_from AS $this->_var['key'] => $this->_var['invite']):
+        $this->_foreach['invites']['iteration']++;
+?>
+			<tr class="item <?php if ($this->_var['key'] % 2 == 1): ?>item_1<?php endif; ?>" <?php if (($this->_foreach['invites']['iteration'] == $this->_foreach['invites']['total'])): ?>style="border-bottom:0"<?php endif; ?>>
+				<td><?php echo $this->_var['invite']['id']; ?></td>
+				<td><?php echo $this->_var['invite']['re_user_name']; ?></td>
+				<td><?php echo $this->_var['invite']['referral_rate']; ?>%</td>
+				<td><?php echo $this->_var['invite']['money']; ?></td>
+				<td><?php 
+$k = array (
+  'name' => 'to_date',
+  'value' => $this->_var['invite']['create_time'],
+);
+echo $k['name']($k['value']);
+?></td>
+			</tr>
+			<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+	</table>
+	
+	<div class="blank"></div>
+	<div class="pages"><?php echo $this->_var['pages']; ?></div>
+	<div class="blank2"></div>
+</div>

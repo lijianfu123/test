@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="Generator" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=0,minimum-scale=0.5">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?php if ($this->_var['page_title']): ?><?php echo $this->_var['page_title']; ?> - <?php endif; ?><?php if ($this->_var['show_site_titile'] == 1): ?><?php 
+$k = array (
+  'name' => 'app_conf',
+  'value' => 'SHOP_SEO_TITLE',
+);
+echo $k['name']($k['value']);
+?> - <?php endif; ?><?php echo $this->_var['site_info']['SHOP_TITLE']; ?></title>
+<link rel="icon" href="favicon.ico" type="/image/x-icon" />
+<link rel="shortcut icon" href="favicon.ico" type="/image/x-icon" />
+<meta name="keywords" content="<?php if ($this->_var['page_keyword']): ?><?php echo $this->_var['page_keyword']; ?><?php endif; ?><?php echo $this->_var['site_info']['SHOP_KEYWORD']; ?>" />
+<meta name="description" content="<?php if ($this->_var['page_description']): ?><?php echo $this->_var['page_description']; ?><?php endif; ?><?php echo $this->_var['site_info']['SHOP_DESCRIPTION']; ?>" />
+<style>
+	body{text-align:left;color:#444;font-size:16px;font-family:"microsoft yahei";}
+	img{border:0}
+	*{margin:0;padding:0}
+	ul{list-style:none}
+	select,input,img,select{vertical-align:middle}
+	a{text-decoration:none;cursor:pointer;color:#00bef0;font-weight:normal;}
+	a:hover{color:#0f91ed}
+	.msg_box{padding:10px;}
+	.btn,.btn:hover{display:block; margin:0 auto; width:120px; color:#fff; text-align:center; height:30px; line-height:30px; background:#0697da}
+</style>
+
+<?php if ($this->_var['stay'] == 0 && ! isMobile ( )): ?>
+<meta http-equiv="refresh" content="3;URL=<?php echo $this->_var['jump']; ?>" />
+<?php endif; ?>
+<script type="text/javascript">
+	function s(){
+		try{
+			App.onConfirm('<?php echo $this->_var['jump']; ?>');
+		}
+		catch(e){
+			
+		}
+		window.location.href='<?php echo $this->_var['jump']; ?>';
+	}
+</script>
+</head>
+
+<body>
+	<center>
+		<div class="msg_box">
+			<div class="notice">
+				<p>
+				<?php echo $this->_var['msg']; ?>	
+				</p>
+				<!-- <p>
+					<?php if (isMobile ( )): ?>
+					<input type="button" class="btn" id="reback" value="点击这里跳转" onclick="s();" />
+					<?php else: ?>
+						<?php if ($this->_var['jump'] != ''): ?>
+							<div class="blank"></div>
+							<a href="<?php echo $this->_var['jump']; ?>" class="btn">点击这里跳转 </a>
+						<?php endif; ?>
+					<?php endif; ?>
+				</p> -->
+				 <p>
+					<?php if (isMobile ( )): ?>
+					<input type="button" class="btn" id="reback" value="请耐心等候" />
+					<?php else: ?>
+						<?php if ($this->_var['jump'] != ''): ?>
+							<div class="blank"></div>
+							<a href="javascript:void(0);" class="btn">请耐心等候 </a>
+						<?php endif; ?>
+					<?php endif; ?>
+				</p>
+			</div>
+		</div>
+	</center>
+</body>
+</html>

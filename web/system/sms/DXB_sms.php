@@ -59,7 +59,7 @@ class DXB_sms implements sms
 
 
 $this->sms['is_adv'] = intval($is_adv);
-		$content.='【海鸥金服】';
+		$content.='【p2p】';
  		$account = $this->sms['user_name'];
 		$password =$this->sms['password'];
 

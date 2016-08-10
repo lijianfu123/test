@@ -206,7 +206,7 @@
 			}
 			$actions="";
 			foreach($details as $k=>$v){
-				$actions.="$".build_order_no().NoRand()."~".to_guid_string((int)$v['user_id'])."~UID~BASIC~".$v['amount']."~~还款代付~~~";
+				$actions.="$".build_order_no().NoRand()."~".to_guid_string((int)$v['user_id'])."~UID~SAVING_POT~".$v['amount']."~~还款代付~~~";
 			}
 			$request["trade_list"]=ltrim($actions, "$");
 			$request["notify_method"]="batch_notify";

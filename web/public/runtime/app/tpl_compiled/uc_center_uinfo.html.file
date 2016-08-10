@@ -2,14 +2,14 @@
 <div class="p20 ucindex">
     <div class="p15">
         <div class="f_l uc_mbox">
-            <h1 class=' J_u_money_1'>资产总计<span class="f32">￥<?php 
+            <h1 class=' J_u_money_1'>资产总计<!-- <span class="f32">￥<?php 
 $k = array (
   'name' => 'number_format',
   'v' => $this->_var['user_data']['total_money'],
   'f' => '2',
 );
 echo $k['name']($k['v'],$k['f']);
-?></span></h1>
+?></span> --></h1>
             <?php if (intval ( app_conf ( "OPEN_IPS" ) ) > 0): ?>
             第三方管理账号：
             <?php if ($this->_var['user_data']['ips_acct_no'] != ''): ?><span class="f_red">已绑定</span><?php else: ?><a href="javascript:void(0);" onclick="new_window = window.open();" id="J_bind_ips" class="f_blue">去绑定</a><?php endif; ?>&nbsp;&nbsp;&nbsp;
@@ -462,7 +462,7 @@ echo $k['name']($k['v'],$k['f']);
             checkIpsBalance(0, <?php echo $this->_var['user_data']['id']; ?>, function(result){
             if (result.pErrCode == "0000"){
             $(".J_u_money_0").html($(".J_u_money_0").html() + "<div class='blank0'></div><span class='joke'>+" + formatNum(result.pBalance) + "[绑]</span>");
-                    $(".J_u_money_1").html($(".J_u_money_1").html() + "<div class='blank0'></div><span class='joke'>+" + formatNum(result.pBalance + result.pLock + result.pNeedstl) + "[绑]</span>");
+                    $(".J_u_money_1").html($(".J_u_money_1").html() + "<div class='blank0'></div><span class='joke'>+" + formatNum(result.pBalance + result.pLock + result.pNeedstl) + "[绑]   [存钱罐历史收益]："+ formatNum(result.bonus) +"</span>");
                     $(".J_u_money_2").html($(".J_u_money_2").html() + "<div class='blank0'></div><span class='joke'>+" + formatNum(result.pLock) + "[绑]</span>");
                     $("#s_total_money").html(formatNum(result.pBalance + result.pLock + result.pNeedstl));
                     $("#s_moeny").html(formatNum(result.pBalance));

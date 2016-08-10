@@ -8,6 +8,7 @@ base64_encode(base64_encode("haioujinfu.com")),
 base64_encode(base64_encode("*.haioujinfu.com")),
 base64_encode(base64_encode("localhost")),
 base64_encode(base64_encode("127.0.0.1")),
+base64_encode(base64_encode("123.57.84.59")),
 base64_encode(base64_encode("www.haiou123.com")),
 );
 $str = base64_encode(base64_encode(serialize($iiiiiiiiiiii))."|".serialize($iiiiiiiiiiii));

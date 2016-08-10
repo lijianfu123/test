@@ -1,0 +1,116 @@
+<?php if (! $this->_var['user_info']): ?>
+<div class="tc">只有<a href="<?php
+echo parse_url_tag("u:index|user#register|"."".""); 
+?>" class="f_blue">注册</a>用户才可以查看借入者信用信息！现在<a href="javascript:void(0);" onclick="ajax_login();" class="f_blue">登录</a></div>
+<?php else: ?>
+<div class="box-bd">
+	<table class="data_table bdr5" border="0" cellspacing="1" style="width:100%;">
+	    <tr>
+	        <th width="10%">编号</th>
+	        <th width="12%">还款日期</th>
+	        <th width="12%">已还本息</th>
+	        <th width="12%">待还本息</th>
+	        <th width="12%">已付罚息</th>
+	        <th width="12%">待还罚息</th>
+	        <th width="12%">状态</th>
+	    </tr>
+		<?php $idx=1;?>
+		<?php $_from = $this->_var['loan_repay_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'loan');if (count($_from)):
+    foreach ($_from AS $this->_var['key'] => $this->_var['loan']):
+?>
+	  	<tr>
+	        <td width="10%">
+				<?php echo $idx;++$idx;?>
+			</td>
+	        <td width="12%"><?php 
+$k = array (
+  'name' => 'to_date',
+  'v' => $this->_var['loan']['repay_day'],
+  'f' => 'Y-m-d',
+);
+echo $k['name']($k['v'],$k['f']);
+?></td>
+	        <td width="12%" style="color:red"><?php 
+$k = array (
+  'name' => 'app_conf',
+  'v' => 'CURRENCY_UNIT',
+);
+echo $k['name']($k['v']);
+?><?php 
+$k = array (
+  'name' => 'number_format',
+  'v' => $this->_var['loan']['month_has_repay_money'],
+  'f' => '2',
+);
+echo $k['name']($k['v'],$k['f']);
+?></td>
+	        <td width="12%" style="color:red"><?php 
+$k = array (
+  'name' => 'app_conf',
+  'v' => 'CURRENCY_UNIT',
+);
+echo $k['name']($k['v']);
+?><?php if ($this->_var['loan']['has_repay'] == 0): ?><?php 
+$k = array (
+  'name' => 'number_format',
+  'v' => $this->_var['loan']['month_repay_money'],
+  'f' => '2',
+);
+echo $k['name']($k['v'],$k['f']);
+?><?php else: ?>0.0<?php endif; ?></td>
+	        <td width="12%" style="color:red"><?php 
+$k = array (
+  'name' => 'app_conf',
+  'v' => 'CURRENCY_UNIT',
+);
+echo $k['name']($k['v']);
+?><?php if ($this->_var['loan']['has_repay'] != 0): ?><?php 
+$k = array (
+  'name' => 'number_format',
+  'v' => $this->_var['loan']['impose_money'],
+  'f' => '2',
+);
+echo $k['name']($k['v'],$k['f']);
+?><?php else: ?>0.0<?php endif; ?></td>
+			<td width="12%" style="color:red"><?php 
+$k = array (
+  'name' => 'app_conf',
+  'v' => 'CURRENCY_UNIT',
+);
+echo $k['name']($k['v']);
+?><?php if ($this->_var['loan']['has_repay'] == 0): ?><?php 
+$k = array (
+  'name' => 'number_format',
+  'v' => $this->_var['loan']['impose_money'],
+  'f' => '2',
+);
+echo $k['name']($k['v'],$k['f']);
+?><?php else: ?>0.0<?php endif; ?></td>
+	        <td width="12%">
+	        	<?php if ($this->_var['loan']['has_repay'] == 1): ?>
+		        	<?php if ($this->_var['loan']['status'] == 0): ?>
+					<span style="color:#f7634f">未偿还</span>
+					<?php elseif ($this->_var['loan']['status'] == 1): ?>
+					<span style="color:#83a700">提前还款</span>
+					<?php elseif ($this->_var['loan']['status'] == 2): ?>
+					<span style="color:#00bef0">已偿还</span>
+					<?php elseif ($this->_var['loan']['status'] == 3): ?>
+					<span style="color:#ffaa00">逾期还款</span>
+					<?php elseif ($this->_var['loan']['status'] == 4): ?>
+					<span style="color:#c82e25">严重逾期</span>
+					<?php endif; ?>
+				<?php else: ?>
+				<span style="color:#f7634f">未偿还</span>
+				<?php endif; ?>
+			</td>
+	    </tr>
+		<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+	</table>
+</div>
+<?php endif; ?>
+
+
+
+
+
+

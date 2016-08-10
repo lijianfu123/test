@@ -24,11 +24,11 @@ $arr = explode(",",$_POST["memo"]);
 
 if($arr[0]=='RepaymentNewTrade'){ 
 
-$result = curlPost("http://www.haioujinfu.com/index.php?ctl=collocation&act=notify&class_name=Sina&class_act=".$arr[0]."&l_key=".$arr[1]."",$tijiao);
+$result = curlPost("https://www.haioujinfu.com/index.php?ctl=collocation&act=notify&class_name=Sina&class_act=".$arr[0]."&l_key=".$arr[1]."",$tijiao);
 
 }else{
 
-$result = curlPost("http://www.haioujinfu.com/index.php?ctl=collocation&act=notify&class_name=Sina&class_act=".$arr[0],$tijiao);
+$result = curlPost("https://www.haioujinfu.com/index.php?ctl=collocation&act=notify&class_name=Sina&class_act=".$arr[0],$tijiao);
 
 }
 

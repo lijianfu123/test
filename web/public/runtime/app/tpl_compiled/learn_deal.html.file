@@ -1,0 +1,280 @@
+<style type="text/css">
+a {text-decoration: none;}
+#showtext2 {cursor: hand; cursor:pointer;}
+#contentid2 {width: 100%;}
+.none {display: none;}
+</style>
+<?PHP 
+$this->_var['lpagecss'][] = $this->_var['TMPL_REAL']."/css/index.css";
+?>
+<link rel="stylesheet" type="text/css" href="<?php 
+$k = array (
+  'name' => 'parse_css',
+  'v' => $this->_var['lpagecss'],
+);
+echo $k['name']($k['v']);
+?>" />
+<div class="tabbox clearfix">
+    <div class="tab cur"><a href="<?php
+echo parse_url_tag("u:index|uc_learn#deal_invest|"."".""); 
+?>"><?php echo $this->_var['page_title']; ?></a></div>
+</div>
+<div class="blank15"></div>
+<div class="newinvest" id="deal_list">
+<?php $_from = $this->_var['deal_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'deal');$this->_foreach['deal'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['deal']['total'] > 0):
+    foreach ($_from AS $this->_var['key'] => $this->_var['deal']):
+        $this->_foreach['deal']['iteration']++;
+?>
+        
+        <div class="listblok">
+            <div class="listtit ovhide">
+                <div class="f_l">
+                    <img class="grade f_l mr5" src="<?php echo $this->_var['TMPL']; ?>/images/<?php echo $this->_var['deal']['user']['point_level']; ?>.png" align="absmiddle" title="<?php echo $this->_var['deal']['user']['point_level']; ?>" alt="<?php echo $this->_var['deal']['user']['point_level']; ?>" height="30" />
+                    <h3 class="f_l">
+                        <a href="<?php echo $this->_var['deal']['url']; ?>"><?php echo $this->_var['deal']['color_name']; ?></a>
+                    </h3> 
+                    <?php if ($this->_var['deal']['is_new'] == 1): ?>
+                    <div class="is_new pr ml10 f_l" style="top:-10px"></div>
+                    <?php endif; ?>
+                </div>
+                <?php if ($this->_var['deal']['is_wait'] == 1 || ( $this->_var['deal']['deal_status'] == 1 && $this->_var['deal']['remain_time'] > 0 )): ?>
+                <div class="f_r" >
+                    <div class="left_time AdvLeftTime f_r" data="<?php echo $this->_var['deal']['remain_time']; ?>">
+                        <span class="s day">--</span>
+                        <span class="l">天</span>
+                        <span class="s hour">--</span>
+                        <span class="l">时</span>
+                        <span class="s min">--</span>
+                        <span class="l">分</span>
+                        <span class="s sec">--</span>
+                        <span class="l">秒</span>
+                    </div>
+                    <div class="f_r maingary"> 剩余时间：</div>
+                    <div class="blank0"></div>
+                </div>
+                <?php endif; ?>
+            </div>
+            <div class="blank0"></div>
+            <div class="listcon w135">
+                <h6>借款金额</h6>
+                <span><em><?php echo $this->_var['deal']['borrow_amount_format']; ?></em></span>
+            </div>
+            <div class="listcon w120">
+                <h6>年化利率</h6>
+                <span><em  class="f_red"><?php echo $this->_var['deal']['rate']; ?>%<?php if ($this->_var['deal']['user_bid_rebate'] > 0): ?><span class="f14" title="投资返利:<?php echo $this->_var['deal']['user_bid_rebate']; ?>%">+<?php echo $this->_var['deal']['user_bid_rebate']; ?>%</span><?php endif; ?></em></span>
+            </div>
+            <div class="listcon w70">
+                <h6>项目期限</h6>
+                <span><em><?php echo $this->_var['deal']['repay_time']; ?></em><?php if ($this->_var['deal']['repay_time_type'] == 0): ?>天<?php else: ?>个月<?php endif; ?></span>
+            </div>
+            <div class="listcon" style="border-right:none;">
+                <h6>还款方式</h6>
+                <span><?php 
+$k = array (
+  'name' => 'loantypename',
+  'v' => $this->_var['deal']['loantype'],
+  'type' => '0',
+);
+echo $k['name']($k['v'],$k['type']);
+?></span>
+            </div>
+            <div class="listcona f_r">
+                <div class="progressvar">
+                        <?php if ($this->_var['deal']['deal_status'] >= 4): ?>
+                        <div class="progress w135 mt9">
+                            <span class="pr bdr3" style="width:100%;">
+                                <img class="ps" title="100%" src="<?php echo $this->_var['TMPL']; ?>/images/progressqiu.png" />
+                            </span>
+                        </div>
+                        <div class="progresscon f_blue">100%</div>
+                        <?php else: ?>
+                        <div class="progress w135 mt9">
+                            <span class="pr bdr3" title="<?php 
+$k = array (
+  'name' => 'round',
+  'v' => $this->_var['deal']['progress_point'],
+  'f' => '3',
+);
+echo $k['name']($k['v'],$k['f']);
+?>%" style="width:<?php 
+$k = array (
+  'name' => 'round',
+  'v' => $this->_var['deal']['progress_point'],
+  'f' => '2',
+);
+echo $k['name']($k['v'],$k['f']);
+?>%;">
+                                <img class="ps" src="<?php echo $this->_var['TMPL']; ?>/images/progressqiu.png" />
+                            </span>
+                        </div>
+                        <div class="progresscon f_blue"><?php 
+$k = array (
+  'name' => 'round',
+  'v' => $this->_var['deal']['progress_point'],
+  'f' => '2',
+);
+echo $k['name']($k['v'],$k['f']);
+?>%</div>
+                        <?php endif; ?>
+                </div>
+				<?php if ($this->_var['learn_balance'] != 0 && $this->_var['deal']['deal_status'] == 1 && $this->_var['deal']['remain_time'] > 0): ?>
+				<input type="button" class="btn_red f18 b f_white w170 lh38  bdr3 tz_link_btn" data-id="<?php echo $this->_var['deal']['id']; ?>" value="立即投资">
+				<?php else: ?>
+				<input type="button" class="btn_gray f18 b f_white w170 lh38  bdr3"  value="立即投资">
+				<?php endif; ?>
+            </div>
+            <div class="blank0"></div>
+        </div>
+        <div class="blank15"></div>
+        
+        <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+	</div>
+	
+<div class="uc_box trader">      
+        <div class="sub_nav pl10">
+            <span <?php if ($this->_var['t'] == ''): ?>class="act"<?php endif; ?>><a href="<?php
+echo parse_url_tag("u:index|uc_learn#deal_invest|"."".""); 
+?>">获取记录</a></span>&nbsp;
+        </div>     
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="uc-table">
+            <tbody>
+                <tr>
+                    <th>获取时间</th>   
+                    <th>获取金额(¥)</th>
+                    <th>获取来源</th>
+                    <th>有效期</th>
+                    <th>状态</th>
+                </tr>
+                <?php $_from = $this->_var['learn_send_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'learn');$this->_foreach['name'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['name']['total'] > 0):
+    foreach ($_from AS $this->_var['learn']):
+        $this->_foreach['name']['iteration']++;
+?>
+                <tr class="item <?php if ($this->_foreach['name']['iteration'] % 2 == 0): ?>item_1<?php endif; ?>">
+                    <td>
+                        <?php echo $this->_var['learn']['begin_time']; ?>
+                    </td>
+                    <td><?php echo $this->_var['learn']['money']; ?></td>
+                    <td>
+                        <?php if ($this->_var['learn']['type'] == 0): ?> 
+                                                                            注册赠送
+                        <?php endif; ?>
+                        <?php if ($this->_var['learn']['type'] == 1): ?> 
+                                                                            邀请赠送
+                        <?php endif; ?>
+                        <?php if ($this->_var['learn']['type'] == 2): ?> 
+                                                                             管理员发放
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <?php echo $this->_var['learn']['begin_time']; ?> 至 
+                        <?php echo $this->_var['learn']['end_time']; ?>
+                    </td>
+                    <td><?php if ($this->_var['learn']['is_use'] == 0): ?>未投资<?php else: ?>已投资<?php endif; ?> </td>
+                </tr>
+                <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+            </tbody>
+        </table>
+
+</div>
+<div class="uc_box trader"> 
+<div class="pages"><?php echo $this->_var['pages']; ?></div>
+<div class="blank15"></div>
+</div>
+
+<style type="text/css">
+    .joke{font-size: 16px;}
+    .long_uc .tabbox{border-left:1px solid #ddd}
+</style>
+
+<script type="text/javascript">
+
+$(".tz_link_btn").click(function(){
+    var query = new Object();
+    query.id = $(this).attr("data-id");
+    $.ajax({
+        url:'<?php
+echo parse_url_tag("u:index|uc_learn#bid|"."".""); 
+?>',
+        data:query,
+        type:"post",
+        dataType:"json",
+        success:function(result){
+            if(result.status==2){
+                $.showErr(result.info,function(){
+                    ajax_login();
+                });
+            }
+            else if(result.status==1){
+                $.weeboxs.open(result.info,{boxid:"paypass-box",contentType:'text',showButton:false,title:"使用体验金",width:480,height:240,type:'wee',onopen:function(){
+                    setTimeout(function(){
+                        init_ui_textbox();
+                        init_ui_select();
+                    },200);
+                }});
+                
+            }
+            else{
+                $.showErr(result.info,function(){
+                    if(result.jump)
+                    {
+                        window.location.href = result.jump;
+                    }
+                });
+            }
+        }
+    });
+    
+});
+    var leftTimeActInv = null;
+    jQuery(function(){
+        $(".selct .gray_title .b a").click(function(){
+                $(".selct .gray_title .b a").parent().removeClass("foucs");
+                $(this).parent().addClass("foucs");
+                var rel=$(this).parent().attr("rel");
+                
+                $(".selct .gray_title .more-box .f_r").addClass("hide");
+                $(".selct .gray_title .more-box .f_r[rel='"+rel+"']").removeClass("hide");
+                
+                $(".selct .nicai").addClass("hide");
+                $(".selct  .nicai[rel='"+rel+"']").removeClass("hide");
+                
+            });
+        
+        $("#loadtop #rightTitls a").click(function(){
+            $("#loadtop #rightTitls a").parent().removeClass("current");
+            $(this).parent().addClass("current");
+            var rel=$(this).attr("rel");
+            $("#loadtop #J_conbox ul").addClass("hide");
+            $("#loadtop #J_conbox ul[rel='"+rel+"']").removeClass("hide");
+        });
+        leftTimeAct();
+    });
+    function leftTimeAct(){
+        clearTimeout(leftTimeActInv);
+        $(".AdvLeftTime").each(function(){
+            var leftTime = parseInt($(this).attr("data"));
+            if(leftTime > 0)
+            {
+                var day  =  parseInt(leftTime / 24 /3600);
+                var hour = parseInt((leftTime % (24 *3600)) / 3600);
+                var min = parseInt((leftTime % 3600) / 60);
+                var sec = parseInt((leftTime % 3600) % 60);
+                $(this).find(".day").html((day<10?"0"+day:day));
+                $(this).find(".hour").html((hour<10?"0"+hour:hour));
+                $(this).find(".min").html((min<10?"0"+min:min));
+                $(this).find(".sec").html((sec<10?"0"+sec:sec));
+                leftTime--;
+                $(this).attr("data",leftTime);
+            }
+            else{
+                $(this).html('时间已结束');
+            }
+        });
+        
+        leftTimeActInv = setTimeout(function(){
+            leftTimeAct();
+        },1000);
+    }
+</script>

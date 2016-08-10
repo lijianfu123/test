@@ -1,10 +1,10 @@
 <?php
 // +----------------------------------------------------------------------
-// | Yuemor 越陌p2p借贷系统
+// | Fanwe 方维p2p借贷系统
 // +----------------------------------------------------------------------
-// | Copyright (c) 2015 http://www.yuemor.com All rights reserved.
+// | Copyright (c) 2011 http://www.fanwe.com All rights reserved.
 // +----------------------------------------------------------------------
-// | 
+// | Author: 云淡风轻(88522820@qq.com)
 // +----------------------------------------------------------------------
 
 //前后台加载的函数库
@@ -3917,7 +3917,7 @@ function getXmlNodeValue($xmlStr ,$nodeName){
 		//积分
 		if($deal_info['score']!=0)
 			modify_account(array("score"=>$deal_info['score']),$deal_info['user_id'],"[<a href='".$deal_info['url']."' target='_blank'>".$deal_info['name']."</a>],招标成功",3);
-		$load_list = $GLOBALS['db']->getAll("SELECT id,user_id,`money`,`is_old_loan`,`rebate_money`,`bid_score`,`is_winning`,`income_type`,`income_value`,`ecv_id`,`learn_money`,`create_time` FROM ".DB_PREFIX."deal_load where deal_id=".$id." and is_rebate = 0 ");
+		$load_list = $GLOBALS['db']->getAll("SELECT id,user_id,`money`,`is_old_loan`,`rebate_money`,`bid_score`,`is_winning`,`income_type`,`income_value`,`ecv_id`,`learn_money`,`create_time`, FROM ".DB_PREFIX."deal_load where deal_id=".$id." and is_rebate = 0 ");
 		
 		$data_push = array();
 		foreach($load_list as $lk=>$lv){
@@ -5056,7 +5056,7 @@ function isWeixin(){
     $agent = strtolower($_SERVER['HTTP_USER_AGENT']);
     $is_weixin = strpos($agent, 'micromessenger') ? true : false ;   
     if($is_weixin){
-        return true;
+        return false;
     }else{
         return false;
     }

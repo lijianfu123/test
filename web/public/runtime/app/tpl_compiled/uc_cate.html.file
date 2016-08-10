@@ -70,13 +70,11 @@ echo $k['name']($k['v'],$k['f']);
 				<?php if ($this->_var['y_sign_data']): ?>
 					<a href="javascript:void(0);" onclick="user_sign();" title="<?php echo $this->_var['sign_tip']; ?>" class="btn_red bdr3" style="display:inline-block; height:30px;line-height:30px; text-decoration:none; color:#fff;width:180px;">立即签到</a>
 					<div class="blank10"></div>
-					<!-- 您已经连续签到<?php echo $this->_var['sign_day']; ?>天<br />继续努力， -->
-					已总共签到<?php echo $this->_var['total_signcount']; ?>天。
+					<!-- 您已经连续签到<?php echo $this->_var['sign_day']; ?>天<br />继续努力， -->已总共签到<?php echo $this->_var['total_signcount']; ?>天。
 				<?php else: ?>
 					<a href="javascript:void(0);" onclick="user_sign();"  title="<?php echo $this->_var['sign_tip']; ?>"  class="btn_red bdr3" style="display:inline-block; height:30px;line-height:30px; text-decoration:none; color:#fff;width:180px;">立即签到</a>
 					<div class="blank10"></div>
-					<!-- 您昨天忘记签到了重头来吧， -->
-					已总共签到<?php echo $this->_var['total_signcount']; ?>天。
+					<!-- 您昨天忘记签到了重头来吧， -->已总共签到<?php echo $this->_var['total_signcount']; ?>天。
 				<?php endif; ?>
 			<?php endif; ?>
 			
@@ -112,12 +110,12 @@ echo $k['name']($k['v']);
 			<li class="<?php if ($this->_var['MODULE_NAME'] == 'uc_money' && ( $this->_var['ACTION_NAME'] == "incharge" || $this->_var['ACTION_NAME'] == "incharge_log" )): ?>act<?php endif; ?>" ><a class="uc_cate" href="<?php
 echo parse_url_tag("u:index|uc_money#incharge|"."".""); 
 ?>" title="充值">充值</a></li>
-			<li class="<?php if ($this->_var['MODULE_NAME'] == 'uc_money' && ( $this->_var['ACTION_NAME'] == "carry" || $this->_var['ACTION_NAME'] == "carry_log" )): ?>act<?php endif; ?>" ><a class="uc_cate" href="<?php
+				<li class="<?php if ($this->_var['MODULE_NAME'] == 'uc_money' && ( $this->_var['ACTION_NAME'] == "carry" || $this->_var['ACTION_NAME'] == "carry_log" )): ?>act<?php endif; ?>" ><a class="uc_cate" href="<?php
 echo parse_url_tag("u:index|uc_money#bank|"."".""); 
 ?>" title="提现">提现</a></li>
-            <!-- <li class="<?php if ($this->_var['MODULE_NAME'] == 'uc_money' && $this->_var['ACTION_NAME'] == "bank"): ?>act<?php endif; ?>" ><a class="uc_cate" href="<?php
+            <li class="<?php if ($this->_var['MODULE_NAME'] == 'uc_money' && $this->_var['ACTION_NAME'] == "bank"): ?>act<?php endif; ?>" ><a class="uc_cate" href="<?php
 echo parse_url_tag("u:index|uc_money#bank|"."".""); 
-?>" title="银行卡列表">银行卡列表</a></li>  -->
+?>" title="银行卡列表">银行卡列表</a></li> 
 			<!--<li class="last <?php if ($this->_var['MODULE_NAME'] == 'uc_money' && $this->_var['ACTION_NAME'] == "index"): ?>act<?php endif; ?>" ><a class="uc_cate" href="<?php
 echo parse_url_tag("u:index|uc_money|"."".""); 
 ?>" title="资金日志">资金日志</a></li>-->
@@ -223,7 +221,7 @@ echo parse_url_tag("u:index|uc_trader#borrow_commission_money|".""."");
         </ul>
 	</div>
     <?php endif; ?>
-	<!--<?php if (( int ) app_conf ( "OPEN_IPS" ) > 0): ?>
+	<?php if (( int ) app_conf ( "OPEN_IPS" ) > 0): ?>
 	<div class="hd">
 		<span>托管对账</span>
 		<i class="iconfont r">&#xe62e;</i>
@@ -257,7 +255,7 @@ echo parse_url_tag("u:index|uc_ips#ips_transfer|".""."");
 ?>" title="债权转让">债权转让</a></li>
 		</ul>
 	</div>
-	<?php endif; ?>-->
+	<?php endif; ?>
 	<div class="hd">
 		<span>投资管理</span>
 		<i class="iconfont r">&#xe62e;</i>

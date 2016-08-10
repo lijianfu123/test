@@ -1,0 +1,38 @@
+<div class="tabbox clearfix">
+	<div class="tab cur"><a href="{url x="index" r="uc_trader#invest_money"}">平台利息收益返利</a></div>
+</div>
+<div class="uc_box bdd bt0 clearfix">
+	<div class="blank"></div>
+      {if $list}
+      <div class="clearfix tra_box p10">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="uc-table">
+              <tbody>
+                  <tr border="0">
+                      <th style="width:14%">实盘单号</th>
+                      <th style="width:8%">配资者</th>
+                      <th style="width:8%">投资者</th>
+                      <th style="width:8%">平台利息收益返利</th>
+                      <th style="width:10%">日期</th>
+                      <th style="width:20%">备注</th>
+                  </tr>
+                  {foreach from="$list" item="item" key=key name=list_n}
+            <tr class="item {if $key mod 2 eq 1}item_1{/if}" {if $smarty.foreach.list_n.last}style="border-bottom:0"{/if}>
+                      <td><a href="{url x="index" r="uc_trader#detail" p="id=$item.id"}">{$item.order_sn}</a></td>
+                      <td>{$item.user_name}</td>
+                      <td>{$item.invest_user_name}</td>
+                      <td>{function name="format_price" value="$item.invite_borrow_interest_money"}</td>
+                      <td>{$item.fee_date}</td>
+                      <td>{$item.memo} </td>
+                  </tr>
+                  {/foreach}
+              </tbody>
+          </table>
+      </div>
+      {else}	
+      <div align="center" class='tra_box' style="padding:20px 0">暂无记录</div>
+      {/if}
+	
+	<div class="blank"></div>
+	<div class="pages">{$pages}</div>
+	<div class="blank"></div>
+</div>

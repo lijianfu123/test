@@ -1,10 +1,10 @@
 <?php
 // +----------------------------------------------------------------------
-// | Fanwe 方维p2p借贷系统
+// | Yuemor 越陌p2p借贷系统
 // +----------------------------------------------------------------------
-// | Copyright (c) 2011 http://www.fanwe.com All rights reserved.
+// | Copyright (c) 2015 http://www.yuemor.com All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: 云淡风轻(88522820@qq.com)
+// | 
 // +----------------------------------------------------------------------
 
 //app项目用到的函数库
@@ -1479,7 +1479,6 @@ function signin($user_id){
 	{
 		$y_sign_data = $GLOBALS['db']->getRow("select * from ".DB_PREFIX."user_sign_log where user_id = ".$user_id." and sign_date between ".$y_begin_time." and ".$y_end_time);
 		$total_signcount = $GLOBALS['db']->getOne("select count(*) from ".DB_PREFIX."user_sign_log where user_id = ".$user_id);
-		$result[total_signcount] = $total_signcount;
 		if($y_sign_data&&$total_signcount>=3)
 		{
 			$point = intval(app_conf("USER_LOGIN_KEEP_POINT"));

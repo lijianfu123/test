@@ -48,46 +48,31 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link href="app/Tpl/blue/bangka/duanx.css" rel="stylesheet" type="text/css" />
 <title>填写验证码</title>
+ 
 </head>
 <style>
-	.bg_1 {
-	float:left;
-	width:70%;
-	height:300px;
-   	background-image:url(http://www.haiou123.com/app/Tpl/new/images/aqyz.png);
-	}
-	.bg_2 {
-	width:330px;
-	height:100px;
-   	background-image:url(http://www.haiou123.com/app/Tpl/new/images/bdlogo.png);
-   	
-	}
-	.container1{
-	float:left;
-	height:300px; 
-	width:30%;
-	background-image:url(http://www.haiou123.com/app/Tpl/new/images/bdaqyz.png);
-	}
+
 </style>
 <body >
-<div class="bg_2"></div>
 <div style="height:40px;"></div>
-<div>
-	<div>
-		<div class="bg_1"></div>
-		<div class="container1">  
-				<form name="form1" id="form1" method="post"  target="_self" style="margin-top:90px;">	
-				<h3>海鸥金服安全短信验证</h3>			
-				<div  style="margin:auto;text-align: center;"></div>
-					<input placeholder="请输入您的验证码" type="text" id="valid_code" name="valid_code" style="letter-spacing:3px;width:250px;height:40px;">
-				<br>
-					<button name="submit" type="submit" id="contact-submit" style="width:250px;height:30px;margin-top:20px;">提交</button>
-			</form>
-		</div>
-	</div>
-</div>
+<div class="container" style="  max-width: 640px; margin:auto;">  
+		<form name="form1" id="form1" method="post"  target="_self">	
+		<h3>短信验证</h3>
+		
+		<div  style="margin:auto;text-align: center;"><img style="margin:auto;" src="app/Tpl/blue/bangka/duanxx.png"></div>
+		<p style="color:#fff;font-size:18px;margin-bottom:20px;">请输入您收到的验证码</p>
+		<fieldset>
+			<input placeholder="请输入您的验证码" type="text" id="validate_code" name="validate_code" style="letter-spacing:3px;">
+		</fieldset>
 
+		<fieldset>
+			<button name="submit" type="submit" id="contact-submit">提交</button>
+		</fieldset>
+	</form>
+</div>
 </body>
 </html>';
 				

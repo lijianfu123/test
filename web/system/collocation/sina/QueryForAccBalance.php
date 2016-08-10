@@ -1,6 +1,6 @@
 <?php
  
-function QueryForAccBalance($user_id,$user_type,$member_url="https://gate.pay.sina.com.cn/mgs/gateway.do"){
+function QueryForAccBalance($user_id,$user_type,$member_url="https://testgate.pay.sina.com.cn/mgs/gateway.do"){
 	$weibopay = new Weibopay();
 	$request=array();
 	$request["service"]="query_balance";
@@ -13,7 +13,7 @@ function QueryForAccBalance($user_id,$user_type,$member_url="https://gate.pay.si
 	$request["sign_type"]="RSA";
 	$request["identity_id"]=to_guid_string($user_id);
 	$request["identity_type"]="UID";
-	$request["account_type"]="BASIC";
+	$request["account_type"]="SAVING_POT";
 
 	ksort($request);//对签名参数据排序
 		
@@ -24,13 +24,11 @@ function QueryForAccBalance($user_id,$user_type,$member_url="https://gate.pay.si
 	$result = urldecode ($result);
 	$splitdata = array ();
 	$splitdata = json_decode($result,true);
-	$sign_type = $splitdata ['sign_type'];
+	$sign_type = $splitdata ['sign_type'];	
 	ksort($splitdata);  
+	//interface_log('查询余额',$splitdata); //查询余额日志
 	//print_r($splitdata);
 	if ($weibopay->checkSignMsg ($splitdata,$sign_type)) {
-		
-		
-		//file_put_contents("data3.txt",$splitdata["response_code"]);
 		
 		if ($splitdata["response_code"] == 'APPLY_SUCCESS') {
 			
